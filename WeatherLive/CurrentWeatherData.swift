@@ -174,23 +174,23 @@ class CurrentWeatherData {
             _for3hourImage = ""
         }
         switch _for3hourImage {
-        case "light rain":
-            return "sunny.png"
-        case "few clouds":
+        case "Rain":
+            return "sunny"
+        case "Thunderstorm":
             return "snwoimage"
-        case "scattered clouds":
+        case "Drizzle":
             return "snwoimage"
-        case "broken clouds":
+        case "Snow":
             return "snwoimage"
-        case "shower rain":
+        case "Atmosphere":
             return "snwoimage"
-        case "rain":
+        case "Clear":
             return "snwoimage"
-        case "thunderstorm":
+        case "Clouds":
             return "snwoimage"
-        case "snow":
+        case "Extreme":
             return "snwoimage"
-        case "mist":
+        case "Additional":
             return "snwoimage"
         default:
             return ""
@@ -238,7 +238,7 @@ class CurrentWeatherData {
         self._for3hourTimeLabel = json["list"][1]["dt"].double!
         self._for3hourTempLabel = "\(json["list"][1]["main"]["temp"].double!)"
         self._for3hourWeatherLabel = json["list"][1]["weather"][0]["main"].string
-        self._for3hourImage = json["list"][1]["weather"][0]["description"].string
+        self._for3hourImage = json["list"][1]["weather"][0]["main"].string
         print(self._for3hourImage)
     }
     
