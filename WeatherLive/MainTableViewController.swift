@@ -1,24 +1,52 @@
 
-
-
-
-
-
-
 import UIKit
+import CoreLocation
 import Alamofire_SwiftyJSON
 import Alamofire
 import SwiftyJSON
 
-class MainTableViewController: UITableViewController {
 
+class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
+
+    
+    let locationManger = CLLocationManager()
+
+    var currentLocation: CLLocation!
+    
     var current : CurrentWeatherData!
+    var locationWeatherData = LocationWeatherData()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.startMonitoringSignificantLocationChanges()
+        locationManger.startUpdatingLocation()
+        locationManger.distanceFilter = 500
+        loactionAuthstatus()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        loactionAuthstatus()
+    }
+    
+    
+    func loactionAuthstatus() {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            currentLocation = locationManger.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            locationWeatherData.loactionWeatherDataJSON({
+                self.tableView.reloadData()
+            })
+        } else {
+            locationManger.requestWhenInUseAuthorization()
+            loactionAuthstatus()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,23 +58,34 @@ class MainTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+ 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+  
+        let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
+        
+        cell.cityLabel.text = locationWeatherData.cityLabel
+        cell.tempLabel.text = locationWeatherData.tempLabel
+        cell.hiTempLabel.text = locationWeatherData.hiTempLabel
+        cell.loTempLabel.text = locationWeatherData.loTempLabel
+        cell.todayImage.image = UIImage(named: locationWeatherData.todayImage)
+        cell.tommorwImage.image = UIImage(named: locationWeatherData.tomorrowImage)
+        cell.aftertommorwImage.image = UIImage(named: locationWeatherData.afterTomorrowImage)
+        cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
+        cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
+    
         return cell
+    
+    
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

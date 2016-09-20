@@ -56,7 +56,7 @@ class DetailCollectionViewController: UICollectionViewController, UICollectionVi
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 7
+        return 9
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -95,8 +95,22 @@ class DetailCollectionViewController: UICollectionViewController, UICollectionVi
             cell.for3hourTempLabel.text = currentWeatherData.for3hourTempLabel
             cell.for3hourWeatherLabel.text = currentWeatherData.for3hourWeatherLabel
             cell.for3hourImage.image = UIImage(named: currentWeatherData.for3hourImage)
-            print(currentWeatherData._for3hourImage)
             returnCell = cell
+        case 7:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Forecast6HCell", forIndexPath: indexPath) as! Forecast6HCell
+            cell.for6hourTimeLabel.text = currentWeatherData.for6hourTimeLabel
+            cell.for6hourTempLabel.text = currentWeatherData.for6hourTempLabel
+            cell.for6hourWeatherLabel.text = currentWeatherData.for6hourWeatherLabel
+            cell.for6hourImage.image = UIImage(named: currentWeatherData.for6hourImage)
+            returnCell = cell
+        case 8:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Forecast12HCell", forIndexPath: indexPath) as! Forecast12HCell
+            cell.for12hourTimeLabel.text = currentWeatherData.for12hourTimeLabel
+            cell.for12hourTempLabel.text = currentWeatherData.for12hourTempLabel
+            cell.for12hourWeatherLabel.text = currentWeatherData.for12hourWeatherLabel
+            cell.for12hourImage.image = UIImage(named: currentWeatherData.for12hourImage)
+            returnCell = cell
+            
         default:
             return returnCell
         }

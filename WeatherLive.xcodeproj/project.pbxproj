@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA4FF9C1915D6D853BE8B85 /* Pods_WeatherLive.framework */; };
 		30836A0C6DAC1DC460BC15EF /* Pods_WeatherLiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */; };
+		3B26A8BE1D90D021004F90B7 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */; };
+		3B26A8C31D90FFAC004F90B7 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */; };
 		3B5FC7221D7E3C6100B8668D /* SQLiteDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */; };
 		3B5FC7241D7E3CD900B8668D /* WeatherDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */; };
 		3B5FC7261D7E3D9500B8668D /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7251D7E3D9500B8668D /* LocationItem.swift */; };
 		3B5FC7281D7E3F8800B8668D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7271D7E3F8800B8668D /* Location.swift */; };
 		3B5FC72A1D7E3FB000B8668D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7291D7E3FB000B8668D /* Constants.swift */; };
-		3B5FC72C1D7E45B500B8668D /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC72B1D7E45B500B8668D /* CurrentWeatherData.swift */; };
+		3B5FC72C1D7E45B500B8668D /* LocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */; };
 		3B5FC72E1D7E562600B8668D /* FuncCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC72D1D7E562600B8668D /* FuncCollection.swift */; };
 		3B5FC7301D7E8AD000B8668D /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC72F1D7E8AD000B8668D /* DetailCollectionViewCell.swift */; };
 		3B8CA4AE1D7D24CF00BBBDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CA4AD1D7D24CF00BBBDA8 /* AppDelegate.swift */; };
@@ -53,12 +55,14 @@
 
 /* Begin PBXFileReference section */
 		01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherLiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
+		3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDataBase.swift; sourceTree = "<group>"; };
 		3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDBHelper.swift; sourceTree = "<group>"; };
 		3B5FC7251D7E3D9500B8668D /* LocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 		3B5FC7271D7E3F8800B8668D /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3B5FC7291D7E3FB000B8668D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3B5FC72B1D7E45B500B8668D /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
+		3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationWeatherData.swift; sourceTree = "<group>"; };
 		3B5FC72D1D7E562600B8668D /* FuncCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncCollection.swift; sourceTree = "<group>"; };
 		3B5FC72F1D7E8AD000B8668D /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B8CA4AA1D7D24CF00BBBDA8 /* WeatherLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B26A8C31D90FFAC004F90B7 /* LocalAuthentication.framework in Frameworks */,
 				2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,9 +194,9 @@
 			children = (
 				3B8CA4B11D7D24CF00BBBDA8 /* Main.storyboard */,
 				3B8CA4B61D7D24CF00BBBDA8 /* LaunchScreen.storyboard */,
+				3B8CA4EE1D7D4B2000BBBDA8 /* MainTableViewCell.swift */,
 				3B8CA4EA1D7D4B0600BBBDA8 /* HourlyTableViewCell.swift */,
 				3B8CA4EC1D7D4B1000BBBDA8 /* DailyTableViewCell.swift */,
-				3B8CA4EE1D7D4B2000BBBDA8 /* MainTableViewCell.swift */,
 				3B8CA4F01D7D4C9B00BBBDA8 /* MainCurrentTableViewCell.swift */,
 				3B5FC72F1D7E8AD000B8668D /* DetailCollectionViewCell.swift */,
 			);
@@ -204,7 +209,8 @@
 				3B5FC72D1D7E562600B8668D /* FuncCollection.swift */,
 				3B5FC7271D7E3F8800B8668D /* Location.swift */,
 				3B5FC7291D7E3FB000B8668D /* Constants.swift */,
-				3B5FC72B1D7E45B500B8668D /* CurrentWeatherData.swift */,
+				3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */,
+				3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 		918B938BA43195BC76CA39D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */,
 				FEA4FF9C1915D6D853BE8B85 /* Pods_WeatherLive.framework */,
 				A1F7CCEB7E42A3E665680621 /* Pods_WeatherLiveTests.framework */,
 				01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */,
@@ -517,7 +524,7 @@
 			files = (
 				3B8CA4E51D7D49C800BBBDA8 /* HourlyTableViewController.swift in Sources */,
 				3B8CA4ED1D7D4B1000BBBDA8 /* DailyTableViewCell.swift in Sources */,
-				3B5FC72C1D7E45B500B8668D /* CurrentWeatherData.swift in Sources */,
+				3B5FC72C1D7E45B500B8668D /* LocationWeatherData.swift in Sources */,
 				3B5FC7301D7E8AD000B8668D /* DetailCollectionViewCell.swift in Sources */,
 				3B8CA4EF1D7D4B2000BBBDA8 /* MainTableViewCell.swift in Sources */,
 				3B8CA4E91D7D4A0A00BBBDA8 /* DetailCollectionViewController.swift in Sources */,
@@ -530,6 +537,7 @@
 				3B5FC7261D7E3D9500B8668D /* LocationItem.swift in Sources */,
 				3B5FC72A1D7E3FB000B8668D /* Constants.swift in Sources */,
 				3B8CA4AE1D7D24CF00BBBDA8 /* AppDelegate.swift in Sources */,
+				3B26A8BE1D90D021004F90B7 /* CurrentWeatherData.swift in Sources */,
 				3B5FC72E1D7E562600B8668D /* FuncCollection.swift in Sources */,
 				3B8CA4F11D7D4C9B00BBBDA8 /* MainCurrentTableViewCell.swift in Sources */,
 			);
@@ -674,6 +682,7 @@
 			baseConfigurationReference = BFB5926A6FE4FF4D44AADE77 /* Pods-WeatherLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WeatherLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.coolmint.WeatherLive;
@@ -686,6 +695,7 @@
 			baseConfigurationReference = 908D1983A8535801FA575E57 /* Pods-WeatherLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WeatherLive/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.coolmint.WeatherLive;
