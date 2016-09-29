@@ -23,9 +23,9 @@ typealias DownloadComplete = () -> ()
 
 let LOCATION_CURRENT_URL = "\(FORECAST_16DAY_BASE)lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&units=metric&appid=\(API_KEY)"
 
-let CURRENT_URL = "\(CURRENT_BASE)lat=37.15&lon=127.07&units=metric&appid=\(API_KEY)"
-let FORECAST_5DAY_URL = "\(FORECAST_5DAY_BASE)lat=37.15&lon=127.07&units=metric&appid=\(API_KEY)"
-let FORECAST_16DAY_URL = "\(FORECAST_16DAY_BASE)lat=37.15&lon=127.07&units=metric&appid=\(API_KEY)"
+let CURRENT_URL = "\(CURRENT_BASE)lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&units=metric&appid=\(API_KEY)"
+let FORECAST_5DAY_URL = "\(FORECAST_5DAY_BASE)lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&units=metric&appid=\(API_KEY)"
+let FORECAST_16DAY_URL = "\(FORECAST_16DAY_BASE)lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&units=metric&cnt=10&appid=\(API_KEY)"
 
 //let CURRENT_URL = "\(CURRENT_BASE)lat=37.15&lon=127.07&units=metric&appid=\(API_KEY)"
 //let FORECAST_5DAY_URL = "\(FORECAST_5DAY_BASE)lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&appid=\(API_KEY)"

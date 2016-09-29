@@ -1,21 +1,17 @@
 
 import UIKit
 import CoreLocation
-import Alamofire_SwiftyJSON
-import Alamofire
-import SwiftyJSON
 
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
 
-    
-    let locationManger = CLLocationManager()
 
+    let locationManger = CLLocationManager()
     var currentLocation: CLLocation!
     
     var current : CurrentWeatherData!
     var locationWeatherData = LocationWeatherData()
-        
+    var currentWeatherData = CurrentWeatherData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +21,27 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.requestWhenInUseAuthorization()
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
-        locationManger.distanceFilter = 500
         loactionAuthstatus()
+    
+
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        loactionAuthstatus()
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        loactionAuthstatus()
+//    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.tableView.reloadData()
+        print("reload maintableview")
     }
     
-    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+    }
+
     func loactionAuthstatus() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             currentLocation = locationManger.location
@@ -75,15 +82,36 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         cell.tempLabel.text = locationWeatherData.tempLabel
         cell.hiTempLabel.text = locationWeatherData.hiTempLabel
         cell.loTempLabel.text = locationWeatherData.loTempLabel
-        cell.todayImage.image = UIImage(named: locationWeatherData.todayImage)
-        cell.tommorwImage.image = UIImage(named: locationWeatherData.tomorrowImage)
-        cell.aftertommorwImage.image = UIImage(named: locationWeatherData.afterTomorrowImage)
+        cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
+        print(currentWeatherData.weatherIcon(locationWeatherData.todayImage))
+        cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
+        cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
+        cell.todayTempLabel.text = locationWeatherData.todayTempLabel
+        cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
+        cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
         cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
         cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
     
         return cell
     
     
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "WeatherDetail" {
+            
+            let param = locationWeatherData.cityLabel
+            
+            (segue.destinationViewController as? PageMenuViewController)?.titleLabel = param
+        }
+        
     }
 
 

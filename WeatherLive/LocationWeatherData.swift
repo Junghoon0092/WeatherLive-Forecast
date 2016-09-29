@@ -11,10 +11,10 @@ import SwiftString
 class LocationWeatherData {
     
     var _cityLabel: String!
-    var _tempLabel: String!
+    var _tempLabel: Double!
     
-    var _hiTempLabel: String!
-    var _loTempLabel: String!
+    var _hiTempLabel: Double!
+    var _loTempLabel: Double!
     
     var _todayImage: String!
     var _tomorrowImage: String!
@@ -27,135 +27,128 @@ class LocationWeatherData {
     var _todayWeekLabel: Double!
     var _tomorrowWeekLabel: Double!
     var _afterTomorrowWeekLabel: Double!
- 
-  
-    var funcCollection = FuncCollection()
     
+//    func weatherIcon(weather : String) -> String {
+//        switch weather {
+//        case "Rain":
+//            return "raining"
+//        case "Thunderstorm":
+//            return "bolt"
+//        case "Drizzle":
+//            return "drizzle"
+//        case "Snow":
+//            return "snowing"
+//        case "Atmosphere":
+//            return "calm"
+//        case "Clear":
+//            return "sunny"
+//        case "Clouds":
+//            return "clouds"
+//        case "Extreme":
+//            return "tornado"
+//        case "Additional":
+//            return "wind-2"
+//        default:
+//            return ""
+//        }
+//    }
     
     
     var cityLabel: String {
         if _cityLabel == nil {
             _cityLabel = ""
         }
-        return _cityLabel
+        return _cityLabel.capitalize()
     }
     
     var tempLabel: String {
         if _tempLabel == nil {
             return ""
         }
-        switch _tempLabel.characters.count {
-        case 6 :
-            _tempLabel = "\(_tempLabel.substring(0, length: 3))˚"
-        case 5 :
-            _tempLabel = "\(_tempLabel.substring(0, length: 2))˚"
-        case 4 :
-            _tempLabel = "\(_tempLabel.substring(0, length: 1))˚"
-        default:
-            _tempLabel = "\(_tempLabel)˚"
-        }
-        return "\(_tempLabel)"
+        return "\("\(_tempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
+    
 
     var hiTempLabel: String {
         if _hiTempLabel == nil {
             return ""
         }
-        switch _hiTempLabel.characters.count {
-        case 5 :
-            _hiTempLabel = "\(_hiTempLabel.substring(0, length: 2))˚"
-        case 4 :
-            _hiTempLabel = "\(_hiTempLabel.substring(0, length: 1))˚"
-        default:
-            _hiTempLabel = "\(_hiTempLabel)˚"
-        }
-        return "Hi : \(_hiTempLabel)"
+        return "Hi : \("\(_hiTempLabel.doubleToRoundUP(0))".split(".")[0])˚"
     }
     
     var loTempLabel: String {
         if _loTempLabel == nil {
             return ""
         }
-        switch _loTempLabel.characters.count {
-        case 5 :
-            _loTempLabel = "\(_loTempLabel.substring(0, length: 2))˚"
-        case 4 :
-            _loTempLabel = "\(_loTempLabel.substring(0, length: 1))˚"
-        default:
-            _loTempLabel = "\(_loTempLabel)˚"
-        }
-        return "Lo : \(_loTempLabel)"
+        return "Lo : \("\(_loTempLabel.doubleToRoundUP(0))".split(".")[0])˚"
     }
     
+    
+    var todayTempLabel: String {
+        if _todayTempLabel == nil {
+            return ""
+        }
+        return "\("\(_todayTempLabel)".split(".")[0])˚"
+    }
+    
+    var tomorrowTempLabel: String {
+        if _tomorrowTempLabel == nil {
+            return ""
+        }
+        return "\("\(_tomorrowTempLabel)".split(".")[0])˚"
+    }
+    
+    var afterTomorrowTempLabel: String {
+        if _afterTomorrowTempLabel == nil {
+            return ""
+        }
+        return "\("\(_afterTomorrowTempLabel)".split(".")[0])˚"
+    }
     
     var todayImage: String {
         if _todayImage == nil {
             _todayImage = ""
         }
-        return weatherIcon(_todayImage)
+        return _todayImage
     }
     
     var tomorrowImage: String {
         if _tomorrowImage == nil {
             _tomorrowImage = ""
         }
-        return weatherIcon(_tomorrowImage)
+        return _tomorrowImage
     }
     
     var afterTomorrowImage: String {
         if _afterTomorrowImage == nil {
             _afterTomorrowImage = ""
         }
-        return weatherIcon(_tomorrowImage)
+        return _afterTomorrowImage
     }
-    
-
     
     var todayWeekLabel: String {
         if _todayWeekLabel == nil {
             _todayWeekLabel = 0.0
         }
-        return self.funcCollection.unixTimeToString(_todayWeekLabel, format: "EEEE")
+        return _todayWeekLabel.unixTimeToString("EEEE")
     }
     
     var tomorrowWeekLabel: String {
         if _tomorrowWeekLabel == nil {
             _tomorrowWeekLabel = 0.0
         }
-        return self.funcCollection.unixTimeToString(_tomorrowWeekLabel, format: "EEEE")    }
+        return _tomorrowWeekLabel.unixTimeToString("EEEE")
+    }
     
     var afterTomorrowWeekLabel: String {
         if _afterTomorrowWeekLabel == nil {
             _afterTomorrowWeekLabel = 0.0
         }
-        return self.funcCollection.unixTimeToString(_afterTomorrowWeekLabel, format: "EEEE")
+        return _afterTomorrowWeekLabel.unixTimeToString("EEEE")
     }
     
     
-    func weatherIcon(weather : String) -> String {
-        switch weather {
-        case "Rain":
-            return "raining"
-        case "Thunderstorm":
-            return "bolt"
-        case "Drizzle":
-            return "drizzle"
-        case "Snow":
-            return "snowing"
-        case "Atmosphere":
-            return "calm"
-        case "Clear":
-            return "sunny"
-        case "Clouds":
-            return "clouds"
-        case "Extreme":
-            return "tornado"
-        case "Additional":
-            return "wind-2"
-        default:
-            return ""
-        }
-    }
+ 
 
     
   
@@ -163,10 +156,9 @@ class LocationWeatherData {
         let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
         let json = JSON(data: url!)
         self._cityLabel = "\(json["city"]["name"].string!).\(json["city"]["country"].string!)"
-        print("\(self._cityLabel)")
-        self._tempLabel = "\(json["list"][0]["temp"]["day"].double!)"
-        self._hiTempLabel = "\(json["list"][0]["temp"]["max"].double!)"
-        self._loTempLabel = "\(json["list"][0]["temp"]["min"].double!)"
+        self._tempLabel = json["list"][0]["temp"]["day"].double!
+        self._hiTempLabel = json["list"][0]["temp"]["max"].double!
+        self._loTempLabel = json["list"][0]["temp"]["min"].double!
         
         self._todayImage = json["list"][0]["weather"][0]["main"].string!
         self._tomorrowImage = json["list"][1]["weather"][0]["main"].string!
@@ -181,42 +173,6 @@ class LocationWeatherData {
         self._afterTomorrowWeekLabel = json["list"][2]["dt"].double!
         completed()
     }
-    
-//    func downloadSwiftyJSONDataForcasting() {
-//        let url = NSData(contentsOfURL : NSURL(string: FORECAST_5DAY_URL)!)
-//        let json = JSON(data: url!)
-//        self._for3hourTimeLabel = json["list"][0]["dt"].double!
-//        self._for3hourTempLabel = "\(json["list"][0]["main"]["temp"].double!)"
-//        self._for3hourWeatherLabel = json["list"][0]["weather"][0]["main"].string
-//        self._for3hourImage = json["list"][0]["weather"][0]["main"].string
-//        
-//        self._for6hourTimeLabel = json["list"][2]["dt"].double!
-//        self._for6hourTempLabel = "\(json["list"][2]["main"]["temp"].double!)"
-//        self._for6hourWeatherLabel = json["list"][2]["weather"][0]["main"].string
-//        self._for6hourImage = json["list"][2]["weather"][0]["main"].string
-//        
-//        self._for12hourTimeLabel = json["list"][4]["dt"].double!
-//        self._for12hourTempLabel = "\(json["list"][4]["main"]["temp"].double!)"
-//        self._for12hourWeatherLabel = json["list"][4]["weather"][0]["main"].string
-//        self._for12hourImage = json["list"][4]["weather"][0]["main"].string
-//
-//    }
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

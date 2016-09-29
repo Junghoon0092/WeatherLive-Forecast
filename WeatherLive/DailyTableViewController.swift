@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DailyTableViewController: UITableViewController {
+    
+    var dailyWeatherDatas = [DailyWeatherData]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.downloadDailyForecast { 
+            
+            self.tableView.reloadData()
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,28 +32,49 @@ class DailyTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func downloadDailyForecast(completed: DownloadComplete) {
+        //Downloading forecast weather data for TableView
+        let url = NSData(contentsOfURL : NSURL(string: FORECAST_16DAY_URL)!)
+        let json = JSON(data: url!)
+        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+                for obj in list {
+                    let dailyForecast = DailyWeatherData(dailyWeatherData: obj)
+                    self.dailyWeatherDatas.append(dailyForecast)
+                }
+                
+            }
+        }
+        completed()
+    }
+    
+    
+    
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dailyWeatherDatas.count
     }
 
-    /*
+  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+       if let cell = tableView.dequeueReusableCellWithIdentifier("DailyTableViewCell", forIndexPath: indexPath) as? DailyTableViewCell {
+            
+            let dailyForecast = dailyWeatherDatas[indexPath.row]
+            cell.configureCell(dailyForecast)
+            return cell
+        }else {
+            return DailyTableViewCell()
+        }
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

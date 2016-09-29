@@ -9,28 +9,41 @@
 import UIKit
 import Alamofire
 
-class DetailCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class DetailCollectionViewController: UICollectionViewController ,UICollectionViewDelegateFlowLayout {
+    
     
     var currentWeatherData = CurrentWeatherData()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
+
+//        self.collection?.registerClass(TemperatureCell.self, forCellWithReuseIdentifier: "TemperatureCell")
+
+        
         
         currentWeatherData.downloadSwiftyJSONData()
         currentWeatherData.downloadSwiftyJSONDataForcasting()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        
         
         // Register cell classes
-//      collectionView?.registerClass(TemperatureCell.self, forCellWithReuseIdentifier: "TemperatureCell")
+       
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.collectionView?.reloadData()
+        print("reload collectionview")
     }
     
     
@@ -48,25 +61,26 @@ class DetailCollectionViewController: UICollectionViewController, UICollectionVi
     
     
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 9
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         var returnCell = UICollectionViewCell()
         
-        switch indexPath.row {
+        switch indexPath.item {
         case 0 :
+        
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TemperatureCell", forIndexPath: indexPath) as! TemperatureCell
-            cell.titit.text = currentWeatherData.temperature
+            cell.title.text = currentWeatherData.temperature
             cell.hiLowTempLabel.text = "Hi : \(currentWeatherData.hiTemperature)  Lo : \(currentWeatherData.loTemperature)"
             returnCell = cell
         case 1:

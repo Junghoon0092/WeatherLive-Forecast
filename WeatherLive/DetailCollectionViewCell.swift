@@ -10,8 +10,9 @@ import UIKit
 
 class TemperatureCell: UICollectionViewCell {
 
-    @IBOutlet weak var titit: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var hiLowTempLabel: UILabel!
+    
 }
 
 class WindCell: UICollectionViewCell {

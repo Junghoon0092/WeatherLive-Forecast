@@ -7,18 +7,53 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class HourlyTableViewController: UITableViewController {
 
+
+    var hourlyWeatherDatas = [HourlyWeatherData]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.downloadForecastData { 
+            
+            self.tableView.reloadData()
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.tableView.reloadData()
+        print("reload tableview")
+    }
+    
+    func downloadForecastData(completed: DownloadComplete) {
+        //Downloading forecast weather data for TableView
+        let url = NSData(contentsOfURL : NSURL(string: FORECAST_5DAY_URL)!)
+        let json = JSON(data: url!)
+        
+        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+                for obj in list {
+                    let forecast = HourlyWeatherData(forecastWeatherData: obj)
+                    self.hourlyWeatherDatas.append(forecast)
+                }
+                
+            }
+        }
+        completed()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,23 +64,28 @@ class HourlyTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return hourlyWeatherDatas.count
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        if let cell = tableView.dequeueReusableCellWithIdentifier("HourlyTableViewCell", forIndexPath: indexPath) as? HourlyTableViewCell {
+            
+            let forecast = hourlyWeatherDatas[indexPath.row]
+            cell.configureCell(forecast)
+            return cell
+            
+        } else {
+            return HourlyTableViewCell()
+        }
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

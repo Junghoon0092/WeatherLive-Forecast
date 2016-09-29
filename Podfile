@@ -12,8 +12,9 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'Alamofire-SwiftyJSON'
 pod 'SQLite.swift'
-pod 'PageMenu'
+pod 'SwiftPages'
 pod 'SwiftString'
+
 
   # Pods for WeatherLive
 

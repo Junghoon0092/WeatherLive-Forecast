@@ -9,21 +9,29 @@
 import Foundation
 import UIKit
 
-class FuncCollection {
+extension Double {
     
-    
-    func unixTimeToString(unixTime: Double, format : String) -> String {
-        let temp = NSDate(timeIntervalSince1970: unixTime)
+    func unixTimeToString(format : String) -> String {
+        let temp = NSDate(timeIntervalSince1970: self)
         
         let nowDate = NSDateFormatter()
         nowDate.locale = NSLocale(localeIdentifier: NSLocale.currentLocale().localeIdentifier )
         nowDate.dateFormat = format
         // "YYYY.MM.dd HH:mm a"
-
+        
         let doulbeToString = nowDate.stringFromDate(temp)
         return doulbeToString
     }
     
+    func doubleToRoundUP(count : Double) -> Double {
+        
+        let numberOfPlacse = count
+        
+        let multiplier = pow(10.0, numberOfPlacse)
+        let rounded = round(self * multiplier) / multiplier
+        return rounded
+    }
+
     
 }
 

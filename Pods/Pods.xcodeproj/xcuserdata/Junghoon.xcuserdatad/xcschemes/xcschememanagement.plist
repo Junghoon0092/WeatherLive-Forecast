@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PageMenu.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-WeatherLive.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>SQLite.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftPages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,32 +57,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03AB9D4E41581D3B784B208489720825</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>11756C556BD56A7DF4116CB9108BE2CD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>21C461B0CAD90DE64B07A5D212C5F829</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3628CD68A0550EFD73F97C8D76BCEF6D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>474A67AEE8F1B654466FDF444CC16B76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>57997C11B2148DF1240E2E9EC49E9F91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6E31B4FD268BEE6936B4477E4EDCD609</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71A7C3F1FD3AA823DFF309515BF167A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AFE3317B13A2B283663AB314F487B3ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BB23E0C4DDD7DE0A3E6056FA65D2D721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C016C513A5389BA8EFBB21E83D1592F3</key>
+		<key>E2863777B5F65804BD250C7E50D14E80</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4A57F7954E390E28CB268CD6C0FBC1B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

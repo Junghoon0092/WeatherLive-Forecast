@@ -11,9 +11,9 @@ import SwiftString
 class CurrentWeatherData {
     
     var _lastUpdate : String!
-    var _temperature: String!
-    var _hiTemperature: String!
-    var _loTemperature: String!
+    var _temperature: Double!
+    var _hiTemperature: Double!
+    var _loTemperature: Double!
     var _windSpeed: String!
     var _windDirection: String!
     var _humidity: String!
@@ -22,22 +22,20 @@ class CurrentWeatherData {
     var _sunset: Double!
     var _for3hourTimeLabel : Double!
     var _for3hourImage : String!
-    var _for3hourTempLabel : String!
+    var _for3hourTempLabel : Double!
     var _for3hourWeatherLabel : String!
     
     var _for6hourTimeLabel : Double!
     var _for6hourImage : String!
-    var _for6hourTempLabel : String!
+    var _for6hourTempLabel : Double!
     var _for6hourWeatherLabel : String!
     
     var _for12hourTimeLabel : Double!
     var _for12hourImage : String!
-    var _for12hourTempLabel : String!
+    var _for12hourTempLabel : Double!
     var _for12hourWeatherLabel : String!
     
-    var funcCollection = FuncCollection()
-    
-    
+
     var lastUpdate: String {
         if _lastUpdate == nil {
             _lastUpdate = ""
@@ -49,47 +47,23 @@ class CurrentWeatherData {
         if _temperature == nil {
             return ""
         }
-        switch _temperature.characters.count {
-        case 6 :
-            _temperature = "\(_temperature.substring(0, length: 3))˚"
-        case 5 :
-            _temperature = "\(_temperature.substring(0, length: 2))˚"
-        case 4 :
-            _temperature = "\(_temperature.substring(0, length: 1))˚"
-        default:
-            _temperature = "\(_temperature)˚"
-        }
-        return "\(_temperature)"
+
+        return "\("\(_temperature.doubleToRoundUP(1))".split(".")[0])˚"
     }
     
     
     var hiTemperature: String {
         if _hiTemperature == nil {
-            _hiTemperature = ""
+            return ""
         }
-        switch _hiTemperature.characters.count {
-        case 5 :
-            _hiTemperature = "\(_hiTemperature.substring(0, length: 2))˚"
-        case 4 :
-            _hiTemperature = "\(_hiTemperature.substring(0, length: 1))˚"
-        default:
-            _hiTemperature = "\(_hiTemperature)˚"
-        }
-        return _hiTemperature
+        return "\("\(_hiTemperature.doubleToRoundUP(1))".split(".")[0])˚"
     }
     var loTemperature: String {
         if _loTemperature == nil {
-            _loTemperature = ""
+            return ""
         }
-        switch _loTemperature.characters.count {
-        case 5 :
-            _loTemperature = "\(_loTemperature.substring(0, length: 2))˚"
-        case 4 :
-            _loTemperature = "\(_loTemperature.substring(0, length: 1))˚"
-        default:
-            _loTemperature = "\(_loTemperature)˚"
-        }
-        return _loTemperature
+
+        return "\("\(_loTemperature.doubleToRoundUP(1))".split(".")[0])˚"
     }
     
     var windSpeed: String {
@@ -135,28 +109,28 @@ class CurrentWeatherData {
         if _sunrise == nil {
             _sunrise = 0.0
         }
-        return self.funcCollection.unixTimeToString(_sunrise, format: "HH:mm")
+//        return self.funcCollection.unixTimeToString(_sunrise, format: "HH:mm")
+        return _sunrise.unixTimeToString("HH:mm")
     }
     
     var sunset: String {
         if _sunset == nil {
             _sunset = 0.0
         }
-        return "\(self.funcCollection.unixTimeToString(_sunset, format: "HH:mm"))"
+        return _sunset.unixTimeToString("HH:mm")
     }
     
     var for3hourTimeLabel: String {
         if _for3hourTimeLabel == nil {
             _for3hourTimeLabel = 0.0
         }
-        return "\(self.funcCollection.unixTimeToString(_for3hourTimeLabel, format: "MM/dd HH:mm"))"
+        return _for3hourTimeLabel.unixTimeToString("MM/dd HH:mm")
     }
     var for3hourTempLabel: String {
         if _for3hourTempLabel == nil {
-            _for3hourTempLabel = ""
+            _for3hourTempLabel = 0.0
         }
-        _for3hourTempLabel = "\(_for3hourTempLabel.substring(0, length: 2))˚"
-        return _for3hourTempLabel
+        return "\("\(_for3hourTempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     var for3hourWeatherLabel: String {
         if _for3hourWeatherLabel == nil {
@@ -179,14 +153,13 @@ class CurrentWeatherData {
         if _for6hourTimeLabel == nil {
             _for6hourTimeLabel = 0.0
         }
-        return "\(self.funcCollection.unixTimeToString(_for6hourTimeLabel, format: "MM/dd HH:mm"))"
+        return _for6hourTimeLabel.unixTimeToString("MM/dd HH:mm")
     }
     var for6hourTempLabel: String {
         if _for6hourTempLabel == nil {
-            _for6hourTempLabel = ""
+            _for6hourTempLabel = 0.0
         }
-        _for6hourTempLabel = "\(_for6hourTempLabel.substring(0, length: 2))˚"
-        return _for6hourTempLabel
+        return "\("\(_for6hourTempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     var for6hourWeatherLabel: String {
         if _for6hourWeatherLabel == nil {
@@ -209,14 +182,14 @@ class CurrentWeatherData {
         if _for12hourTimeLabel == nil {
             _for12hourTimeLabel = 0.0
         }
-        return "\(self.funcCollection.unixTimeToString(_for12hourTimeLabel, format: "MM/dd HH:mm"))"
+        return _for12hourTimeLabel.unixTimeToString("MM/dd HH:mm")
     }
     var for12hourTempLabel: String {
         if _for12hourTempLabel == nil {
-            _for12hourTempLabel = ""
+            _for12hourTempLabel = 0.0
         }
-        _for12hourTempLabel = "\(_for12hourTempLabel.substring(0, length: 2))˚"
-        return _for12hourTempLabel
+    
+        return "\("\(_for12hourTempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     var for12hourWeatherLabel: String {
         if _for12hourWeatherLabel == nil {
@@ -231,28 +204,6 @@ class CurrentWeatherData {
         }
         return weatherIcon(_for12hourImage)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     func weatherIcon(weather : String) -> String {
         switch weather {
@@ -279,36 +230,14 @@ class CurrentWeatherData {
         }
     }
     
-    //    func downloadCurrentData() {
-    //
-    //        let url = NSURL(string: CURRENT_URL)!
-    //        Alamofire.request(.GET, url).validate().responseJSON { response in
-    //            let result = response.result
-    //            print(response)
-    //            if let dict = result.value as? Dictionary<String, AnyObject> {
-    //                print(dict)
-    //                if let main = dict["main"] as? Dictionary<String, AnyObject> {
-    //                    if let currentTemp = main["temp"] as? Double {
-    //                        self._temperature = "\(currentTemp)"
-    //                        print(self._temperature)
-    //
-    //                    }
-    //
-    //                }
-    //       v     }
-    //
-    //        }
-    //
-    //    }
-    
     func downloadSwiftyJSONData() {
         let url = NSData(contentsOfURL : NSURL(string: CURRENT_URL)!)
         let json = JSON(data: url!)
-        self._temperature = "\(json["main"]["temp"].double!)"
+        self._temperature = json["main"]["temp"].double!
         self._windSpeed = "\(json["wind"]["speed"].double!)"
         self._humidity = "\(json["main"]["humidity"].double!)"
-        self._hiTemperature = "\(json["main"]["temp_max"].double!)"
-        self._loTemperature = "\(json["main"]["temp_min"].double!)"
+        self._hiTemperature = json["main"]["temp_max"].double!
+        self._loTemperature = json["main"]["temp_min"].double!
         self._clouds = "\(json["clouds"]["all"].int!)"
         self._sunrise = json["sys"]["sunrise"].double!
         self._sunset = json["sys"]["sunset"].double!
@@ -317,21 +246,27 @@ class CurrentWeatherData {
     func downloadSwiftyJSONDataForcasting() {
         let url = NSData(contentsOfURL : NSURL(string: FORECAST_5DAY_URL)!)
         let json = JSON(data: url!)
+        
+        if json != nil {
+        
         self._for3hourTimeLabel = json["list"][0]["dt"].double!
-        self._for3hourTempLabel = "\(json["list"][0]["main"]["temp"].double!)"
+        self._for3hourTempLabel = json["list"][0]["main"]["temp"].double!
         self._for3hourWeatherLabel = json["list"][0]["weather"][0]["main"].string
         self._for3hourImage = json["list"][0]["weather"][0]["main"].string
         
         self._for6hourTimeLabel = json["list"][2]["dt"].double!
-        self._for6hourTempLabel = "\(json["list"][2]["main"]["temp"].double!)"
+        self._for6hourTempLabel = json["list"][2]["main"]["temp"].double!
         self._for6hourWeatherLabel = json["list"][2]["weather"][0]["main"].string
         self._for6hourImage = json["list"][2]["weather"][0]["main"].string
         
         self._for12hourTimeLabel = json["list"][4]["dt"].double!
-        self._for12hourTempLabel = "\(json["list"][4]["main"]["temp"].double!)"
+        self._for12hourTempLabel = json["list"][4]["main"]["temp"].double!
         self._for12hourWeatherLabel = json["list"][4]["weather"][0]["main"].string
         self._for12hourImage = json["list"][4]["weather"][0]["main"].string
-        
+        } else {
+            
+            print("Error")
+        }
     }
     
 }
