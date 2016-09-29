@@ -783,6 +783,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="RightSearchIcon" id="a73-ed-xEw">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="ngw-v9-1d1" kind="modal" id="0am-Bc-pRX"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -2105,7 +2108,7 @@
         <!--Search-->
         <scene sceneID="Qjk-Sy-ZuA">
             <objects>
-                <viewController id="rT3-hz-dg3" sceneMemberID="viewController">
+                <viewController id="rT3-hz-dg3" customClass="SearchTVController" customModule="WeatherLive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sQx-sV-IPd"/>
                         <viewControllerLayoutGuide type="bottom" id="Tc7-Zl-i2F"/>
@@ -2114,12 +2117,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ONI-aa-E8p">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="City Name" scopeBarBackgroundImage="LeftSettingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ONI-aa-E8p">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NeD-se-pRZ"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" returnKeyType="search"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="NeD-se-pRZ"/>
@@ -2135,13 +2138,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ju0-de-b9G">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCityCell" id="Ju0-de-b9G" customClass="SearchTableViewCell" customModule="WeatherLive" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju0-de-b9G" id="Hgh-kI-gOF">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfT-eP-fvQ">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="21" y="11" width="42" height="21"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="xfT-eP-fvQ"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="xfT-eP-fvQ"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="namelabel" destination="xfT-eP-fvQ" id="US1-8V-pRB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -2190,14 +2217,19 @@
                     <navigationItem key="navigationItem" title="Search" id="7Ag-fC-Bes">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Aa8-zi-KOq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelBTN:" destination="rT3-hz-dg3" id="FKL-i0-qB0"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBarTextLoading" destination="ONI-aa-E8p" id="vEw-lw-QkZ"/>
                         <outlet property="searchDisplayController" destination="yKu-xy-Wwk" id="2IJ-ae-xtv"/>
+                        <outlet property="tableview" destination="Hkf-xQ-Uc8" id="bMh-e3-wEE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Auo-h0-FWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="yKu-xy-Wwk">
+                <searchDisplayController searchResultsTitle="ddd" id="yKu-xy-Wwk">
                     <connections>
                         <outlet property="delegate" destination="rT3-hz-dg3" id="sqS-RM-mfr"/>
                         <outlet property="searchContentsController" destination="rT3-hz-dg3" id="dw0-9T-DAO"/>

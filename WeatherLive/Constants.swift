@@ -8,7 +8,9 @@
 
 import Foundation
 
-let FIND_BASE = "http://api.openweathermap.org/data/2.5/find?q=fffff&type=like%"
+var searchTVController = SearchTVController()
+
+
 let CURRENT_BASE = "http://api.openweathermap.org/data/2.5/weather?"
 let FORECAST_5DAY_BASE = "http://api.openweathermap.org/data/2.5/forecast?"
 let FORECAST_16DAY_BASE = "http://api.openweathermap.org/data/2.5/forecast/daily?"
