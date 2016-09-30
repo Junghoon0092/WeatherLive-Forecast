@@ -111,17 +111,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
             
             cell.cityLabel.text = locationWeatherData.cityLabel
-            cell.tempLabel.text = locationWeatherData.tempLabel
-            cell.hiTempLabel.text = locationWeatherData.hiTempLabel
-            cell.loTempLabel.text = locationWeatherData.loTempLabel
-            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
-            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
-            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
-            cell.todayTempLabel.text = locationWeatherData.todayTempLabel
-            cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
-            cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
-            cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
-            cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
+ 
             
             returnCell = cell
         
