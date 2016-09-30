@@ -110,9 +110,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         case 1 :
             let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
             
-            cell.cityLabel.text = locationWeatherData.cityLabel
- 
-            
             returnCell = cell
         
             
