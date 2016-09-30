@@ -30,17 +30,17 @@ class SearchCityData {
         return _countryName
     }
     
-    var lon: Double {
+    var lon: String {
         if _lon == nil {
-            return 0.0
+            return ""
         }
-        return _lon
+        return "\(_lon)"
     }
-    var lat: Double {
+    var lat: String {
         if _lat == nil {
-            return 0.0
+            return ""
         }
-        return _lat
+        return "\(_lat)"
     }
 
 

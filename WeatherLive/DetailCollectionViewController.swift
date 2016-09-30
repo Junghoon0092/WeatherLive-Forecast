@@ -43,7 +43,6 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
         super.viewWillAppear(true)
         
         self.collectionView?.reloadData()
-        print("reload collectionview")
     }
     
     

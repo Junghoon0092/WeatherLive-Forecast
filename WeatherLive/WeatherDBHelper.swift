@@ -16,8 +16,10 @@ class WeatherDBHelper : DBHelperProtocol {
     static let TABLE_NAME = "WeatherLoaction"
     static let table = Table(TABLE_NAME)
     static let id = Expression<Int64>("id")
+    static let cityName = Expression<String>("cityname")
     static let latitude = Expression<String>("latitude")
     static let longitude = Expression<String>("longitude")
+    
     
     
     typealias T = LocationItem
@@ -31,6 +33,7 @@ class WeatherDBHelper : DBHelperProtocol {
         do{
             let _ = try DB.run(table.create(ifNotExists : true ) { t in
                 t.column(id, primaryKey : .Autoincrement )
+                t.column(cityName)
                 t.column(latitude)
                 t.column(longitude)
                 })
@@ -47,7 +50,8 @@ class WeatherDBHelper : DBHelperProtocol {
             throw DataAccessError.Data_Connection_Error
         }
         if (item.latitude != nil && item.longitude != nil ) {
-            let insert = table.insert(latitude <- item.latitude!,
+            let insert = table.insert(cityName <- item.cityName!,
+                                      latitude <- item.latitude!,
                                       longitude <- item.longitude!)
             do {
                 let rowId = try DB.run(insert)
@@ -91,7 +95,8 @@ class WeatherDBHelper : DBHelperProtocol {
             
             return LocationItem(id: item[self.id],
                             latitude : item[self.latitude],
-                            longitude: item[self.longitude])
+                            longitude: item[self.longitude],
+                            cityName : item[self.cityName])
         }
         return nil
     }
@@ -106,7 +111,8 @@ class WeatherDBHelper : DBHelperProtocol {
         for item in items {
             retArry.append(LocationItem(id: item[self.id],
                 latitude: item[self.latitude],
-                longitude: item[self.longitude]))
+                longitude: item[self.longitude],
+                cityName: item[self.cityName]))
         }
         return retArry
     }

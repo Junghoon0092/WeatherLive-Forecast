@@ -9,9 +9,9 @@
 import UIKit
 import SwiftyJSON
 
-class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate {
     
-    var citySearchString : String?
+    var citySearchString : String!
     
     @IBOutlet weak var tableview: UITableView!
     var searchCityData = [SearchCityData]()
@@ -23,12 +23,8 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
         super.viewDidLoad()
         
         searchBarTextLoading.delegate = self
-        
-        searchCityDownLoad(searchBarTextLoading.text!) {
-            
-            self.tableview.reloadData()
-        }
-        print(searchBarTextLoading.text)
+        tableview.delegate = self
+        tableview.dataSource = self
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,25 +39,34 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
         
     }
     
-    
-    func searchCityDownLoad(citystring: String?, completed: DownloadComplete) {
-
-        if citystring == nil {
-            let findBaseURL = "http://api.openweathermap.org/data/2.5/find?q=+seoul+&type=like%appid=\(API_KEY)"
-            let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
-            let json = JSON(data: url!)
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        let cityname = searchBar.text!
+        
+        searchCityDownLoad(cityname) {
             
-            if let dict = json.rawValue as? Dictionary<String, AnyObject> {
-                if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
-                    for obj in list {
-                        let searchcity = SearchCityData(searchCity: obj)
-                        self.searchCityData.append(searchcity)
-                    }
+            self.tableview.reloadData()
+        }
+        
+    }
+    
+
+    func searchCityDownLoad(citystring: String, completed: DownloadComplete) {
+        
+        let findBaseURL = "http://api.openweathermap.org/data/2.5/find?q=+\(citystring)+&type=like&appid=\(API_KEY)"
+        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
+        let json = JSON(data: url!)
+        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+                for obj in list {
+                    let searchcity = SearchCityData(searchCity: obj)
+                    self.searchCityData.append(searchcity)
                 }
             }
-            completed()
         }
-
+        completed()
+        
+        
     }
     
     
@@ -92,6 +97,26 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
     }
  
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+        let database = SQLiteDataBase.sharedInstance
+        do {
+            try database.createTables()
+        }
+        catch _ {}
+        
+        do {
+            let data = self.searchCityData[indexPath.row]
+            _ = try WeatherDBHelper.insert(LocationItem(id: 0, latitude: data.lat, longitude: data.lon, cityName: data.cityName))
+        }catch {
+            // 알람창 구현
+            print("Insert Error")
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

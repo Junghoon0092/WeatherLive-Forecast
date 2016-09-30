@@ -34,7 +34,6 @@ class HourlyTableViewController: UITableViewController {
         super.viewWillAppear(true)
         
         self.tableView.reloadData()
-        print("reload tableview")
     }
     
     func downloadForecastData(completed: DownloadComplete) {

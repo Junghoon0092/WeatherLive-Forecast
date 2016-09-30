@@ -250,6 +250,7 @@
 		3B8CA4DF1D7D483600BBBDA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B5FC7251D7E3D9500B8668D /* LocationItem.swift */,
 				3B5FC7271D7E3F8800B8668D /* Location.swift */,
 				3B5FC7291D7E3FB000B8668D /* Constants.swift */,
 				3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */,
@@ -265,7 +266,6 @@
 				3B83D1461D93C6F0007F4A3D /* SwiftPages.swift */,
 				3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */,
 				3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */,
-				3B5FC7251D7E3D9500B8668D /* LocationItem.swift */,
 				3B5FC72D1D7E562600B8668D /* Extension.swift */,
 			);
 			name = DataBase;

@@ -2117,12 +2117,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="City Name" scopeBarBackgroundImage="LeftSettingIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ONI-aa-E8p">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="City Name" translatesAutoresizingMaskIntoConstraints="NO" id="ONI-aa-E8p">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="NeD-se-pRZ"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits" autocorrectionType="yes" returnKeyType="search"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="NeD-se-pRZ"/>
@@ -2151,7 +2151,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="21" y="11" width="42" height="21"/>
+                                                        <rect key="frame" x="21" y="11" width="218" height="21"/>
                                                     </variation>
                                                 </label>
                                             </subviews>

@@ -13,6 +13,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     var locationWeatherData = LocationWeatherData()
     var currentWeatherData = CurrentWeatherData()
     
+    var locationItems = [LocationItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
         loactionAuthstatus()
-    
+        getLoactionItem()
 
     }
     
@@ -31,11 +33,20 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
 //        loactionAuthstatus()
 //    }
     
+    func getLoactionItem() {
+        do {
+            locationItems = try WeatherDBHelper.finaAll()!
+            for loactionitem in locationItems {
+                print(loactionitem.getCityName())
+            }
+        }catch _ {
+            print("Access Error")
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         self.tableView.reloadData()
-        print("reload maintableview")
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -70,30 +81,56 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return locationItems.count + 1
     }
 
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-  
-        let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
         
-        cell.cityLabel.text = locationWeatherData.cityLabel
-        cell.tempLabel.text = locationWeatherData.tempLabel
-        cell.hiTempLabel.text = locationWeatherData.hiTempLabel
-        cell.loTempLabel.text = locationWeatherData.loTempLabel
-        cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
-        print(currentWeatherData.weatherIcon(locationWeatherData.todayImage))
-        cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
-        cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
-        cell.todayTempLabel.text = locationWeatherData.todayTempLabel
-        cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
-        cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
-        cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
-        cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
-    
-        return cell
-    
+        var returnCell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0 :
+            let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
+            
+            cell.cityLabel.text = locationWeatherData.cityLabel
+            cell.tempLabel.text = locationWeatherData.tempLabel
+            cell.hiTempLabel.text = locationWeatherData.hiTempLabel
+            cell.loTempLabel.text = locationWeatherData.loTempLabel
+            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
+            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
+            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
+            cell.todayTempLabel.text = locationWeatherData.todayTempLabel
+            cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
+            cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
+            cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
+            cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
+            
+            returnCell = cell
+        case 1 :
+            let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
+            
+            cell.cityLabel.text = locationWeatherData.cityLabel
+            cell.tempLabel.text = locationWeatherData.tempLabel
+            cell.hiTempLabel.text = locationWeatherData.hiTempLabel
+            cell.loTempLabel.text = locationWeatherData.loTempLabel
+            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
+            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
+            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
+            cell.todayTempLabel.text = locationWeatherData.todayTempLabel
+            cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
+            cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
+            cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
+            cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
+            
+            returnCell = cell
+        
+            
+        default:
+            return returnCell
+        }
+        
+        return returnCell
     
     }
     

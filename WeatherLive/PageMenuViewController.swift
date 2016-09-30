@@ -36,8 +36,7 @@ class PageMenuViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        print("reload pageview")
-        reloadInputViews()
+        
     }
 
     override func didReceiveMemoryWarning() {

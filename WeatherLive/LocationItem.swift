@@ -12,12 +12,14 @@ class LocationItem {
     var id : Int64!
     var latitude : String!
     var longitude : String!
+    var cityName : String!
     
     
-    init (id : Int64, latitude : String, longitude : String ) {
+    init (id : Int64, latitude : String, longitude : String, cityName : String ) {
         self.id = id
         self.latitude = latitude
         self.longitude = longitude
+        self.cityName = cityName
     }
     
     func getId() -> Int64 {
@@ -28,5 +30,8 @@ class LocationItem {
     }
     func getLongitude() -> String {
         return longitude!
+    }
+    func getCityName() -> String {
+        return cityName!
     }
 }
