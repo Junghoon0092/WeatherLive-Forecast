@@ -28,10 +28,13 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        loactionAuthstatus()
-//    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        getLoactionItem()
+        self.tableView.reloadData()
+        
+    }
+    
     
     func getLoactionItem() {
         do {
@@ -107,14 +110,15 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
             
             returnCell = cell
-        case 1 :
-            let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
+        case 1...locationItems.count :
+            let cell = tableView.dequeueReusableCellWithIdentifier("ContryViewCell", forIndexPath: indexPath) as! ContryViewCell
+            let mainCellItem = locationItems[indexPath.row - 1]
+            
+            cell.contryName.text = mainCellItem.getCityName()
             
             returnCell = cell
-        
-            
-        default:
-            return returnCell
+        default :
+             return returnCell
         }
         
         return returnCell
