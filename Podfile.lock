@@ -3,6 +3,7 @@ PODS:
   - Alamofire-SwiftyJSON (0.1.1):
     - Alamofire (~> 3.4)
     - SwiftyJSON (~> 2.3)
+  - ESPullToRefresh (1.0.5)
   - SQLite.swift (0.10.1)
   - SwiftPages (1.1.0)
   - SwiftString (0.5)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Alamofire-SwiftyJSON
+  - ESPullToRefresh
   - SQLite.swift
   - SwiftPages
   - SwiftString
@@ -19,11 +21,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Alamofire-SwiftyJSON: 5812bb37accc36897cc2f2dabb070d8ebcd7ac98
+  ESPullToRefresh: 03154f0eff5e4519970f23176c338ece51a955e0
   SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
   SwiftPages: 1b24565cb91f24f4f912fbd9878a9c74b41a2ca6
   SwiftString: ec9c31c55b2aa147a1154f5f5f8483dc71e3165f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 1e17e840e196fecc9eba68e9f500472a8acd94d0
+PODFILE CHECKSUM: 5f8c505478a8452c64091d023a2c25081def0469
 
 COCOAPODS: 1.0.1

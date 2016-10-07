@@ -1,6 +1,7 @@
 
 import UIKit
 import CoreLocation
+import ESPullToRefresh
 
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -18,6 +19,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
@@ -25,36 +28,27 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.startUpdatingLocation()
         loactionAuthstatus()
         getLoactionItem()
+        self.tableView.es_addPullToRefresh {
+            [weak self] in
+            
+            self!.getLoactionItem()
+            self!.locationWeatherData.loactionWeatherDataJSON({
+                self?.tableView.reloadData()
+            })
+            self?.tableView.es_stopPullToRefresh(completion: true)
+        }
 
     }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         getLoactionItem()
         self.tableView.reloadData()
-        
     }
-    
-    
-    func getLoactionItem() {
-        do {
-            locationItems = try WeatherDBHelper.finaAll()!
-            for loactionitem in locationItems {
-                print(loactionitem.getCityName())
-            }
-        }catch _ {
-            print("Access Error")
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.tableView.reloadData()
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-    }
+
+
 
     func loactionAuthstatus() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
@@ -140,6 +134,18 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             (segue.destinationViewController as? PageMenuViewController)?.titleLabel = param
         }
         
+    }
+    
+    
+    func getLoactionItem() {
+        do {
+            locationItems = try WeatherDBHelper.finaAll()!
+            for loactionitem in locationItems {
+                print(loactionitem.getCityName())
+            }
+        }catch _ {
+            print("Access Error")
+        }
     }
 
 

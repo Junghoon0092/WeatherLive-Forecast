@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ESPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WeatherLive.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,22 +62,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3D8A93E7AFC1920596601A31B8D67012</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>474A67AEE8F1B654466FDF444CC16B76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>57997C11B2148DF1240E2E9EC49E9F91</key>
+		<key>4B8DC3B37CA6F8C0B0039EBEEC293C2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6E31B4FD268BEE6936B4477E4EDCD609</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71A7C3F1FD3AA823DFF309515BF167A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AFE3317B13A2B283663AB314F487B3ED</key>
+		<key>B27BD36B78A64F09152955A6AB8D1EB7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BAA5C9C160CDCBCF1B87B7D8B6615DC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2863777B5F65804BD250C7E50D14E80</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4A57F7954E390E28CB268CD6C0FBC1B</key>
+		<key>CB3848638D0DE76346EBC9D1C8136179</key>
 		<dict>
 			<key>primary</key>
 			<true/>

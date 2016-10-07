@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BAA5C9C160CDCBCF1B87B7D8B6615DC6'
-               BlueprintName = 'SwiftPages'
+               BlueprintIdentifier = '3E6BE26A9C676D1DEF18F57C6F2DE025'
+               BlueprintName = 'ESPullToRefresh'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftPages.framework'>
+               BuildableName = 'ESPullToRefresh.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
