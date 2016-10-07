@@ -26,7 +26,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.requestWhenInUseAuthorization()
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
-        loactionAuthstatus()
+
         getLoactionItem()
         self.tableView.es_addPullToRefresh {
             [weak self] in
@@ -44,6 +44,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        loactionAuthstatus()
         getLoactionItem()
         self.tableView.reloadData()
     }
