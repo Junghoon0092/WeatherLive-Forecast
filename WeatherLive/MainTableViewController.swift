@@ -2,6 +2,7 @@
 import UIKit
 import CoreLocation
 import ESPullToRefresh
+import SwiftyJSON
 
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -11,7 +12,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     var currentLocation: CLLocation!
     
     var current : CurrentWeatherData!
-    var locationWeatherData = LocationWeatherData()
+    var locationWeatherData : LocationWeatherData?
+    var sqliteWeatherData : [SQLiteLocationWeatherData]?
     var currentWeatherData = CurrentWeatherData()
     
     var locationItems = [LocationItem]()
@@ -19,28 +21,59 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        
         
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
-
+        
         getLoactionItem()
         self.tableView.es_addPullToRefresh {
             [weak self] in
             
             self!.getLoactionItem()
-            self!.locationWeatherData.loactionWeatherDataJSON({
-                self?.tableView.reloadData()
-            })
+//            self!.locationWeatherData.loactionWeatherDataJSON({ 
+//                self?.tableView.reloadData()
+//            })
             self?.tableView.es_stopPullToRefresh(completion: true)
         }
 
     }
     
     
+//    func locationWeatherDataDownload(completed : DownloadComplete) {
+//        
+//        let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
+//        let json = JSON(data: url!)
+//        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+//            if let list = dict["list"] as? [[Dictionary<String, AnyObject>]] {
+//                for obj in list {
+//                    print(obj)
+//                    let locationWeather = LocationWeatherData(locationWeatherData: obj)
+//                    self.locationWeatherData.append(locationWeather)
+//                }
+//            }
+//        }
+//        
+//    }
+    
+    
+    func getLoactionItem() {
+        do {
+            locationItems = try WeatherDBHelper.finaAll()!
+            for locationItem in locationItems {
+                SQLiteLocationWeatherData.SQLiteDownload(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
+                    self.sqliteWeatherData = sqliteLocationWeatherData
+                })
+                
+            }
+        }catch _ {
+            print("Access Error")
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -56,8 +89,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             currentLocation = locationManger.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            locationWeatherData.loactionWeatherDataJSON({
-                self.tableView.reloadData()
+            LocationWeatherData.download({ (locationWeatherData) in
+                self.locationWeatherData = locationWeatherData
             })
         } else {
             locationManger.requestWhenInUseAuthorization()
@@ -91,25 +124,25 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         case 0 :
             let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
             
-            cell.cityLabel.text = locationWeatherData.cityLabel
-            cell.tempLabel.text = locationWeatherData.tempLabel
-            cell.hiTempLabel.text = locationWeatherData.hiTempLabel
-            cell.loTempLabel.text = locationWeatherData.loTempLabel
-            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.todayImage))
-            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.tomorrowImage))
-            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData.afterTomorrowImage))
-            cell.todayTempLabel.text = locationWeatherData.todayTempLabel
-            cell.afterTommorwLabel.text = locationWeatherData.afterTomorrowTempLabel
-            cell.tommorwTempLabel.text = locationWeatherData.tomorrowTempLabel
-            cell.tommorwWeekLabel.text = locationWeatherData.tomorrowWeekLabel
-            cell.afterTommorwWeekLabel.text = locationWeatherData.afterTomorrowWeekLabel
-            
+            cell.tempLabel.text = self.locationWeatherData?.tempLabel
+//            cell.hiTempLabel.text = locationWeatherData!.hiTempLabel
+//            cell.loTempLabel.text = locationWeatherData!.loTempLabel
+//            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.todayImage))
+//            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.tomorrowImage))
+//            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.afterTomorrowImage))
+//            cell.todayTempLabel.text = locationWeatherData!.todayTempLabel
+//            cell.afterTommorwLabel.text = locationWeatherData!.afterTomorrowTempLabel
+//            cell.tommorwTempLabel.text = locationWeatherData!.tomorrowTempLabel
+//            cell.tommorwWeekLabel.text = locationWeatherData!.tomorrowWeekLabel
+//            cell.afterTommorwWeekLabel.text = locationWeatherData!.afterTomorrowWeekLabel
             returnCell = cell
+            
+            
         case 1...locationItems.count :
             let cell = tableView.dequeueReusableCellWithIdentifier("ContryViewCell", forIndexPath: indexPath) as! ContryViewCell
-            let mainCellItem = locationItems[indexPath.row - 1]
-            
-            cell.contryName.text = mainCellItem.getCityName()
+        
+            let sqlite = self.sqliteWeatherData
+            cell.contryName.text = self.sqliteWeatherData?.cityLabel
             
             returnCell = cell
         default :
@@ -126,28 +159,37 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "WeatherDetail" {
-            
-            let param = locationWeatherData.cityLabel
-            
-            (segue.destinationViewController as? PageMenuViewController)?.titleLabel = param
-        }
-        
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if segue.identifier == "WeatherDetail" {
+//            
+//            let param = locationWeatherData.cityLabel
+//            
+//            (segue.destinationViewController as? PageMenuViewController)?.titleLabel = param
+//        }
+//        
+//    }
     
     
-    func getLoactionItem() {
-        do {
-            locationItems = try WeatherDBHelper.finaAll()!
-            for loactionitem in locationItems {
-                print(loactionitem.getCityName())
-            }
-        }catch _ {
-            print("Access Error")
-        }
-    }
+//    func currentWeaterDataCheck (lat : String, lon : String, completed: DownloadComplete)  {
+//        
+//        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=metric&appid=\(API_KEY)"
+//        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
+//        let json = JSON(data: url!)
+//        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+//            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+//                for obj in list {
+//                    let searchcity = SearchCityData(searchCity: obj)
+//                    self.searchCityData.append(searchcity)
+//                }
+//            }
+//        }
+//        completed()
+//    }
+    
+    
+    
+    
 
 
     /*

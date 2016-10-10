@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA4FF9C1915D6D853BE8B85 /* Pods_WeatherLive.framework */; };
 		30836A0C6DAC1DC460BC15EF /* Pods_WeatherLiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */; };
+		3B02E68E1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */; };
 		3B26A8BE1D90D021004F90B7 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */; };
 		3B4DAD4A1D9C9DF400C30F93 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD491D9C9DF400C30F93 /* DailyWeatherData.swift */; };
 		3B4DAD501D9CE8C800C30F93 /* SearchTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD4F1D9CE8C800C30F93 /* SearchTVController.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherLiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteLocationWeatherData.swift; sourceTree = "<group>"; };
 		3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		3B26A8C41D911A4D004F90B7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -254,6 +256,7 @@
 				3B5FC7271D7E3F8800B8668D /* Location.swift */,
 				3B5FC7291D7E3FB000B8668D /* Constants.swift */,
 				3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */,
+				3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */,
 				3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */,
 				3B4DAD541D9D01E800C30F93 /* SearchCityData.swift */,
 			);
@@ -586,6 +589,7 @@
 				3B4DAD4A1D9C9DF400C30F93 /* DailyWeatherData.swift in Sources */,
 				3B4DAD501D9CE8C800C30F93 /* SearchTVController.swift in Sources */,
 				3B5FC72A1D7E3FB000B8668D /* Constants.swift in Sources */,
+				3B02E68E1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift in Sources */,
 				3B8CA4AE1D7D24CF00BBBDA8 /* AppDelegate.swift in Sources */,
 				3B83D1451D93C65F007F4A3D /* PageMenuViewController.swift in Sources */,
 				3B4DAD571D9D08D000C30F93 /* SearchTableViewCell.swift in Sources */,

@@ -11,7 +11,6 @@ import UIKit
 class PageMenuViewController: UIViewController {
 
     @IBOutlet weak var swiftPageVIew: SwiftPages!
-    var locationWeatherData = LocationWeatherData()
     var titleLabel : String!
     
     override func viewDidLoad() {

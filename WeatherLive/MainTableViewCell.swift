@@ -27,6 +27,9 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var tommorwWeekLabel: UILabel!
     @IBOutlet weak var afterTommorwWeekLabel: UILabel!
     
+    var currentWeatherData = CurrentWeatherData()
+    var location : LocationWeatherData!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +41,7 @@ class MainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }
 

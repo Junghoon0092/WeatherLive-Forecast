@@ -20,9 +20,9 @@ class LocationWeatherData {
     var _tomorrowImage: String!
     var _afterTomorrowImage: String!
     
-    var _todayTempLabel: String!
-    var _tomorrowTempLabel: String!
-    var _afterTomorrowTempLabel: String!
+    var _todayTempLabel: Double!
+    var _tomorrowTempLabel: Double!
+    var _afterTomorrowTempLabel: Double!
     
     var _todayWeekLabel: Double!
     var _tomorrowWeekLabel: Double!
@@ -147,11 +147,85 @@ class LocationWeatherData {
         return _afterTomorrowWeekLabel.unixTimeToString("EEEE")
     }
     
+    init(tempLabel : Double) {
+        self._tempLabel = tempLabel
+    }
     
- 
+    class func download ( completed : ((LocationWeatherData) -> Void) ) {
+        let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
+        let json = JSON(data: url!)
+        let tempLabel = json["list"][0]["temp"]["day"].double!
+        
+        let locationData = LocationWeatherData.init(tempLabel: tempLabel)
+        
+        completed(locationData)
+    }
+    
+    class func SQLiteDownload ( lat : String, lon : String, completed : ((LocationWeatherData) -> Void)) {
+        
+        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=metric&appid=\(API_KEY)"
+        let url = NSData(contentsOfURL: NSURL(string: findBaseURL)!)
+        let json = JSON(data: url!)
+        
+        let tempLabel = json["list"][0]["temp"]["day"].double!
+        
+        let locationData = LocationWeatherData.init(tempLabel: tempLabel)
+        
+        completed(locationData)
+        
+    }
+    
+//    init(locationWeatherData : [Dictionary<String, AnyObject>]) {
+//        
+//        for obj in 0...2 {
+//            
+//            if obj == 0 {
+//                
+//                self._todayWeekLabel = locationWeatherData[obj]["dt"] as? Double
+//                
+//                if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
+//                    self._tempLabel = temp["day"] as? Double
+//                    self._hiTempLabel = temp["max"] as? Double
+//                    self._loTempLabel = temp["min"] as? Double
+//                    self._todayTempLabel = self._tempLabel
+//                }
+//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
+//                    self._todayImage = weather[0]["main"] as? String
+//                }
+//            }
+//            if obj == 1 {
+//                
+//                self._tomorrowWeekLabel = locationWeatherData[obj]["dt"] as? Double
+//                
+//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
+//                    self._tomorrowImage = weather[0]["main"] as? String
+//                    self._afterTomorrowImage = weather[0]["main"] as? String
+//                }
+//                
+//                if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
+//                    self._tomorrowTempLabel = temp["day"] as? Double
+//                }
+//            }
+//            
+//            if obj == 2 {
+//                
+//                self._afterTomorrowWeekLabel = locationWeatherData[obj]["dt"] as? Double
+//                
+//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
+//                    self._afterTomorrowImage = weather[0]["main"] as? String
+//                    
+//                    if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
+//                        self._afterTomorrowTempLabel = temp["day"] as? Double
+//                    }
+//                }
+//                
+//            }
+//        }
+//    }
+    
+    
 
-    
-  
+
     func loactionWeatherDataJSON(completed: DownloadComplete) {
         let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
         let json = JSON(data: url!)
@@ -164,15 +238,20 @@ class LocationWeatherData {
         self._tomorrowImage = json["list"][1]["weather"][0]["main"].string!
         self._afterTomorrowImage = json["list"][2]["weather"][0]["main"].string!
         
-        self._todayTempLabel = "\(json["list"][0]["temp"]["day"].double!)"
-        self._tomorrowTempLabel = "\(json["list"][1]["temp"]["day"].double!)"
-        self._afterTomorrowTempLabel = "\(json["list"][2]["temp"]["day"].double!)"
+        self._todayTempLabel = json["list"][0]["temp"]["day"].double!
+        self._tomorrowTempLabel = json["list"][1]["temp"]["day"].double!
+        self._afterTomorrowTempLabel = json["list"][2]["temp"]["day"].double!
         
         self._todayWeekLabel = json["list"][0]["dt"].double!
         self._tomorrowWeekLabel = json["list"][1]["dt"].double!
         self._afterTomorrowWeekLabel = json["list"][2]["dt"].double!
+        
+        
+        
         completed()
     }
+
+    
 }
 
 
