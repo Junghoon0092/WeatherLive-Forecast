@@ -158,17 +158,29 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     }
     */
 
-    /*
+
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+         let mainCellItem = locationItems[indexPath.row - 1]
+            
+            do {
+                try WeatherDBHelper.delete(mainCellItem)
+            }
+            catch _ {
+                print("Do not Delete")
+            }
+            
+            locationItems.removeAtIndex(indexPath.row - 1)
+            
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
