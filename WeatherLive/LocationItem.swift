@@ -34,4 +34,5 @@ class LocationItem {
     func getCityName() -> String {
         return cityName!
     }
+
 }

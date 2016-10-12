@@ -48,6 +48,7 @@ class MainTableViewCell: UITableViewCell {
 class ContryViewCell: UITableViewCell {
     
     @IBOutlet weak var contryName: UILabel!
+    @IBOutlet weak var contryTempLabel: UILabel!
     
     
     override func awakeFromNib() {

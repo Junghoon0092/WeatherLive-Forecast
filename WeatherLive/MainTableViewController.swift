@@ -13,10 +13,12 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     var current : CurrentWeatherData!
     var locationWeatherData : LocationWeatherData?
-    var sqliteWeatherData : [SQLiteLocationWeatherData]?
+    var sqliteWeatherData = [SQLiteLocationWeatherData]()
+    
     var currentWeatherData = CurrentWeatherData()
     
     var locationItems = [LocationItem]()
+    var searchTV : SearchTVController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +31,16 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.requestWhenInUseAuthorization()
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
-        
+//        findLoactionItem()
         getLoactionItem()
+        
         self.tableView.es_addPullToRefresh {
             [weak self] in
-            
             self!.getLoactionItem()
-//            self!.locationWeatherData.loactionWeatherDataJSON({ 
-//                self?.tableView.reloadData()
-//            })
+            LocationWeatherData.download({ (locationWeatherData) in
+                self!.locationWeatherData = locationWeatherData
+                self?.tableView.reloadData()
+            })
             self?.tableView.es_stopPullToRefresh(completion: true)
         }
 
@@ -64,12 +67,24 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     func getLoactionItem() {
         do {
             locationItems = try WeatherDBHelper.finaAll()!
-            for locationItem in locationItems {
-                SQLiteLocationWeatherData.SQLiteDownload(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
-                    self.sqliteWeatherData = sqliteLocationWeatherData
-                })
-                
+            for _ in locationItems {
             }
+        }catch _ {
+            print("Access Error")
+        }
+    }
+    
+    func findLoactionItem() {
+        do {
+            locationItems = try WeatherDBHelper.finaAll()!
+            self.sqliteWeatherData.removeAll()
+            for locationItem in locationItems {
+                print(locationItem)
+                SQLiteLocationWeatherData.SQLiteDownload(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
+                    self.sqliteWeatherData.append(sqliteLocationWeatherData)
+                })
+            }
+            getLoactionItem()
         }catch _ {
             print("Access Error")
         }
@@ -79,6 +94,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         super.viewDidAppear(true)
         loactionAuthstatus()
         getLoactionItem()
+        findLoactionItem()
         self.tableView.reloadData()
     }
 
@@ -111,8 +127,10 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("mainCount : \(sqliteWeatherData.count)")
         // #warning Incomplete implementation, return the number of rows
-        return locationItems.count + 1
+        return sqliteWeatherData.count + 1
     }
 
  
@@ -124,6 +142,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         case 0 :
             let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
             
+            
+            cell.cityLabel.text = self.locationWeatherData?.cityLabel
             cell.tempLabel.text = self.locationWeatherData?.tempLabel
 //            cell.hiTempLabel.text = locationWeatherData!.hiTempLabel
 //            cell.loTempLabel.text = locationWeatherData!.loTempLabel
@@ -138,15 +158,15 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             returnCell = cell
             
             
-        case 1...locationItems.count :
+        default :
             let cell = tableView.dequeueReusableCellWithIdentifier("ContryViewCell", forIndexPath: indexPath) as! ContryViewCell
         
-            let sqlite = self.sqliteWeatherData
-            cell.contryName.text = self.sqliteWeatherData?.cityLabel
+            cell.contryName.text = self.sqliteWeatherData[indexPath.row - 1].cityLabel
+            print("cell :    \(self.sqliteWeatherData[indexPath.row - 1].cityLabel)")
+            cell.contryTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tempLabel
             
             returnCell = cell
-        default :
-             return returnCell
+    
         }
         
         return returnCell
@@ -205,22 +225,21 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-         let mainCellItem = locationItems[indexPath.row - 1]
-            
+            let mainCellItem = locationItems[indexPath.row - 1]
             do {
                 try WeatherDBHelper.delete(mainCellItem)
+                getLoactionItem()
             }
             catch _ {
                 print("Do not Delete")
             }
-            
-            locationItems.removeAtIndex(indexPath.row - 1)
+            sqliteWeatherData.removeAtIndex(indexPath.row - 1)
             
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
 

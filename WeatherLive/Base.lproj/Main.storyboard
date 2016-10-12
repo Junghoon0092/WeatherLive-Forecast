@@ -493,7 +493,8 @@
                                                     <exclude reference="efV-fL-jDg"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="155" y="4" width="240" height="82"/>
                                                 <mask key="subviews">
                                                     <include reference="DjO-uC-rHW"/>
                                                     <include reference="HCc-CN-0c2"/>
@@ -767,6 +768,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contryName" destination="Puf-04-huU" id="w4y-9K-FoP"/>
+                                    <outlet property="contryTempLabel" destination="sMw-xs-KHx" id="sF0-X5-I2f"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -16,7 +16,6 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
     @IBOutlet weak var tableview: UITableView!
     var searchCityData = [SearchCityData]()
     
-    
     @IBOutlet weak var searchBarTextLoading: UISearchBar!
 
     override func viewDidLoad() {
@@ -100,10 +99,12 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
         let database = SQLiteDataBase.sharedInstance
+        
         do {
             try database.createTables()
         }
         catch _ {}
+        
         
         do {
             let data = self.searchCityData[indexPath.row]
@@ -112,7 +113,7 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
             // 알람창 구현
             print("Insert Error")
         }
-        
+    
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
