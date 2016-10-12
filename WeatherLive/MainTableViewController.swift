@@ -223,6 +223,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
             
             let mainCellItem = locationItems[indexPath.row - 1]
@@ -240,9 +241,23 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+        
+        
     }
 
 
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        
+        var style = UITableViewCellEditingStyle.Delete
+        if indexPath.row == 0 {
+            style = UITableViewCellEditingStyle.None
+            return style
+        } else {
+            return style
+        }
+
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
