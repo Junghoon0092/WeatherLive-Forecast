@@ -15,7 +15,7 @@ pod 'SQLite.swift'
 pod 'SwiftPages'
 pod 'SwiftString'
 pod "ESPullToRefresh"
-
+pod "KRProgressHUD"
 
   # Pods for WeatherLive
 

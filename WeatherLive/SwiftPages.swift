@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 class SwiftPages: UIView, UIScrollViewDelegate {
 
@@ -203,9 +204,13 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             // Do nothing. The view is already loaded.
         } else
         {
+            KRProgressHUD.show(maskType: .Clear, message: "Loading...")
+            let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+            dispatch_after(delay, dispatch_get_main_queue()) {
+            
             print("Loading Page \(page)")
             //The pageView instance is nil, create the page
-            var frame = scrollView.bounds
+            var frame = self.scrollView.bounds
             frame.origin.x = frame.size.width * CGFloat(page)
             frame.origin.y = 0.0
             
@@ -213,12 +218,15 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             var newPageView: UIViewController
             
             //Look for the VC by its identifier in the storyboard and add it to the scrollview
-            newPageView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(viewControllerIDs[page])
+            newPageView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(self.viewControllerIDs[page])
             newPageView.view.frame = frame
-            scrollView.addSubview(newPageView.view)
+            self.scrollView.addSubview(newPageView.view)
             
             //Replace the nil in the pageViews array with the VC just created
-            pageViews[page] = newPageView
+            self.pageViews[page] = newPageView
+            KRProgressHUD.showSuccess()
+            KRProgressHUD.dismiss()
+            }
         }
     }
     

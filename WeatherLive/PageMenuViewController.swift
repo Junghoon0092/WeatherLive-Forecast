@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class PageMenuViewController: UIViewController {
 
     @IBOutlet weak var swiftPageVIew: SwiftPages!
@@ -19,6 +20,7 @@ class PageMenuViewController: UIViewController {
         
 
         self.navigationItem.title = sendValue?.cityName
+        
         
         let VCIDs = ["DetailCollection", "Hourly", "Daily"]
         let buttonTitles = ["Detail", "Hourly", "Daily"]

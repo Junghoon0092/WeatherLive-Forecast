@@ -3,6 +3,8 @@ import UIKit
 import CoreLocation
 import ESPullToRefresh
 import SwiftyJSON
+import KRProgressHUD
+
 
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -12,13 +14,13 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     var currentLocation: CLLocation!
     
     var locationWeatherData : LocationWeatherData?
+    
     var sqliteWeatherData = [SQLiteLocationWeatherData]()
     
     var currentWeatherData = CurrentWeatherData()
     
     var locationItems = [LocationItem]()
-    var searchTV : SearchTVController!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.startUpdatingLocation()
         findLoactionItem()
         getLoactionItem()
-        
+       
         self.tableView.es_addPullToRefresh {
             [weak self] in
             self!.getLoactionItem()
@@ -73,13 +75,17 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loactionAuthstatus()
-        findLoactionItem()
-        getLoactionItem()
-        self.tableView.reloadData()
         
-        print("Check")
-        
+        KRProgressHUD.show()
+        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(delay, dispatch_get_main_queue()) {
+            self.loactionAuthstatus()
+            self.findLoactionItem()
+            self.getLoactionItem()
+            self.tableView.reloadData()
+            KRProgressHUD.dismiss()
+            print("Check")
+        }
 
     }
 
@@ -195,15 +201,13 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             sendValue?.longitude = "\(Location.sharedInstance.longitude)"
             sendValue?.latitude = "\(Location.sharedInstance.latitude)"
             sendValue?.cityName = locationWeatherData?.cityLabel
-            
-    
-            
         }
         
         if segue.identifier == "DataBaseDetail" {
             
             let path = self.tableView.indexPathForCell(sender as! UITableViewCell)
             print(path?.row)
+
             
             do {
                 locationItems = try WeatherDBHelper.finaAll()!
@@ -299,5 +303,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         // Pass the selected object to the new view controller.
     }
     */
+    
     
 }
