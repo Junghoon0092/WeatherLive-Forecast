@@ -19,6 +19,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     var locationItems = [LocationItem]()
     var searchTV : SearchTVController!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,9 +75,9 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         super.viewDidAppear(animated)
         loactionAuthstatus()
         findLoactionItem()
-        
-        self.tableView.reloadData()
         getLoactionItem()
+        self.tableView.reloadData()
+        
         print("Check")
         
 
@@ -182,16 +183,50 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-//        if segue.identifier == "WeatherDetail" {
-//            
-//            let param = locationWeatherData.cityLabel
-//            
-//            (segue.destinationViewController as? PageMenuViewController)?.titleLabel = param
-//        }
-//        
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "CurrentDetail" {
+            
+            let path = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            print(path?.row)
+            
+            let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+
+            sendValue?.longitude = "\(Location.sharedInstance.longitude)"
+            sendValue?.latitude = "\(Location.sharedInstance.latitude)"
+            sendValue?.cityName = locationWeatherData?.cityLabel
+            
+    
+            
+        }
+        
+        if segue.identifier == "DataBaseDetail" {
+            
+            let path = self.tableView.indexPathForCell(sender as! UITableViewCell)
+            print(path?.row)
+            
+            do {
+                locationItems = try WeatherDBHelper.finaAll()!
+                
+                let lat = locationItems[(path?.row)! - 1 ].getLatitude()
+                let long = locationItems[(path?.row)! - 1 ].getLongitude()
+                let city = locationItems[(path?.row)! - 1 ].getCityName()
+                print("lat : \(lat), long : \(long), cityName : \(locationItems[(path?.row)! - 1 ].getCityName())")
+                
+                
+                let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+                sendValue?.longitude = long
+                sendValue?.latitude = lat
+                sendValue?.cityName = city
+                
+                
+            }catch _ {
+                print("Access Error")
+            }
+            
+            
+        }
+    }
     
 
     /*

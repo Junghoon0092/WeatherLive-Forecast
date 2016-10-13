@@ -18,7 +18,9 @@ class HourlyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.downloadForecastData { 
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        self.downloadForecastData((sendValue?.latitude)!, long: (sendValue?.longitude)!) {
             
             self.tableView.reloadData()
         }
@@ -36,9 +38,12 @@ class HourlyTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func downloadForecastData(completed: DownloadComplete) {
+    func downloadForecastData(lat : String, long : String, completed: DownloadComplete) {
         //Downloading forecast weather data for TableView
-        let url = NSData(contentsOfURL : NSURL(string: FORECAST_5DAY_URL)!)
+            
+        let findBaseURL = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+            
+        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
         
         if let dict = json.rawValue as? Dictionary<String, AnyObject> {

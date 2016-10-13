@@ -230,9 +230,13 @@ class CurrentWeatherData {
         }
     }
     
-    func downloadSwiftyJSONData() {
-        let url = NSData(contentsOfURL : NSURL(string: CURRENT_URL)!)
+    func downloadSwiftyJSONData(lat : String, long : String) {
+        
+        let findBaseURL = "\(CURRENT_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        
+        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
+        
         self._temperature = json["main"]["temp"].double!
         self._windSpeed = "\(json["wind"]["speed"].double!)"
         self._humidity = "\(json["main"]["humidity"].double!)"
@@ -243,8 +247,11 @@ class CurrentWeatherData {
         self._sunset = json["sys"]["sunset"].double!
     }
     
-    func downloadSwiftyJSONDataForcasting() {
-        let url = NSData(contentsOfURL : NSURL(string: FORECAST_5DAY_URL)!)
+    func downloadSwiftyJSONDataForcasting(lat : String, long : String) {
+        
+        let findBaseURL = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        
+        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
         
         if json != nil {

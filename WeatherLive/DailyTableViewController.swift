@@ -16,10 +16,11 @@ class DailyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.downloadDailyForecast { 
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        self.downloadDailyForecast((sendValue?.latitude)!, long: (sendValue?.longitude)!) {
             
             self.tableView.reloadData()
-            
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,9 +33,12 @@ class DailyTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func downloadDailyForecast(completed: DownloadComplete) {
-        //Downloading forecast weather data for TableView
-        let url = NSData(contentsOfURL : NSURL(string: FORECAST_16DAY_URL)!)
+    func downloadDailyForecast(lat : String, long : String, completed: DownloadComplete) {
+
+        
+        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
+    
         let json = JSON(data: url!)
         if let dict = json.rawValue as? Dictionary<String, AnyObject> {
             if let list = dict["list"] as? [Dictionary<String, AnyObject>] {

@@ -13,18 +13,17 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
     
     
     var currentWeatherData = CurrentWeatherData()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView?.backgroundColor = UIColor.whiteColor()
-
-//        self.collection?.registerClass(TemperatureCell.self, forCellWithReuseIdentifier: "TemperatureCell")
-
         
-        
-        currentWeatherData.downloadSwiftyJSONData()
-        currentWeatherData.downloadSwiftyJSONDataForcasting()
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+
+        currentWeatherData.downloadSwiftyJSONData((sendValue?.latitude)!, long: (sendValue?.longitude)!)
+        currentWeatherData.downloadSwiftyJSONDataForcasting((sendValue?.latitude)!, long: (sendValue?.longitude)!)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

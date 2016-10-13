@@ -11,13 +11,14 @@ import UIKit
 class PageMenuViewController: UIViewController {
 
     @IBOutlet weak var swiftPageVIew: SwiftPages!
-    var titleLabel : String!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        
 
-        self.navigationItem.title = titleLabel
+        self.navigationItem.title = sendValue?.cityName
         
         let VCIDs = ["DetailCollection", "Hourly", "Daily"]
         let buttonTitles = ["Detail", "Hourly", "Daily"]

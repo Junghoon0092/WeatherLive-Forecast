@@ -141,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4335411DAF6A320049F6C4 /* Frameworks_Library */ = {
+			isa = PBXGroup;
+			children = (
+				3B83D1461D93C6F0007F4A3D /* SwiftPages.swift */,
+				3B5FC72D1D7E562600B8668D /* Extension.swift */,
+			);
+			name = Frameworks_Library;
+			sourceTree = "<group>";
+		};
 		3B4DAD4B1D9CAF8D00C30F93 /* DailyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +173,7 @@
 		3B4DAD4D1D9CD25B00C30F93 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */,
 				3B5FC72F1D7E8AD000B8668D /* DetailCollectionViewCell.swift */,
 				3B8CA4E81D7D4A0A00BBBDA8 /* DetailCollectionViewController.swift */,
 			);
@@ -196,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				3B8CA4AD1D7D24CF00BBBDA8 /* AppDelegate.swift */,
+				3B4335411DAF6A320049F6C4 /* Frameworks_Library */,
 				3B8CA4E11D7D48B600BBBDA8 /* Source */,
 				3B8CA4E01D7D484700BBBDA8 /* DataBase */,
 				3B8CA4DF1D7D483600BBBDA8 /* Model */,
@@ -252,12 +263,9 @@
 		3B8CA4DF1D7D483600BBBDA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3B5FC7251D7E3D9500B8668D /* LocationItem.swift */,
-				3B5FC7271D7E3F8800B8668D /* Location.swift */,
 				3B5FC7291D7E3FB000B8668D /* Constants.swift */,
 				3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */,
 				3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */,
-				3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */,
 				3B4DAD541D9D01E800C30F93 /* SearchCityData.swift */,
 			);
 			name = Model;
@@ -266,10 +274,10 @@
 		3B8CA4E01D7D484700BBBDA8 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				3B83D1461D93C6F0007F4A3D /* SwiftPages.swift */,
 				3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */,
 				3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */,
-				3B5FC72D1D7E562600B8668D /* Extension.swift */,
+				3B5FC7251D7E3D9500B8668D /* LocationItem.swift */,
+				3B5FC7271D7E3F8800B8668D /* Location.swift */,
 			);
 			name = DataBase;
 			sourceTree = "<group>";
