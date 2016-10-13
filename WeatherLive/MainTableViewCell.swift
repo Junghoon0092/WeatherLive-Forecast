@@ -24,6 +24,8 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var tommorwTempLabel: UILabel!
     @IBOutlet weak var afterTommorwLabel: UILabel!
     
+    
+    @IBOutlet weak var todayWeekLabel: UILabel!
     @IBOutlet weak var tommorwWeekLabel: UILabel!
     @IBOutlet weak var afterTommorwWeekLabel: UILabel!
     
@@ -47,8 +49,23 @@ class MainTableViewCell: UITableViewCell {
 
 class ContryViewCell: UITableViewCell {
     
-    @IBOutlet weak var contryName: UILabel!
+    @IBOutlet weak var contryCityName: UILabel!
     @IBOutlet weak var contryTempLabel: UILabel!
+    
+    @IBOutlet weak var contryHiTempLabel: UILabel!
+    @IBOutlet weak var contryLoTempLabel: UILabel!
+    
+    @IBOutlet weak var contryTodayImage: UIImageView!
+    @IBOutlet weak var contryTommorwImage: UIImageView!
+    @IBOutlet weak var contryAftertommorwImage: UIImageView!
+    
+    @IBOutlet weak var contryTodayTempLabel: UILabel!
+    @IBOutlet weak var contryTommorwTempLabel: UILabel!
+    @IBOutlet weak var contryAfterTommorwLabel: UILabel!
+    
+    @IBOutlet weak var contryTodayWeekLabel: UILabel!
+    @IBOutlet weak var contryTommorwWeekLabel: UILabel!
+    @IBOutlet weak var contryAfterTommorwWeekLabel: UILabel!
     
     
     override func awakeFromNib() {

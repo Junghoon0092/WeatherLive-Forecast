@@ -230,7 +230,7 @@ class SwiftPages: UIView, UIScrollViewDelegate {
         
         // Work out which pages you want to load
         let firstPage = page - 1
-        let lastPage = page + 1
+        let lastPage = page + 2
         
         // Load pages in our range
         for index in firstPage...lastPage {

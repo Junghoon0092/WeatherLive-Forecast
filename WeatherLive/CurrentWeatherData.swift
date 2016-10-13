@@ -226,7 +226,7 @@ class CurrentWeatherData {
         case "Additional":
             return "wind-2"
         default:
-            return ""
+            return "sunny"
         }
     }
     

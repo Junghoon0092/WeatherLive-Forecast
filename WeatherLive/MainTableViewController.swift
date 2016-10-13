@@ -11,7 +11,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     let locationManger = CLLocationManager()
     var currentLocation: CLLocation!
     
-    var current : CurrentWeatherData!
     var locationWeatherData : LocationWeatherData?
     var sqliteWeatherData = [SQLiteLocationWeatherData]()
     
@@ -23,15 +22,12 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
         locationManger.startMonitoringSignificantLocationChanges()
         locationManger.startUpdatingLocation()
-//        findLoactionItem()
+        findLoactionItem()
         getLoactionItem()
         
         self.tableView.es_addPullToRefresh {
@@ -45,24 +41,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         }
 
     }
-    
-    
-//    func locationWeatherDataDownload(completed : DownloadComplete) {
-//        
-//        let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
-//        let json = JSON(data: url!)
-//        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
-//            if let list = dict["list"] as? [[Dictionary<String, AnyObject>]] {
-//                for obj in list {
-//                    print(obj)
-//                    let locationWeather = LocationWeatherData(locationWeatherData: obj)
-//                    self.locationWeatherData.append(locationWeather)
-//                }
-//            }
-//        }
-//        
-//    }
-    
+
     
     func getLoactionItem() {
         do {
@@ -79,26 +58,29 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             locationItems = try WeatherDBHelper.finaAll()!
             self.sqliteWeatherData.removeAll()
             for locationItem in locationItems {
-                print(locationItem)
                 SQLiteLocationWeatherData.SQLiteDownload(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
                     self.sqliteWeatherData.append(sqliteLocationWeatherData)
                 })
             }
-            getLoactionItem()
+            
         }catch _ {
             print("Access Error")
         }
+        self.tableView.reloadData()
+        getLoactionItem()
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         loactionAuthstatus()
-        getLoactionItem()
         findLoactionItem()
+        
         self.tableView.reloadData()
+        getLoactionItem()
+        print("Check")
+        
+
     }
-
-
 
     func loactionAuthstatus() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
@@ -127,8 +109,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("mainCount : \(sqliteWeatherData.count)")
         // #warning Incomplete implementation, return the number of rows
         return sqliteWeatherData.count + 1
     }
@@ -145,28 +125,51 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             
             cell.cityLabel.text = self.locationWeatherData?.cityLabel
             cell.tempLabel.text = self.locationWeatherData?.tempLabel
-//            cell.hiTempLabel.text = locationWeatherData!.hiTempLabel
-//            cell.loTempLabel.text = locationWeatherData!.loTempLabel
-//            cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.todayImage))
-//            cell.tommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.tomorrowImage))
-//            cell.aftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(locationWeatherData!.afterTomorrowImage))
-//            cell.todayTempLabel.text = locationWeatherData!.todayTempLabel
-//            cell.afterTommorwLabel.text = locationWeatherData!.afterTomorrowTempLabel
-//            cell.tommorwTempLabel.text = locationWeatherData!.tomorrowTempLabel
-//            cell.tommorwWeekLabel.text = locationWeatherData!.tomorrowWeekLabel
-//            cell.afterTommorwWeekLabel.text = locationWeatherData!.afterTomorrowWeekLabel
+            cell.hiTempLabel.text = self.locationWeatherData?.hiTempLabel
+            cell.loTempLabel.text = self.locationWeatherData?.loTempLabel
+            
+            if self.locationWeatherData?.todayImage == nil {
+                cell.todayImage.image = UIImage(named: "Rain")
+                cell.tommorwImage.image = UIImage(named: "Rain")
+                cell.aftertommorwImage.image = UIImage(named: "Rain")
+            } else {
+                cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon((self.locationWeatherData?.todayImage)!))
+                cell.tommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.tomorrowImage)!)))
+                cell.aftertommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.afterTomorrowImage)!)))
+            }
+            
+            cell.todayTempLabel.text = self.locationWeatherData?.todayTempLabel
+            cell.afterTommorwLabel.text = self.locationWeatherData?.afterTomorrowTempLabel
+            cell.tommorwTempLabel.text = self.locationWeatherData?.tomorrowTempLabel
+            cell.todayWeekLabel.text = self.locationWeatherData?.todayWeekLabel
+            cell.tommorwWeekLabel.text = self.locationWeatherData?.tomorrowWeekLabel
+            cell.afterTommorwWeekLabel.text = self.locationWeatherData?.afterTomorrowWeekLabel
+            
             returnCell = cell
             
             
         default :
             let cell = tableView.dequeueReusableCellWithIdentifier("ContryViewCell", forIndexPath: indexPath) as! ContryViewCell
-        
-            cell.contryName.text = self.sqliteWeatherData[indexPath.row - 1].cityLabel
-            print("cell :    \(self.sqliteWeatherData[indexPath.row - 1].cityLabel)")
+            
+            cell.contryCityName.text = self.sqliteWeatherData[indexPath.row - 1].cityLabel
             cell.contryTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tempLabel
+            cell.contryHiTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].hiTempLabel
+            cell.contryLoTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].loTempLabel
+            
+            cell.contryTodayImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].todayImage))
+            cell.contryTommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].tomorrowImage))
+            cell.contryAftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].afterTomorrowImage))
+            
+            
+            cell.contryTodayTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].todayTempLabel
+            cell.contryTommorwTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tomorrowTempLabel
+            cell.contryAfterTommorwLabel.text = self.sqliteWeatherData[indexPath.row - 1].afterTomorrowTempLabel
+            cell.contryTodayWeekLabel.text = self.sqliteWeatherData[indexPath.row - 1].todayWeekLabel
+            cell.contryTommorwWeekLabel.text = self.sqliteWeatherData[indexPath.row - 1].tomorrowWeekLabel
+            cell.contryAfterTommorwWeekLabel.text = self.sqliteWeatherData[indexPath.row - 1].afterTomorrowWeekLabel
             
             returnCell = cell
-    
+            
         }
         
         return returnCell
@@ -190,27 +193,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
 //        
 //    }
     
-    
-//    func currentWeaterDataCheck (lat : String, lon : String, completed: DownloadComplete)  {
-//        
-//        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=metric&appid=\(API_KEY)"
-//        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
-//        let json = JSON(data: url!)
-//        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
-//            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
-//                for obj in list {
-//                    let searchcity = SearchCityData(searchCity: obj)
-//                    self.searchCityData.append(searchcity)
-//                }
-//            }
-//        }
-//        completed()
-//    }
-    
-    
-    
-    
-
 
     /*
     // Override to support conditional editing of the table view.

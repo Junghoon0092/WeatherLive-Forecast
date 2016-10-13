@@ -16,9 +16,9 @@ class LocationWeatherData {
     var _hiTempLabel: Double!
     var _loTempLabel: Double!
     
-    var _todayImage: String!
-    var _tomorrowImage: String!
-    var _afterTomorrowImage: String!
+    var _todayImage: String?
+    var _tomorrowImage: String?
+    var _afterTomorrowImage: String?
     
     var _todayTempLabel: Double!
     var _tomorrowTempLabel: Double!
@@ -107,23 +107,23 @@ class LocationWeatherData {
     
     var todayImage: String {
         if _todayImage == nil {
-            _todayImage = ""
+            _todayImage = "Rain"
         }
-        return _todayImage
+        return _todayImage!
     }
     
     var tomorrowImage: String {
         if _tomorrowImage == nil {
-            _tomorrowImage = ""
+            _tomorrowImage = "Rain"
         }
-        return _tomorrowImage
+        return _tomorrowImage!
     }
     
     var afterTomorrowImage: String {
         if _afterTomorrowImage == nil {
-            _afterTomorrowImage = ""
+            _afterTomorrowImage = "Rain"
         }
-        return _afterTomorrowImage
+        return _afterTomorrowImage!
     }
     
     var todayWeekLabel: String {
