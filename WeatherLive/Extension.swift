@@ -35,3 +35,16 @@ extension Double {
     
 }
 
+extension CGFloat {
+    init?(_ str: String) {
+        guard let float = Float(str) else { return nil }
+        self = CGFloat(float)
+    }
+}
+
+extension String {
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+}
+

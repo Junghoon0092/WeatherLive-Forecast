@@ -7,6 +7,7 @@ import KRProgressHUD
 
 
 
+
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
 
 
@@ -92,11 +93,13 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     func loactionAuthstatus() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             currentLocation = locationManger.location
+            
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
             LocationWeatherData.download({ (locationWeatherData) in
                 self.locationWeatherData = locationWeatherData
             })
+            
         } else {
             locationManger.requestWhenInUseAuthorization()
             loactionAuthstatus()
@@ -132,6 +135,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             
             cell.cityLabel.text = self.locationWeatherData?.cityLabel
             cell.tempLabel.text = self.locationWeatherData?.tempLabel
+
             cell.hiTempLabel.text = self.locationWeatherData?.hiTempLabel
             cell.loTempLabel.text = self.locationWeatherData?.loTempLabel
             
@@ -140,6 +144,10 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
                 cell.tommorwImage.image = UIImage(named: "Rain")
                 cell.aftertommorwImage.image = UIImage(named: "Rain")
             } else {
+                
+                
+                
+                
                 cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon((self.locationWeatherData?.todayImage)!))
                 cell.tommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.tomorrowImage)!)))
                 cell.aftertommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.afterTomorrowImage)!)))
@@ -160,6 +168,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             
             cell.contryCityName.text = self.sqliteWeatherData[indexPath.row - 1].cityLabel
             cell.contryTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tempLabel
+            
+        
             cell.contryHiTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].hiTempLabel
             cell.contryLoTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].loTempLabel
             

@@ -39,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SACountingLabel-SACountingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SACountingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SQLite.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,17 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3F1F969FC503FCADF410FE6E7B483BAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>474A67AEE8F1B654466FDF444CC16B76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A9C9125EB1DA394FAF1B5063C365D3D</key>
+		<key>490D65EDBB1C09B9CC5B97309178E56C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6C0D82C1787089378F3ECB2A2A0F7304</key>
+		<key>6A547679387C14C6038FA7B171FB01B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,17 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7112EC74B74FC5441D70432EA70ADB5A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8773BE58397296FFE59FC920D4BEF8C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +122,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AB3BAA025615EF37EA17FB4E20EAF6A2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC9D0F3AE45A515F5E9A88222667DE44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BB23E0C4DDD7DE0A3E6056FA65D2D721</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C49EBA28A5BD4D72B5F479E665A06B8D</key>
+		<key>C1720EFBDA1E8EA92E59116457843577</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6336E84FB82D4876423FFD247311DF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

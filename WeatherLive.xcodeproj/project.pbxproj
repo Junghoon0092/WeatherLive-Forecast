@@ -41,6 +41,7 @@
 		3B8CA4ED1D7D4B1000BBBDA8 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CA4EC1D7D4B1000BBBDA8 /* DailyTableViewCell.swift */; };
 		3B8CA4EF1D7D4B2000BBBDA8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CA4EE1D7D4B2000BBBDA8 /* MainTableViewCell.swift */; };
 		3B8CA4F11D7D4C9B00BBBDA8 /* MainCurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CA4F01D7D4C9B00BBBDA8 /* MainCurrentTableViewCell.swift */; };
+		3B97237B1DB05C9100C904D4 /* SACountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97237A1DB05C9100C904D4 /* SACountingLabel.swift */; };
 		DD0D5459C6BC03AA97230A5C /* Pods_WeatherLiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F7CCEB7E42A3E665680621 /* Pods_WeatherLiveTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		3B8CA4EC1D7D4B1000BBBDA8 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		3B8CA4EE1D7D4B2000BBBDA8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		3B8CA4F01D7D4C9B00BBBDA8 /* MainCurrentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCurrentTableViewCell.swift; sourceTree = "<group>"; };
+		3B97237A1DB05C9100C904D4 /* SACountingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SACountingLabel.swift; sourceTree = "<group>"; };
 		4D36468886F7CBB989B51B5E /* Pods-WeatherLiveUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherLiveUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherLiveUITests/Pods-WeatherLiveUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		908D1983A8535801FA575E57 /* Pods-WeatherLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherLive/Pods-WeatherLive.release.xcconfig"; sourceTree = "<group>"; };
 		A1AD538EBA162B4474095BA5 /* Pods-WeatherLiveUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherLiveUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherLiveUITests/Pods-WeatherLiveUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				3B83D1461D93C6F0007F4A3D /* SwiftPages.swift */,
+				3B97237A1DB05C9100C904D4 /* SACountingLabel.swift */,
 				3B5FC72D1D7E562600B8668D /* Extension.swift */,
 			);
 			name = Frameworks_Library;
@@ -391,7 +394,7 @@
 				TargetAttributes = {
 					3B8CA4A91D7D24CF00BBBDA8 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 3W2MWY4JT6;
+						DevelopmentTeam = 5KCEA5BKU2;
 					};
 					3B8CA4BD1D7D24CF00BBBDA8 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -591,6 +594,7 @@
 				3B83D1491D94D389007F4A3D /* HourlyWeatherData.swift in Sources */,
 				3B5FC7281D7E3F8800B8668D /* Location.swift in Sources */,
 				3B8CA4DC1D7D27F500BBBDA8 /* MainTableViewController.swift in Sources */,
+				3B97237B1DB05C9100C904D4 /* SACountingLabel.swift in Sources */,
 				3B5FC7241D7E3CD900B8668D /* WeatherDBHelper.swift in Sources */,
 				3B8CA4EB1D7D4B0600BBBDA8 /* HourlyTableViewCell.swift in Sources */,
 				3B5FC7261D7E3D9500B8668D /* LocationItem.swift in Sources */,
@@ -749,6 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -757,6 +762,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.coolmint.WeatherLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -766,6 +772,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -774,6 +781,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kr.coolmint.WeatherLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -204,7 +204,7 @@ class SwiftPages: UIView, UIScrollViewDelegate {
             // Do nothing. The view is already loaded.
         } else
         {
-            KRProgressHUD.show(maskType: .Clear, message: "Loading...")
+            KRProgressHUD.show(progressHUDStyle: .White, maskType: .Clear, activityIndicatorStyle: .Color(UIColor.orangeColor(), UIColor.orangeColor()), message: "Loading...")
             let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
             dispatch_after(delay, dispatch_get_main_queue()) {
             

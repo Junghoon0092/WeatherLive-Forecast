@@ -11,7 +11,7 @@ import UIKit
 class MainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var tempLabel: SACountingLabel!
     
     @IBOutlet weak var hiTempLabel: UILabel!
     @IBOutlet weak var loTempLabel: UILabel!
@@ -50,7 +50,7 @@ class MainTableViewCell: UITableViewCell {
 class ContryViewCell: UITableViewCell {
     
     @IBOutlet weak var contryCityName: UILabel!
-    @IBOutlet weak var contryTempLabel: UILabel!
+    @IBOutlet weak var contryTempLabel: SACountingLabel!
     
     @IBOutlet weak var contryHiTempLabel: UILabel!
     @IBOutlet weak var contryLoTempLabel: UILabel!
