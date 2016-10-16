@@ -66,12 +66,11 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
                     self.sqliteWeatherData.append(sqliteLocationWeatherData)
                 })
             }
-            
+            getLoactionItem()
+            self.tableView.reloadData()
         }catch _ {
             print("Access Error")
         }
-        self.tableView.reloadData()
-        getLoactionItem()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,7 +81,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         dispatch_after(delay, dispatch_get_main_queue()) {
             self.loactionAuthstatus()
             self.findLoactionItem()
-            self.getLoactionItem()
+//            self.getLoactionItem()
             self.tableView.reloadData()
             KRProgressHUD.dismiss()
             print("Check")
