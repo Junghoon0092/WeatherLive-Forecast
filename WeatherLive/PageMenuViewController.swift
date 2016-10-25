@@ -27,7 +27,8 @@ class PageMenuViewController: UIViewController {
         let buttonTitles = ["Detail", "Hourly", "Daily"]
         automaticallyAdjustsScrollViewInsets = true
  
-        swiftPageVIew.setOriginY(0.0)
+        swiftPageVIew.setOriginY(-3.0)
+        swiftPageVIew.setOriginX(0.0)
 
         swiftPageVIew.enableAeroEffectInTopBar(false)
         swiftPageVIew.setButtonsTextColor(UIColor.blackColor())

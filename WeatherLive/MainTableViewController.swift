@@ -33,7 +33,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         locationManger.startUpdatingLocation()
         findLoactionItem()
         getLoactionItem()
-       
+        self.tableView.reloadData()
         self.tableView.es_addPullToRefresh {
             [weak self] in
             self!.getLoactionItem()
@@ -90,6 +90,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.loactionAuthstatus()
             self.findLoactionItem()
             KRProgressHUD.dismiss()
+            self.tableView.reloadData()
             print("Check")
         }
 
@@ -104,6 +105,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             LocationWeatherData.download({ (locationWeatherData) in
                 self.locationWeatherData = locationWeatherData
             })
+            
             
         } else {
             locationManger.requestWhenInUseAuthorization()

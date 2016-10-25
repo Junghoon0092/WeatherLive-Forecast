@@ -78,31 +78,45 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
         case 0 :
         
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TemperatureCell", forIndexPath: indexPath) as! TemperatureCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.title.text = currentWeatherData.temperature
             cell.hiLowTempLabel.text = "Hi : \(currentWeatherData.hiTemperature)  Lo : \(currentWeatherData.loTemperature)"
             returnCell = cell
         case 1:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WindCell", forIndexPath: indexPath) as! WindCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.windSpeedLabel.text = currentWeatherData.windSpeed
             returnCell = cell
         case 2:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HumidityCell", forIndexPath: indexPath) as! HumidityCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.humiLabel.text = currentWeatherData.humidity
             returnCell = cell
         case 3:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CloudsCell", forIndexPath: indexPath) as! CloudsCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.cloudsLabel.text = currentWeatherData.clouds
             returnCell = cell
         case 4:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SunriseCell", forIndexPath: indexPath) as! SunriseCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.sunRiseLabel.text = currentWeatherData.sunrise
             returnCell = cell
         case 5:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SunsetCell", forIndexPath: indexPath) as! SunsetCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.sunSetLabel.text = currentWeatherData.sunset
             returnCell = cell
         case 6:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Forecast3HCell", forIndexPath: indexPath) as! Forecast3HCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.for3hourTimeLabel.text = currentWeatherData.for3hourTimeLabel
             cell.for3hourTempLabel.text = currentWeatherData.for3hourTempLabel
             cell.for3hourWeatherLabel.text = currentWeatherData.for3hourWeatherLabel
@@ -110,6 +124,8 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
             returnCell = cell
         case 7:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Forecast6HCell", forIndexPath: indexPath) as! Forecast6HCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.for6hourTimeLabel.text = currentWeatherData.for6hourTimeLabel
             cell.for6hourTempLabel.text = currentWeatherData.for6hourTempLabel
             cell.for6hourWeatherLabel.text = currentWeatherData.for6hourWeatherLabel
@@ -117,6 +133,8 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
             returnCell = cell
         case 8:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Forecast12HCell", forIndexPath: indexPath) as! Forecast12HCell
+            cell.contentView.frame = cell.bounds
+            cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.for12hourTimeLabel.text = currentWeatherData.for12hourTimeLabel
             cell.for12hourTempLabel.text = currentWeatherData.for12hourTempLabel
             cell.for12hourWeatherLabel.text = currentWeatherData.for12hourWeatherLabel
@@ -135,12 +153,13 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSizeMake( view.frame.width / 3 , 120)
+
+        
+        return CGSizeMake( self.view.frame.width / 3 , 120)
         
     }
 
-    
-    
+
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
