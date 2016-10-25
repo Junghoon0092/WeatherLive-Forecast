@@ -17,6 +17,7 @@ pod 'SwiftString'
 pod "ESPullToRefresh"
 pod "KRProgressHUD"
 pod "SACountingLabel"
+pod 'PMAlertController'
 
   # Pods for WeatherLive
 

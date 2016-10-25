@@ -47,6 +47,8 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
             self.tableview.reloadData()
         }
         
+        searchBar.resignFirstResponder()
+        
     }
     
 

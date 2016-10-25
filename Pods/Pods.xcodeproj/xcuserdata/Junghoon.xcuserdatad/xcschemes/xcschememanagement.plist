@@ -24,6 +24,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PMAlertController-PMAlertController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PMAlertController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WeatherLive.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F1F969FC503FCADF410FE6E7B483BAC</key>
+		<key>442118D05D2F92513B0160B2E23CA724</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>490D65EDBB1C09B9CC5B97309178E56C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6A547679387C14C6038FA7B171FB01B6</key>
+		<key>50E52262E92B32072393C2EC1AEFE2B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,17 +122,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7ABBD0E5FE69F114825C1D5AE37B4B6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E9CC1AE1BEFD38E27DB18038759B3D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8F0CAC45729BE9BDBCEDE3A1B46AA483</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB3BAA025615EF37EA17FB4E20EAF6A2</key>
+		<key>A021E5E07B87719AB0EBA528D3A1A1B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC9D0F3AE45A515F5E9A88222667DE44</key>
+		<key>B76DC652DBD52C880BF7146FA3EB2089</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C1720EFBDA1E8EA92E59116457843577</key>
+		<key>BD84B426AF74551AFD3A823E42BE3ECD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6336E84FB82D4876423FFD247311DF9</key>
+		<key>C2AB96F7E8DD8856CD05BD74C0ABBF9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5AB1C0293AFBBE30818EC1F7565FA51</key>
 		<dict>
 			<key>primary</key>
 			<true/>

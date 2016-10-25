@@ -41,11 +41,19 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
                 self!.locationWeatherData = locationWeatherData
                 self?.tableView.reloadData()
             })
+            self!.findLoactionItem()
             self?.tableView.es_stopPullToRefresh(completion: true)
         }
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector(appMovedToBackgroud()), name: "good" , object: nil)
 
     }
 
+    
+    func appMovedToBackgroud() {
+        print("backgroud")
+    }
     
     func getLoactionItem() {
         do {
@@ -81,8 +89,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         dispatch_after(delay, dispatch_get_main_queue()) {
             self.loactionAuthstatus()
             self.findLoactionItem()
-//            self.getLoactionItem()
-            self.tableView.reloadData()
             KRProgressHUD.dismiss()
             print("Check")
         }

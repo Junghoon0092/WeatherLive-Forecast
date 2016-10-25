@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BD84B426AF74551AFD3A823E42BE3ECD'
-               BlueprintName = 'SwiftPages'
+               BlueprintIdentifier = 'E5AB1C0293AFBBE30818EC1F7565FA51'
+               BlueprintName = 'PMAlertController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftPages.framework'>
+               BuildableName = 'PMAlertController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

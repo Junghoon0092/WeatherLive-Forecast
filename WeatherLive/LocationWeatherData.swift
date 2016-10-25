@@ -28,31 +28,6 @@ class LocationWeatherData {
     var _tomorrowWeekLabel: Double!
     var _afterTomorrowWeekLabel: Double!
     
-//    func weatherIcon(weather : String) -> String {
-//        switch weather {
-//        case "Rain":
-//            return "raining"
-//        case "Thunderstorm":
-//            return "bolt"
-//        case "Drizzle":
-//            return "drizzle"
-//        case "Snow":
-//            return "snowing"
-//        case "Atmosphere":
-//            return "calm"
-//        case "Clear":
-//            return "sunny"
-//        case "Clouds":
-//            return "clouds"
-//        case "Extreme":
-//            return "tornado"
-//        case "Additional":
-//            return "wind-2"
-//        default:
-//            return ""
-//        }
-//    }
-    
     
     var cityLabel: String {
         if _cityLabel == nil {
@@ -193,55 +168,6 @@ class LocationWeatherData {
         completed(locationData)
     }
     
-//    init(locationWeatherData : [Dictionary<String, AnyObject>]) {
-//        
-//        for obj in 0...2 {
-//            
-//            if obj == 0 {
-//                
-//                self._todayWeekLabel = locationWeatherData[obj]["dt"] as? Double
-//                
-//                if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
-//                    self._tempLabel = temp["day"] as? Double
-//                    self._hiTempLabel = temp["max"] as? Double
-//                    self._loTempLabel = temp["min"] as? Double
-//                    self._todayTempLabel = self._tempLabel
-//                }
-//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
-//                    self._todayImage = weather[0]["main"] as? String
-//                }
-//            }
-//            if obj == 1 {
-//                
-//                self._tomorrowWeekLabel = locationWeatherData[obj]["dt"] as? Double
-//                
-//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
-//                    self._tomorrowImage = weather[0]["main"] as? String
-//                    self._afterTomorrowImage = weather[0]["main"] as? String
-//                }
-//                
-//                if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
-//                    self._tomorrowTempLabel = temp["day"] as? Double
-//                }
-//            }
-//            
-//            if obj == 2 {
-//                
-//                self._afterTomorrowWeekLabel = locationWeatherData[obj]["dt"] as? Double
-//                
-//                if let weather = locationWeatherData[obj]["weather"] as? [Dictionary<String, AnyObject>] {
-//                    self._afterTomorrowImage = weather[0]["main"] as? String
-//                    
-//                    if let temp = locationWeatherData[obj]["temp"] as? Dictionary<String, AnyObject> {
-//                        self._afterTomorrowTempLabel = temp["day"] as? Double
-//                    }
-//                }
-//                
-//            }
-//        }
-//    }
-    
-    
 
 
     func loactionWeatherDataJSON(completed: DownloadComplete) {
@@ -263,6 +189,7 @@ class LocationWeatherData {
         self._todayWeekLabel = json["list"][0]["dt"].double!
         self._tomorrowWeekLabel = json["list"][1]["dt"].double!
         self._afterTomorrowWeekLabel = json["list"][2]["dt"].double!
+        
         
         
         

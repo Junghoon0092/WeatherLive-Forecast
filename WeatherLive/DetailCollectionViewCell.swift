@@ -18,6 +18,7 @@ class TemperatureCell: UICollectionViewCell {
 class WindCell: UICollectionViewCell {
     
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var windDirectLabel: UILabel!
 
 }
 
