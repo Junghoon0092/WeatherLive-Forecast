@@ -395,6 +395,11 @@
 					3B8CA4A91D7D24CF00BBBDA8 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5KCEA5BKU2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3B8CA4BD1D7D24CF00BBBDA8 = {
 						CreatedOnToolsVersion = 7.3.1;
