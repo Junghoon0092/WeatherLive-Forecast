@@ -1,0 +1,10 @@
+/* 
+  Localizaing.strings
+  WeatherLive
+
+  Created by Junghoon on 2016. 11. 1..
+  Copyright © 2016년 Junghoon. All rights reserved.
+*/
+"Pull to refresh" = "押して書き変える";
+"Release to refresh" = "書き変える";
+"Loading..." = "読む中...";

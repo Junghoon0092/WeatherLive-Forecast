@@ -1,0 +1,23 @@
+/* Class = "UILabel"; text = "Sunrise"; ObjectID = "3nx-VK-RLi"; */
+"3nx-VK-RLi.text" = "일출";
+
+/* Class = "UILabel"; text = "Wind speed"; ObjectID = "DPk-RH-zdR"; */
+"DPk-RH-zdR.text" = "풍속";
+
+/* Class = "UILabel"; text = "N"; ObjectID = "RGr-vI-AF4"; */
+"RGr-vI-AF4.text" = "N";
+
+/* Class = "UILabel"; text = "Current Location"; ObjectID = "a29-Lv-HrA"; */
+"a29-Lv-HrA.text" = "현재위치";
+
+/* Class = "UILabel"; text = "Humidity"; ObjectID = "iCC-6i-iEH"; */
+"iCC-6i-iEH.text" = "습도";
+
+"lK2-nF-7E6.text" = "구름";
+
+/* Class = "UILabel"; text = "Sunset"; ObjectID = "lfe-6i-PEd"; */
+"lfe-6i-PEd.text" = "일몰";
+
+/* Class = "UILabel"; text = "Temperature"; ObjectID = "pe5-Pe-Cab"; */
+"pe5-Pe-Cab.text" = "온도";
+
