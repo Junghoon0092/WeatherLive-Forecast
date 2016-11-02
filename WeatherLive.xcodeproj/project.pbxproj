@@ -15,6 +15,8 @@
 		3B4DAD501D9CE8C800C30F93 /* SearchTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD4F1D9CE8C800C30F93 /* SearchTVController.swift */; };
 		3B4DAD551D9D01E800C30F93 /* SearchCityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD541D9D01E800C30F93 /* SearchCityData.swift */; };
 		3B4DAD571D9D08D000C30F93 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD561D9D08D000C30F93 /* SearchTableViewCell.swift */; };
+		3B5E262B1DC9D44600B1A2EE /* SettingViewTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E262A1DC9D44600B1A2EE /* SettingViewTVController.swift */; };
+		3B5E262D1DC9D8CA00B1A2EE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E262C1DC9D8CA00B1A2EE /* MessageUI.framework */; };
 		3B5FC7221D7E3C6100B8668D /* SQLiteDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */; };
 		3B5FC7241D7E3CD900B8668D /* WeatherDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */; };
 		3B5FC7261D7E3D9500B8668D /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5FC7251D7E3D9500B8668D /* LocationItem.swift */; };
@@ -73,6 +75,10 @@
 		3B4DAD4F1D9CE8C800C30F93 /* SearchTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVController.swift; sourceTree = "<group>"; };
 		3B4DAD541D9D01E800C30F93 /* SearchCityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCityData.swift; sourceTree = "<group>"; };
 		3B4DAD561D9D08D000C30F93 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		3B5E262A1DC9D44600B1A2EE /* SettingViewTVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewTVController.swift; sourceTree = "<group>"; };
+		3B5E262C1DC9D8CA00B1A2EE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3B5E262E1DCA2FDE00B1A2EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3B5E262F1DCA2FFF00B1A2EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3B5FC7211D7E3C6100B8668D /* SQLiteDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteDataBase.swift; sourceTree = "<group>"; };
 		3B5FC7231D7E3CD900B8668D /* WeatherDBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDBHelper.swift; sourceTree = "<group>"; };
 		3B5FC7251D7E3D9500B8668D /* LocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
@@ -81,7 +87,6 @@
 		3B5FC72B1D7E45B500B8668D /* LocationWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationWeatherData.swift; sourceTree = "<group>"; };
 		3B5FC72D1D7E562600B8668D /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		3B5FC72F1D7E8AD000B8668D /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B6148BF1DC8E0010051272C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3B83D1441D93C65F007F4A3D /* PageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuViewController.swift; sourceTree = "<group>"; };
 		3B83D1461D93C6F0007F4A3D /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
 		3B83D1481D94D389007F4A3D /* HourlyWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyWeatherData.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5E262D1DC9D8CA00B1A2EE /* MessageUI.framework in Frameworks */,
 				3B7441121D9122BD005E6958 /* CoreLocation.framework in Frameworks */,
 				2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */,
 			);
@@ -254,6 +260,7 @@
 				3B8CA4DB1D7D27F500BBBDA8 /* MainTableViewController.swift */,
 				3B83D1441D93C65F007F4A3D /* PageMenuViewController.swift */,
 				3B4DAD4F1D9CE8C800C30F93 /* SearchTVController.swift */,
+				3B5E262A1DC9D44600B1A2EE /* SettingViewTVController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -306,6 +313,7 @@
 		918B938BA43195BC76CA39D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B5E262C1DC9D8CA00B1A2EE /* MessageUI.framework */,
 				3B26A8C41D911A4D004F90B7 /* CoreLocation.framework */,
 				3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */,
 				FEA4FF9C1915D6D853BE8B85 /* Pods_WeatherLive.framework */,
@@ -612,6 +620,7 @@
 				3B83D1491D94D389007F4A3D /* HourlyWeatherData.swift in Sources */,
 				3B5FC7281D7E3F8800B8668D /* Location.swift in Sources */,
 				3B8CA4DC1D7D27F500BBBDA8 /* MainTableViewController.swift in Sources */,
+				3B5E262B1DC9D44600B1A2EE /* SettingViewTVController.swift in Sources */,
 				3B97237B1DB05C9100C904D4 /* SACountingLabel.swift in Sources */,
 				3B5FC7241D7E3CD900B8668D /* WeatherDBHelper.swift in Sources */,
 				3B8CA4EB1D7D4B0600BBBDA8 /* HourlyTableViewCell.swift in Sources */,
@@ -669,6 +678,7 @@
 				3B8CA4B21D7D24CF00BBBDA8 /* Base */,
 				3BF0E4241DC8CF4A00C985B9 /* ko */,
 				3BF0E4261DC8CF5F00C985B9 /* ja */,
+				3B5E262E1DCA2FDE00B1A2EE /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -689,7 +699,7 @@
 				3BF0E42A1DC8D4B400C985B9 /* ko */,
 				3BF0E42C1DC8D4B600C985B9 /* Base */,
 				3BF0E42E1DC8D4B800C985B9 /* ja */,
-				3B6148BF1DC8E0010051272C /* en */,
+				3B5E262F1DCA2FFF00B1A2EE /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -33,9 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        print("시작")
         sleep(2)
-        print("시작2번째")
         let nc = window?.rootViewController as! UINavigationController
         nc.popToRootViewControllerAnimated(true)
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.

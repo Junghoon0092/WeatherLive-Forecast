@@ -9,12 +9,14 @@
 "Release to refresh" = "書き変える";
 "Loading..." = "読む中...";
 
-"Rain" = "雨"
-"Thunderstorm" = "雷雨"
-"Drizzle" = "糠雨"
-"Snow" = "雪"
-"Atmosphere" = "霧"
-"Clear" = "清"
-"Clouds" = "雲"
-"Extreme" = "暴雨"
-"Additional" = "涼風"
+"Rain" = "雨";
+"Thunderstorm" = "雷雨";
+"Drizzle" = "糠雨";
+"Snow" = "雪";
+"Atmosphere" = "霧";
+"Clear" = "清";
+"Clouds" = "雲";
+"Extreme" = "暴雨";
+"Additional" = "涼風";
+
+"[%@Feedback]" = "[%@問い合わせ事項]";

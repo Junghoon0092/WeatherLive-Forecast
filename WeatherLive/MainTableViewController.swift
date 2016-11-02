@@ -26,10 +26,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //TODO: 추후 기능 추가 되면 활성화 예정.
-        self.navigationItem.leftBarButtonItem = nil
+    
         
         
         
