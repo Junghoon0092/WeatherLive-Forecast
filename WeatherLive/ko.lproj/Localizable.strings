@@ -20,3 +20,8 @@
 "Additional" = "산들바람";
 
 "[%@Feedback]" = "[%@문의/건의사항]";
+
+"Ftahrenheit/Celsius" = "화씨(F˚)/섭씨(C˚)";
+
+"TemperCheckFtahrenheit" = "화씨(F˚)";
+"TemperCheckCelsius" = "섭씨(C˚)";

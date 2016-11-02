@@ -11,38 +11,33 @@ import MessageUI
 
 class SettingViewTVController: UITableViewController,MFMailComposeViewControllerDelegate {
 
-    @IBOutlet weak var feedbackLabel: UILabel!
-    
-    @IBOutlet weak var feedbackCell: UITableViewCell!
+    @IBOutlet weak var tempCheckSwitch: UISwitch!
+    @IBOutlet weak var tempCheckLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeCell()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tempCheckLabel.text = NSLocalizedString("TemperCheckFtahrenheit", comment: "TemperCheckFtahrenheit")
+        
     }
     
+    @IBAction func checkSwitch(sender: AnyObject) {
+        
+        if tempCheckSwitch.on == true {
+            tempCheckLabel.text = NSLocalizedString("TemperCheckFtahrenheit", comment: "TemperCheckFtahrenheit")
+        } else {
+            tempCheckLabel.text = NSLocalizedString("TemperCheckCelsius", comment: "TemperCheckCelsius")
+        }
+        
+    }
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    func makeCell() {
-        
-        
-        feedbackLabel.text = "Send Feedback"
-        feedbackLabel.textColor = UIColor.blackColor()
-        feedbackLabel.frame = CGRectMake(15, 11 , 120, 20 )
-        feedbackCell.addSubview(feedbackLabel)
-        
-        
-        
-    }
+
     
-    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

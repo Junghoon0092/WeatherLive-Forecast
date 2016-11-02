@@ -20,3 +20,8 @@
 "Additional" = "涼風";
 
 "[%@Feedback]" = "[%@問い合わせ事項]";
+
+"Ftahrenheit/Celsius" = "華氏(F˚)/攝氏(C˚)";
+
+"TemperCheckFtahrenheit" = "華氏(F˚)";
+"TemperCheckCelsius" = "攝氏(C˚)";

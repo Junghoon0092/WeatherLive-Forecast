@@ -20,3 +20,8 @@
 "Additional" = "Additional";
 
 "[%@Feedback]" = "[%@Feedback]";
+
+"Ftahrenheit/Celsius" = "Ftahrenheit/Celsius";
+
+"TemperCheckFtahrenheit" = "Ftahrenheit";
+"TemperCheckCelsius" = "Celsius";
