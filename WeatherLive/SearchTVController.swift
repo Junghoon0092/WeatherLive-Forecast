@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import KRProgressHUD
 
 class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate {
     
@@ -54,19 +55,24 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
 
     func searchCityDownLoad(citystring: String, completed: DownloadComplete) {
         
-        let findBaseURL = "http://api.openweathermap.org/data/2.5/find?q=+\(citystring)+&type=like&appid=\(API_KEY)"
-        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
-        let json = JSON(data: url!)
-        if let dict = json.rawValue as? Dictionary<String, AnyObject> {
-            if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
-                for obj in list {
-                    let searchcity = SearchCityData(searchCity: obj)
-                    self.searchCityData.append(searchcity)
+        KRProgressHUD.show()
+        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(delay, dispatch_get_main_queue()) {
+            
+            let findBaseURL = "http://api.openweathermap.org/data/2.5/find?q=+\(citystring)+&type=like&appid=\(API_KEY)"
+            let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
+            let json = JSON(data: url!)
+            if let dict = json.rawValue as? Dictionary<String, AnyObject> {
+                if let list = dict["list"] as? [Dictionary<String, AnyObject>] {
+                    for obj in list {
+                        let searchcity = SearchCityData(searchCity: obj)
+                        self.searchCityData.append(searchcity)
+                    }
                 }
             }
+            completed()
+            KRProgressHUD.dismiss()
         }
-        completed()
-        
         
     }
     
