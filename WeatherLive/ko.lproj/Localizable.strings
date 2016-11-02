@@ -8,3 +8,13 @@
 "Pull to refresh" = "밀어서 새로고침";
 "Release to refresh" = "새로고침";
 "Loading..." = "읽는 중...";
+
+"Rain" = "비"
+"Thunderstorm" = "뇌우"
+"Drizzle" = "이슬비"
+"Snow" = "눈"
+"Atmosphere" = "안개"
+"Clear" = "맑음"
+"Clouds" = "구름"
+"Extreme" = "폭우"
+"Additional" = "산들바람"
