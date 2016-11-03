@@ -20,6 +20,7 @@ class SQLiteDataBase {
     
     var latitude: Double!
     var longitude: Double!
+    var unit : String!
     
     private init() {
         var path = "weather.sqlite"

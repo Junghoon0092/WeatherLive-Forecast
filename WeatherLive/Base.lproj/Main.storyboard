@@ -155,7 +155,9 @@
                                                 <constraint firstItem="c93-af-h4X" firstAttribute="top" secondItem="Ame-Sf-oBP" secondAttribute="topMargin" id="XQQ-2j-1zU">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                                                 </constraint>
-                                                <constraint firstItem="c93-af-h4X" firstAttribute="leading" secondItem="Igm-kr-yEj" secondAttribute="trailing" constant="20" id="ZyY-0Z-6a2"/>
+                                                <constraint firstItem="c93-af-h4X" firstAttribute="leading" secondItem="Igm-kr-yEj" secondAttribute="trailing" constant="20" id="ZyY-0Z-6a2">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
                                                 <constraint firstAttribute="bottomMargin" secondItem="c93-af-h4X" secondAttribute="bottom" id="fRS-7D-VVP">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
                                                 </constraint>
