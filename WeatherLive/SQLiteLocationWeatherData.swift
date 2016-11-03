@@ -172,8 +172,15 @@ class SQLiteLocationWeatherData {
     
     
     class func SQLiteDownload (lat : String, lon : String, completed : ((SQLiteLocationWeatherData) -> Void) ) {
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        var unit : String = ""
+        if sendValue?.tempCheck == true {
+            unit = "metric"
+        } else {
+            unit = "imperial"
+        }
 
-        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=metric&appid=\(API_KEY)"
+        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=\(unit)&appid=\(API_KEY)"
         let url = NSData(contentsOfURL: NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
         let citylabel = "\(json["city"]["name"].string!).\(json["city"]["country"].string!)"

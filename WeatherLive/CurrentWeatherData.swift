@@ -231,8 +231,15 @@ class CurrentWeatherData {
     }
     
     func downloadSwiftyJSONData(lat : String, long : String) {
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        var unit : String = ""
+        if sendValue?.tempCheck == true {
+            unit = "metric"
+        } else {
+            unit = "imperial"
+        }
         
-        let findBaseURL = "\(CURRENT_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        let findBaseURL = "\(CURRENT_BASE)lat=\(lat)&lon=\(long)&units=\(unit)&appid=\(API_KEY)"
         
         let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
@@ -248,8 +255,15 @@ class CurrentWeatherData {
     }
     
     func downloadSwiftyJSONDataForcasting(lat : String, long : String) {
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        var unit : String = ""
+        if sendValue?.tempCheck == true {
+            unit = "metric"
+        } else {
+            unit = "imperial"
+        }
         
-        let findBaseURL = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        let findBaseURL = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=\(unit)&appid=\(API_KEY)"
         
         let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)

@@ -34,9 +34,16 @@ class DailyTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     func downloadDailyForecast(lat : String, long : String, completed: DownloadComplete) {
-
         
-        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(long)&units=metric&appid=\(API_KEY)"
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        var unit : String = ""
+        if sendValue?.tempCheck == true {
+            unit = "metric"
+        } else {
+            unit = "imperial"
+        }
+        
+        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(long)&units=\(unit)&appid=\(API_KEY)"
         let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
     
         let json = JSON(data: url!)
