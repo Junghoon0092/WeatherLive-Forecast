@@ -16,11 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var latitude : String! = ""
     var longitude : String! = ""
     var cityName : String! = ""
+    var tempCheck : Bool = true
+    
+    var settingItems = [SettingItem]()
     
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
+        let database = SQLiteDataBase.sharedInstance
+        
+        do {
+            try database.createTables()
+            settingItems = try SettingDBHelper.finaAll()!
+            for settingItem in settingItems {
+                if settingItem.getTempCheck() == 0 {
+                    self.tempCheck = false
+                    print("끄기")
+                } else {
+                    self.tempCheck = true
+                    print("켜기")
+                }
+            }
+        }
+        catch _ {
+            print("Delegate SQLite Access Error")
+        }
+
+        
+        
         // Override point for customization after application launch.
         return true
     }

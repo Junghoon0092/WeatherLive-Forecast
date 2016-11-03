@@ -48,15 +48,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             self!.findLoactionItem()
             self?.tableView.es_stopPullToRefresh(completion: true)
         }
-        
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector(appMovedToBackgroud()), name: "good" , object: nil)
-
-    }
-
     
-    func appMovedToBackgroud() {
-        print("backgroud")
     }
     
     func getLoactionItem() {
@@ -95,7 +87,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             self.findLoactionItem()
             KRProgressHUD.dismiss()
             self.tableView.reloadData()
-            print("Check")
         }
 
     }

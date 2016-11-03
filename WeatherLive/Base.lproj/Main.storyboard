@@ -79,7 +79,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c93-af-h4X">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c93-af-h4X">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="Eob-5R-a9S"/>
@@ -89,8 +89,7 @@
                                                             <exclude reference="Eob-5R-a9S"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="331" y="7" width="51" height="29.5"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Eob-5R-a9S"/>
                                                         </mask>
@@ -150,6 +149,7 @@
                                                 <constraint firstItem="3wW-ud-xK0" firstAttribute="leading" secondItem="Ame-Sf-oBP" secondAttribute="leadingMargin" constant="15" id="3ZM-FQ-uJH">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="9"/>
                                                 </constraint>
+                                                <constraint firstItem="c93-af-h4X" firstAttribute="centerY" secondItem="Ame-Sf-oBP" secondAttribute="centerY" id="E12-jG-laZ"/>
                                                 <constraint firstItem="Igm-kr-yEj" firstAttribute="centerY" secondItem="Ame-Sf-oBP" secondAttribute="centerY" id="FfQ-cJ-2Tl"/>
                                                 <constraint firstItem="3wW-ud-xK0" firstAttribute="centerY" secondItem="Ame-Sf-oBP" secondAttribute="centerY" id="GIU-ZG-5bm"/>
                                                 <constraint firstItem="c93-af-h4X" firstAttribute="top" secondItem="Ame-Sf-oBP" secondAttribute="topMargin" id="XQQ-2j-1zU">
@@ -168,13 +168,14 @@
                                                     <exclude reference="Igm-kr-yEj"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="3ZM-FQ-uJH"/>
+                                                    <exclude reference="GIU-ZG-5bm"/>
+                                                    <exclude reference="FfQ-cJ-2Tl"/>
+                                                    <exclude reference="E12-jG-laZ"/>
                                                     <exclude reference="XQQ-2j-1zU"/>
                                                     <exclude reference="ZyY-0Z-6a2"/>
                                                     <exclude reference="fRS-7D-VVP"/>
                                                     <exclude reference="mm3-e8-QgS"/>
-                                                    <exclude reference="3ZM-FQ-uJH"/>
-                                                    <exclude reference="GIU-ZG-5bm"/>
-                                                    <exclude reference="FfQ-cJ-2Tl"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -184,13 +185,14 @@
                                                     <include reference="Igm-kr-yEj"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="XQQ-2j-1zU"/>
-                                                    <include reference="ZyY-0Z-6a2"/>
-                                                    <include reference="fRS-7D-VVP"/>
-                                                    <include reference="mm3-e8-QgS"/>
                                                     <include reference="3ZM-FQ-uJH"/>
                                                     <include reference="GIU-ZG-5bm"/>
                                                     <include reference="FfQ-cJ-2Tl"/>
+                                                    <include reference="E12-jG-laZ"/>
+                                                    <exclude reference="XQQ-2j-1zU"/>
+                                                    <include reference="ZyY-0Z-6a2"/>
+                                                    <exclude reference="fRS-7D-VVP"/>
+                                                    <include reference="mm3-e8-QgS"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -231,7 +233,13 @@
                             <outlet property="delegate" destination="Xl7-db-wjN" id="2Kh-EV-F0F"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Setting" id="b2w-Gr-7qA"/>
+                    <navigationItem key="navigationItem" title="Setting" id="b2w-Gr-7qA">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Hxw-vI-1Fg">
+                            <connections>
+                                <action selector="settingDonebutton:" destination="Xl7-db-wjN" id="qnb-rm-9fw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tempCheckLabel" destination="Igm-kr-yEj" id="pO7-oi-6cE"/>
                         <outlet property="tempCheckSwitch" destination="c93-af-h4X" id="KrN-1h-fb6"/>

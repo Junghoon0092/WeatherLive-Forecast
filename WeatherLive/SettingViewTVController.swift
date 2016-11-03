@@ -14,18 +14,61 @@ class SettingViewTVController: UITableViewController,MFMailComposeViewController
     @IBOutlet weak var tempCheckSwitch: UISwitch!
     @IBOutlet weak var tempCheckLabel: UILabel!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        if sendValue?.tempCheck == true {
+            tempCheckSwitch.on = true
+            tempCheckLabel.text = NSLocalizedString("TemperCheckCelsius", comment: "TemperCheckCelsius")
+            
+            
+        } else {
+            tempCheckSwitch.on = false
+            tempCheckLabel.text = NSLocalizedString("TemperCheckFtahrenheit", comment: "TemperCheckFtahrenheit")
+            
+        }
 
-        tempCheckLabel.text = NSLocalizedString("TemperCheckFtahrenheit", comment: "TemperCheckFtahrenheit")
+        
         
     }
     
     @IBAction func checkSwitch(sender: AnyObject) {
         
-        if tempCheckSwitch.on == true {
+        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        if tempCheckSwitch.on == false {
+            do {
+                _ = try SettingDBHelper.update(SettingItem(id: 0, tempCheck: 0))
+                sendValue?.tempCheck = false
+                print("false / update : 0번")
+            } catch {
+                do {
+                    _ = try SettingDBHelper.insert(SettingItem(id: 0, tempCheck: 0))
+                    sendValue?.tempCheck = false
+                    print("false / insert : 0번")
+                }catch {
+                    print("false / insert : Error")
+                }
+            }
             tempCheckLabel.text = NSLocalizedString("TemperCheckFtahrenheit", comment: "TemperCheckFtahrenheit")
         } else {
+            do {
+                _ = try SettingDBHelper.update(SettingItem(id: 0, tempCheck: 1))
+                sendValue?.tempCheck = true
+                print("true / update : 1번")
+            } catch {
+                do {
+                    _ = try SettingDBHelper.insert(SettingItem(id: 0, tempCheck: 1))
+                    sendValue?.tempCheck = true
+                    print("true / insert : 1번")
+                }catch {
+                    print("false / insert : Error")
+                }
+            }
             tempCheckLabel.text = NSLocalizedString("TemperCheckCelsius", comment: "TemperCheckCelsius")
         }
         
@@ -36,7 +79,11 @@ class SettingViewTVController: UITableViewController,MFMailComposeViewController
     }
 
 
-    
+    @IBAction func settingDonebutton(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
    
     
     override func didReceiveMemoryWarning() {

@@ -11,11 +11,9 @@ import Foundation
 
 class SettingItem {
     var id : Int64!
-    var tempCheck : String!
+    var tempCheck : Int64!
 
-    
-    
-    init (id : Int64, tempCheck : String ) {
+    init (id : Int64, tempCheck : Int64 ) {
         self.id = id
         self.tempCheck = tempCheck
     }
@@ -23,7 +21,7 @@ class SettingItem {
     func getId() -> Int64 {
         return id!
     }
-    func getTempCheck() -> String {
+    func getTempCheck() -> Int64 {
         return tempCheck!
     }
 

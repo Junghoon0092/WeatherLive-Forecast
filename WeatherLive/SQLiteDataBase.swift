@@ -40,6 +40,7 @@ class SQLiteDataBase {
     func createTables() throws {
         do {
             try WeatherDBHelper.createTable()
+            try SettingDBHelper.createTable()
         } catch {
             throw DataAccessError.Data_Connection_Error
         }
