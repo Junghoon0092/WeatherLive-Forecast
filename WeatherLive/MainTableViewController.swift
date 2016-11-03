@@ -104,8 +104,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             currentLocation = locationManger.location
             
-            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            SQLiteDataBase.sharedInstance.latitude = currentLocation.coordinate.latitude
+            SQLiteDataBase.sharedInstance.longitude = currentLocation.coordinate.longitude
             LocationWeatherData.download({ (locationWeatherData) in
                 self.locationWeatherData = locationWeatherData
             })
@@ -219,8 +219,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
             
             let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
 
-            sendValue?.longitude = "\(Location.sharedInstance.longitude)"
-            sendValue?.latitude = "\(Location.sharedInstance.latitude)"
+            sendValue?.longitude = "\(SQLiteDataBase.sharedInstance.longitude)"
+            sendValue?.latitude = "\(SQLiteDataBase.sharedInstance.latitude)"
             sendValue?.cityName = locationWeatherData?.cityLabel
         }
         

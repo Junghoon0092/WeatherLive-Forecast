@@ -2,6 +2,7 @@
 
 import Foundation
 import SQLite
+import CoreLocation
 
 enum DataAccessError : ErrorType {
     case Data_Connection_Error
@@ -11,10 +12,14 @@ enum DataAccessError : ErrorType {
     case Nil_In_Data
 }
 
+
 class SQLiteDataBase {
     
     static let sharedInstance = SQLiteDataBase()
     let DB : Connection?
+    
+    var latitude: Double!
+    var longitude: Double!
     
     private init() {
         var path = "weather.sqlite"
