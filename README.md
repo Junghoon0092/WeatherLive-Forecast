@@ -8,17 +8,17 @@
 2006/03 ~ 2016/08 평택 LG전자 도급사 근무 (10년) 선임연구원(과장)
 
 - 주요 업무
-+ LG 전자에서 판매되는 Box Design. 
-  + Box 내부 완충 / 구조 설계 
-  + Box Design
-  + 재료비 검토
-  + 컨테이너 장입 수량 검토.
+ + LG 전자에서 판매되는 Box Design. 
+   + Box 내부 완충 / 구조 설계 
+   + Box Design
+   + 재료비 검토
+   + 컨테이너 장입 수량 검토.
 
-+ 사용 기술
- + Creo 2.0 ( Pro-e )
- + Adobe Illustrator
- + Adobe Photoshop
- + AutoCAD 
+ + 사용 기술
+  + Creo 2.0 ( Pro-e )
+  + Adobe Illustrator
+  + Adobe Photoshop
+  + AutoCAD 
 
 
 
