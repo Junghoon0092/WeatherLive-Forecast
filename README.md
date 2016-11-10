@@ -21,13 +21,18 @@
  + AutoCAD 
  
 ### iOS 개발자가 되기 위해서
-- 2015 03 ~ 06 (약 4개월) SBS 게임아카데미 학원 수강 ( Obj-C )
-- 2016 01 ~ 05 (약 5개월) 스터디 그룹 주최함.(Swift)
+- 2015 03월 ~ 06월  SBS 게임아카데미 학원 수강 ( Obj-C )
+- 2016 02월 ~ 05월  스터디 그룹 주최함.(Swift)
 
-- 2016 08 ~ 10 포트폴리오 iOS App 개발
+- 2016 08월 ~ 10월 포트폴리오 iOS App 개발
+- 2016 11월 : 날씨 App 스토어 등록 함.
 
-
-
+### WeatherLive-Forecast에 사용된 기술
+- Swift 2.3
+- AutoLayout ( iPhone만 대응함 )
+- 3rd Part Library
+ + KRProgressHUD : JSON Data 을 읽어 오는 동안 표시 되도록 사용
+ + SQLite.swift : 원하는 도시 검색하여 위도, 경도, 도시 이름을 저장 / 화씨/섭씨 Switch 버튼 저장 용도
 
 # WeatherLive-Forecast
 WeatherLive-Forecast
