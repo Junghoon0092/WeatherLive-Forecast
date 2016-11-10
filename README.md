@@ -1,7 +1,7 @@
 # Jung Hoon Choi
 ## soon-to-be iOS Developer
 
-[![email](https://img.shields.io/badge/email-yongdoree-00059f.svg)](mailto:coolmint.swift@gmail.com)
+[![email](https://img.shields.io/badge/email-Junghoon-00059f.svg)](mailto:coolmint.swift@gmail.com)
 
 # WeatherLive-Forecast
 WeatherLive-Forecast
