@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for settingItem in settingItems {
                 if settingItem.getTempCheck() == 0 {
                     self.tempCheck = false
-                    print("끄기")
+                
                 } else {
                     self.tempCheck = true
                     print("켜기")
