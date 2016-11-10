@@ -4,7 +4,9 @@
 ### Contacts
 [![email](https://img.shields.io/badge/email-Junghoon-00059f.svg)](mailto:coolmint.swift@gmail.com)
 
-### ㅎ허경ㅁ.
+### 경험
+2006/03 ~ 2016/08 평택 LG전자 도급사 근무 (10년)
+
 
 
 # WeatherLive-Forecast
