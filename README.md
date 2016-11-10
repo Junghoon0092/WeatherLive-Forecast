@@ -30,13 +30,16 @@
 ### WeatherLive-Forecast에 사용된 기술
 - Swift 2.3
 - AutoLayout ( iPhone만 대응함 )
+- Localizing : English / Korean / Japanese
 - 3rd Part Library
- + KRProgressHUD : JSON Data 을 읽어 오는 동안 표시 되도록 사용
- + SQLite.swift : 원하는 도시 검색하여 위도, 경도, 도시 이름을 저장 / 화씨/섭씨 Switch 버튼 저장 용도
-
+ + KRProgressHUD : JSON Data 을 읽어 오는 동안 표시 되도록 사용.
+ + SQLite.swift : 원하는 도시 검색하여 위도, 경도, 도시 이름을 저장 / 화씨/섭씨 Switch 버튼 저장 용도.
+ + SwiftPages : Cell 선택 후 Detail / Houly / Daily 을 표현하기 위해서 사용.
+ + ESPullToRefresh : MainTableView을 아래 당겨서 테이블 뷰 재 생성함.
+ + SwiftString : String을 자르고 붙이고 하는 용도록 사용
+ 
 # WeatherLive-Forecast
 WeatherLive-Forecast
-
 
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/7751242/20178621/677c99e4-a795-11e6-9df2-dc8b6e791914.jpg" align="WeatherLive-Forecast Screen Shot" height="300"></a>
 <a href="url"><img src="https://cloud.githubusercontent.com/assets/7751242/20178866/81daeaf6-a796-11e6-9021-6e07cbaea00b.jpg" align="WeatherLive-Forecast Screen Shot" height="300"></a>
