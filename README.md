@@ -36,7 +36,7 @@
  + SQLite.swift : 원하는 도시 검색하여 위도, 경도, 도시 이름을 저장 / 화씨/섭씨 Switch 버튼 저장 용도.
  + SwiftPages : Cell 선택 후 Detail / Houly / Daily 을 표현하기 위해서 사용.
  + ESPullToRefresh : MainTableView을 아래 당겨서 테이블 뷰 재 생성함.
- + SwiftString : String을 자르고 붙이고 하는 용도록 사용
+ + SwiftString : String을 자르고 붙이고 용도 사용
  
 # WeatherLive-Forecast
 WeatherLive-Forecast
