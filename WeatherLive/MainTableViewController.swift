@@ -11,6 +11,30 @@ import KRProgressHUD
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
 
 
+    @IBAction func settingButtonClick(sender: AnyObject) {
+        
+        
+        let setting = self.storyboard?.instantiateViewControllerWithIdentifier("22") as! SettingViewTVController
+        
+        let settingview : UINavigationController = UINavigationController(rootViewController: setting)
+        
+        setting.view.alpha = 0.0
+        settingview.view.alpha = 0.0
+        
+        UIView.animateWithDuration(6) {
+            
+            setting.view.alpha = 1.0
+            settingview.view.alpha = 1.0
+            
+            self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            self.presentViewController(settingview, animated: false, completion: nil)
+        }
+        
+        
+        
+    }
+    
+    
     let locationManger = CLLocationManager()
     var currentLocation: CLLocation!
     
@@ -27,9 +51,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
-        
-        
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()
@@ -92,6 +113,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     }
 
     func loactionAuthstatus() {
+        
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             currentLocation = locationManger.location
             
@@ -133,8 +155,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
         switch indexPath.row {
         case 0 :
             let cell = tableView.dequeueReusableCellWithIdentifier("MainTableViewCell", forIndexPath: indexPath) as! MainTableViewCell
-            
-            
+
             cell.cityLabel.text = self.locationWeatherData?.cityLabel
             cell.tempLabel.text = self.locationWeatherData?.tempLabel
 

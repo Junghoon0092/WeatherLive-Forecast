@@ -40,7 +40,7 @@ class LocationWeatherData {
         if _tempLabel == nil {
             return ""
         }
-        return "\("\(_tempLabel.doubleToRoundUP(1))".split(".")[0])"
+        return "\("\(_tempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     
 

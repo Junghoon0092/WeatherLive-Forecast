@@ -10,7 +10,7 @@
         <!--Setting-->
         <scene sceneID="d5Z-y9-eAr">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Xl7-db-wjN" customClass="SettingViewTVController" customModule="WeatherLive" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="22" clearsSelectionOnViewWillAppear="NO" id="Xl7-db-wjN" customClass="SettingViewTVController" customModule="WeatherLive" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="cf6-aS-qJ8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,9 @@
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="8WI-7e-ymz"/>
-                                                        <constraint firstAttribute="width" constant="119" id="LdU-LM-54F"/>
+                                                        <constraint firstAttribute="width" constant="119" id="LdU-LM-54F">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="200"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,14 +172,14 @@
                                                     <exclude reference="Igm-kr-yEj"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="3ZM-FQ-uJH"/>
-                                                    <exclude reference="GIU-ZG-5bm"/>
-                                                    <exclude reference="FfQ-cJ-2Tl"/>
                                                     <exclude reference="E12-jG-laZ"/>
                                                     <exclude reference="XQQ-2j-1zU"/>
                                                     <exclude reference="ZyY-0Z-6a2"/>
                                                     <exclude reference="fRS-7D-VVP"/>
                                                     <exclude reference="mm3-e8-QgS"/>
+                                                    <exclude reference="3ZM-FQ-uJH"/>
+                                                    <exclude reference="GIU-ZG-5bm"/>
+                                                    <exclude reference="FfQ-cJ-2Tl"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -187,14 +189,14 @@
                                                     <include reference="Igm-kr-yEj"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="3ZM-FQ-uJH"/>
-                                                    <include reference="GIU-ZG-5bm"/>
-                                                    <include reference="FfQ-cJ-2Tl"/>
                                                     <include reference="E12-jG-laZ"/>
                                                     <exclude reference="XQQ-2j-1zU"/>
                                                     <include reference="ZyY-0Z-6a2"/>
                                                     <exclude reference="fRS-7D-VVP"/>
                                                     <include reference="mm3-e8-QgS"/>
+                                                    <include reference="3ZM-FQ-uJH"/>
+                                                    <include reference="GIU-ZG-5bm"/>
+                                                    <include reference="FfQ-cJ-2Tl"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1435,7 +1437,7 @@
                         <barButtonItem key="leftBarButtonItem" image="LeftSettingIcon" id="v0y-EE-NAt">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="84q-Mm-UwW" kind="presentation" id="Gbi-1W-INw"/>
+                                <action selector="settingButtonClick:" destination="UGE-zm-KIC" id="Zlh-3p-kcx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="RightSearchIcon" id="a73-ed-xEw">
@@ -3375,7 +3377,7 @@
         <!--Navigation Controller-->
         <scene sceneID="mbF-V5-uak">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="84q-Mm-UwW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="11" automaticallyAdjustsScrollViewInsets="NO" id="84q-Mm-UwW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZGe-Yf-gef">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
