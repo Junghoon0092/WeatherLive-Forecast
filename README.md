@@ -28,7 +28,7 @@
 - 2016 11월 : 날씨 App 스토어 등록 함.
 
 ### WeatherLive-Forecast에 사용된 기술
-- Swift 2.3
+- Swift 2.x
 - AutoLayout ( iPhone만 대응함 )
 - Localizing : English / Korean / Japanese
 - 3rd Part Library
