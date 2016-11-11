@@ -1,5 +1,5 @@
-# Jung Hoon Choi
-## soon-to-be iOS Developer
+# 최정훈(Jung Hoon Choi)
+## 신입 iOS개발자로 지원합니다
 
 ### Contacts
 [![email](https://img.shields.io/badge/email-Junghoon-00059f.svg)](mailto:coolmint.swift@gmail.com)
