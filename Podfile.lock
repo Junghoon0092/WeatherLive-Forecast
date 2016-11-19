@@ -27,6 +27,7 @@ PODS:
   - PMAlertController (1.0.5)
   - SQLite.swift (0.10.1)
   - SwiftPages (1.1.0)
+  - SwiftString (0.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - PMAlertController
   - SQLite.swift
   - SwiftPages
+  - SwiftString
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -56,8 +58,9 @@ SPEC CHECKSUMS:
   PMAlertController: 779265aacbceca054e27ef4f164169e697976d5a
   SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
   SwiftPages: 1b24565cb91f24f4f912fbd9878a9c74b41a2ca6
+  SwiftString: ec9c31c55b2aa147a1154f5f5f8483dc71e3165f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: c4890ba5b3b927bd3d2fc7bc749af40acbe2950d
+PODFILE CHECKSUM: 814501ef37482efc9e0f17b1f66392b3b321f939
 
 COCOAPODS: 1.0.1

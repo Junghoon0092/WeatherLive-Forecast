@@ -18,6 +18,7 @@ pod "KRProgressHUD"
 pod 'PMAlertController'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
+pod ‘SwiftString’
 
   # Pods for WeatherLive
 

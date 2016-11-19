@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA4FF9C1915D6D853BE8B85 /* Pods_WeatherLive.framework */; };
 		30836A0C6DAC1DC460BC15EF /* Pods_WeatherLiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */; };
+		3B02C58D1DE0200C00FC96A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */; };
 		3B02E68E1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */; };
 		3B26A8BE1D90D021004F90B7 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */; };
 		3B4DAD4A1D9C9DF400C30F93 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD491D9C9DF400C30F93 /* DailyWeatherData.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherLiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteLocationWeatherData.swift; sourceTree = "<group>"; };
 		3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -225,6 +227,7 @@
 		3B8CA4AC1D7D24CF00BBBDA8 /* WeatherLive */ = {
 			isa = PBXGroup;
 			children = (
+				3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */,
 				3B8CA4AD1D7D24CF00BBBDA8 /* AppDelegate.swift */,
 				3B4335411DAF6A320049F6C4 /* Frameworks_Library */,
 				3B8CA4E11D7D48B600BBBDA8 /* Source */,
@@ -487,6 +490,7 @@
 			files = (
 				3BF0E4291DC8D4B400C985B9 /* Localizable.strings in Resources */,
 				3B8CA4B81D7D24CF00BBBDA8 /* LaunchScreen.storyboard in Resources */,
+				3B02C58D1DE0200C00FC96A5 /* GoogleService-Info.plist in Resources */,
 				3B8CA4B51D7D24CF00BBBDA8 /* Assets.xcassets in Resources */,
 				3B8CA4B31D7D24CF00BBBDA8 /* Main.storyboard in Resources */,
 			);
