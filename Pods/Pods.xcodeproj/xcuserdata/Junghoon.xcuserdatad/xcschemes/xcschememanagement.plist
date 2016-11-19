@@ -49,32 +49,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SACountingLabel-SACountingLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SACountingLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SQLite.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>SwiftPages.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SwiftString-SwiftString.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SwiftString.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -97,17 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>442118D05D2F92513B0160B2E23CA724</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>474A67AEE8F1B654466FDF444CC16B76</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>50E52262E92B32072393C2EC1AEFE2B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,17 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>72F03C674D7DE078C9DE8992117A8768</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7ABBD0E5FE69F114825C1D5AE37B4B6D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7E9CC1AE1BEFD38E27DB18038759B3D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A021E5E07B87719AB0EBA528D3A1A1B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B76DC652DBD52C880BF7146FA3EB2089</key>
+		<key>B496C444004811720DB2F7245B6FAD82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,12 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD84B426AF74551AFD3A823E42BE3ECD</key>
+		<key>C2AB96F7E8DD8856CD05BD74C0ABBF9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2AB96F7E8DD8856CD05BD74C0ABBF9C</key>
+		<key>C3FF459105EF66F9369B7CC97AA65B2B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,11 +13,11 @@ pod 'SwiftyJSON'
 pod 'Alamofire-SwiftyJSON'
 pod 'SQLite.swift'
 pod 'SwiftPages'
-pod 'SwiftString'
 pod "ESPullToRefresh"
 pod "KRProgressHUD"
-pod "SACountingLabel"
 pod 'PMAlertController'
+pod 'Firebase/Core'
+pod 'Firebase/AdMob'
 
   # Pods for WeatherLive
 
