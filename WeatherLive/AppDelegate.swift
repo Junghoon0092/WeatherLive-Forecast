@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        GADMobileAds.configureWithApplicationID("ca-app-pub-3163253994374354/5176385829")
     
         let database = SQLiteDataBase.sharedInstance
         

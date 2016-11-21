@@ -9,10 +9,14 @@
 import UIKit
 import SwiftyJSON
 import KRProgressHUD
+import Firebase
 
-class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate {
+class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate, GADBannerViewDelegate  {
     
     var citySearchString : String!
+    
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     
     @IBOutlet weak var tableview: UITableView!
     var searchCityData = [SearchCityData]()

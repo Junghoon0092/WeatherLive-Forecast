@@ -4,35 +4,14 @@ import CoreLocation
 import ESPullToRefresh
 import SwiftyJSON
 import KRProgressHUD
+import Firebase
 
 
 
 
-class MainTableViewController: UITableViewController, CLLocationManagerDelegate {
+class MainTableViewController: UITableViewController, CLLocationManagerDelegate, GADBannerViewDelegate {
 
-
-    @IBAction func settingButtonClick(sender: AnyObject) {
-        
-        
-        let setting = self.storyboard?.instantiateViewControllerWithIdentifier("22") as! SettingViewTVController
-        
-        let settingview : UINavigationController = UINavigationController(rootViewController: setting)
-        
-        setting.view.alpha = 0.0
-        settingview.view.alpha = 0.0
-        
-        UIView.animateWithDuration(6) {
-            
-            setting.view.alpha = 1.0
-            settingview.view.alpha = 1.0
-            
-            self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-            self.presentViewController(settingview, animated: false, completion: nil)
-        }
-        
-        
-        
-    }
+    @IBOutlet weak var bannerView : GADBannerView!
     
     
     let locationManger = CLLocationManager()
@@ -46,11 +25,32 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate 
     
     var locationItems = [LocationItem]()
 
-    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+
+    func adBannerViewInit() {
+        
+        
+        view.addSubview(bannerView)
+        bannerView.adSize.size.height = 60
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-3163253994374354/5176385829"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
+        bannerView.hidden = false
+        
+    }
     
+    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+        
+        bannerView.hidden = true
+    
+        
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        adBannerViewInit()
+        
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
         locationManger.requestWhenInUseAuthorization()

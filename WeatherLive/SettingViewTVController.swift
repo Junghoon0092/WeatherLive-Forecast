@@ -95,49 +95,74 @@ class SettingViewTVController: UITableViewController,MFMailComposeViewController
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            return 2
+        case 2:
+            return 3
+        default:
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        
+        switch section {
+        case 0:
+            return "Information"
+        case 1:
+            return "Remove Ad"
+        case 2:
+            return "Support Developer"
+        default:
+            return ""
+        }
     }
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        switch indexPath.row {
-        case 0 :
+        
+        if indexPath.section == 0 {
             
-            let infoDic = NSBundle.mainBundle().infoDictionary!
-            let appName = infoDic["CFBundleName"] as! String
-            let appVersion = infoDic["CFBundleShortVersionString"] as! String
-            let appOSVersion = UIDevice.currentDevice().systemVersion
-            
-            let mailComposerVC = MFMailComposeViewController()
-            mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setToRecipients(["coolmint.swift@gmail.com"])
-            mailComposerVC.setSubject(String(format: NSLocalizedString("[%@-Feedback]", comment: "[%@-Feedback]"), appName ))
-   
-            mailComposerVC.setMessageBody(String(format: NSLocalizedString("\n \n \nThank you for your feedback. \n App Name : %@ \n App Version : %@ \n iOS Version : %@", comment: "1"), appName, appVersion, appOSVersion ), isHTML: false)
-            
-            if MFMailComposeViewController.canSendMail() {
-                self.presentViewController(mailComposerVC, animated: true, completion: nil)
-                print("can send mail")
+            switch indexPath.row {
+            case 0 :
                 
-            } else {
+                let infoDic = NSBundle.mainBundle().infoDictionary!
+                let appName = infoDic["CFBundleName"] as! String
+                let appVersion = infoDic["CFBundleShortVersionString"] as! String
+                let appOSVersion = UIDevice.currentDevice().systemVersion
                 
-                let sendMailErrorAlert = UIAlertController(title: "Mail Fail", message: "Please, recheck your E-Mail Account", preferredStyle: .Alert )
-                sendMailErrorAlert.actions
+                let mailComposerVC = MFMailComposeViewController()
+                mailComposerVC.mailComposeDelegate = self
+                mailComposerVC.setToRecipients(["coolmint.swift@gmail.com"])
+                mailComposerVC.setSubject(String(format: NSLocalizedString("[%@-Feedback]", comment: "[%@-Feedback]"), appName ))
                 
+                mailComposerVC.setMessageBody(String(format: NSLocalizedString("\n \n \nThank you for your feedback. \n App Name : %@ \n App Version : %@ \n iOS Version : %@", comment: "1"), appName, appVersion, appOSVersion ), isHTML: false)
+                
+                if MFMailComposeViewController.canSendMail() {
+                    self.presentViewController(mailComposerVC, animated: true, completion: nil)
+                    print("can send mail")
+                    
+                } else {
+                    
+                    let sendMailErrorAlert = UIAlertController(title: "Mail Fail", message: "Please, recheck your E-Mail Account", preferredStyle: .Alert )
+                    sendMailErrorAlert.actions
+                    
+                }
+            default:
+                print("00")
             }
-        default:
-            print("00")
+            
         }
+        
         
     }
 

@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import Alamofire
+import Firebase
 
-class DetailCollectionViewController: UICollectionViewController ,UICollectionViewDelegateFlowLayout {
-    
-    
+class DetailCollectionViewController: UICollectionViewController ,UICollectionViewDelegateFlowLayout{
+
+
+
     var currentWeatherData = CurrentWeatherData()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         self.collectionView?.backgroundColor = UIColor.whiteColor()
         
@@ -25,13 +27,10 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
         currentWeatherData.downloadSwiftyJSONData((sendValue?.latitude)!, long: (sendValue?.longitude)!)
         currentWeatherData.downloadSwiftyJSONDataForcasting((sendValue?.latitude)!, long: (sendValue?.longitude)!)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+
         
         
-        // Register cell classes
-       
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
