@@ -11,6 +11,7 @@
 		30836A0C6DAC1DC460BC15EF /* Pods_WeatherLiveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */; };
 		3B02C58D1DE0200C00FC96A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */; };
 		3B02E68E1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */; };
+		3B0815DE1DE2711C00365863 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0815DD1DE2711C00365863 /* StoreKit.framework */; };
 		3B26A8BE1D90D021004F90B7 /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */; };
 		3B4DAD4A1D9C9DF400C30F93 /* DailyWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD491D9C9DF400C30F93 /* DailyWeatherData.swift */; };
 		3B4DAD501D9CE8C800C30F93 /* SearchTVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4DAD4F1D9CE8C800C30F93 /* SearchTVController.swift */; };
@@ -71,6 +72,7 @@
 		01D68CEBB4CAFE487BB554B4 /* Pods_WeatherLiveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherLiveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B02E68D1DAB844E0073CFEB /* SQLiteLocationWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteLocationWeatherData.swift; sourceTree = "<group>"; };
+		3B0815DD1DE2711C00365863 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3B26A8BD1D90D021004F90B7 /* CurrentWeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		3B26A8C41D911A4D004F90B7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -140,6 +142,7 @@
 				3B5E262D1DC9D8CA00B1A2EE /* MessageUI.framework in Frameworks */,
 				3B7441121D9122BD005E6958 /* CoreLocation.framework in Frameworks */,
 				2DFF5BF474BC9589949DEFBA /* Pods_WeatherLive.framework in Frameworks */,
+				3B0815DE1DE2711C00365863 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +346,7 @@
 		918B938BA43195BC76CA39D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B0815DD1DE2711C00365863 /* StoreKit.framework */,
 				3B5E262C1DC9D8CA00B1A2EE /* MessageUI.framework */,
 				3B26A8C41D911A4D004F90B7 /* CoreLocation.framework */,
 				3B26A8C21D90FFAC004F90B7 /* LocalAuthentication.framework */,
@@ -446,6 +450,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
 							};
 						};
 					};

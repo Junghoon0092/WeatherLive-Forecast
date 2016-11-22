@@ -8,16 +8,21 @@
 
 import UIKit
 import MessageUI
+import StoreKit
 
-class SettingViewTVController: UITableViewController,MFMailComposeViewControllerDelegate {
+class SettingViewTVController: UITableViewController,MFMailComposeViewControllerDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
 
     @IBOutlet weak var tempCheckSwitch: UISwitch!
     @IBOutlet weak var tempCheckLabel: UILabel!
     
-
+    let productIdentifiers = "remove"
+    var product : SKProduct?
+    // 구입여부 확인 할 수 있는 라벨 추가.
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        getProductInfo()
         
         let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
         
@@ -161,14 +166,80 @@ class SettingViewTVController: UITableViewController,MFMailComposeViewController
                 print("00")
             }
             
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 0:
+                
+                let payment = SKPayment(product: product!)
+                print(payment)
+                SKPaymentQueue.defaultQueue().addPayment(payment)
+            default:
+                break
+            }
+            
         }
         
         
     }
-
-
-
+    func getProductInfo() {
+        if SKPaymentQueue.canMakePayments() {
+            let request = SKProductsRequest(productIdentifiers: NSSet(objects: self.productIdentifiers) as! Set<String>)
+            request.delegate = self
+            request.start()
+        } else {
+            print("설정에서 인앱결재를 활성화 해주세요.")
+        }
+    }
     
+    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        
+        var products = response.products
+        
+        if products.count != 0 {
+            product = products[0] as SKProduct
+            // 구입여부 버튼 활성화
+            print("\(product?.localizedTitle), \(product?.localizedDescription)")
+        } else {
+            print("\(product?.localizedTitle) : 애플 계정에 등록된 상품정보 확인 불가")
+        }
+        let productList = response.invalidProductIdentifiers
+        for productitem in productList {
+            print("Product not found : \(productitem)")
+        }
+        
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions as [SKPaymentTransaction] {
+            switch transaction.transactionState {
+            case SKPaymentTransactionState.Purchased:
+                self.unlockFeature()
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+            case SKPaymentTransactionState.Failed:
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+            default:
+                break
+            }
+        }
+    }
+    
+    
+    func unlockFeature() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.mainview.enableAdMob()
+        appDelegate.mainview.loadViewIfNeeded()
+        // 구매라벨에 구매완료로 변경함.
+        print("상품이 구매가 완료 되었습니다.")
+    }
+
+}
+
+
+
+
+
+
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
@@ -224,4 +295,3 @@ class SettingViewTVController: UITableViewController,MFMailComposeViewController
     }
     */
 
-}

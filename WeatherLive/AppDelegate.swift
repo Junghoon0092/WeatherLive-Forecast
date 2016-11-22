@@ -20,8 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var longitude : String! = ""
     var cityName : String! = ""
     var tempCheck : Bool = true
+    var adMob : Bool = true
     
     var settingItems = [SettingItem]()
+    
+    var mainview = MainTableViewController()
     
 
 

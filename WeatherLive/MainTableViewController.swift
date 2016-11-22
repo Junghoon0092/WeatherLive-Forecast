@@ -5,8 +5,7 @@ import ESPullToRefresh
 import SwiftyJSON
 import KRProgressHUD
 import Firebase
-
-
+import StoreKit
 
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate, GADBannerViewDelegate {
@@ -26,11 +25,14 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     var locationItems = [LocationItem]()
 
 
-    func adBannerViewInit() {
-        
-        
+    
+    var bannerHeight : CGFloat = 60
+    
+    
+    func adBannerViewInit(bannverHeight : CGFloat ) {
+
         view.addSubview(bannerView)
-        bannerView.adSize.size.height = 60
+        bannerView.adSize.size.height = bannverHeight
         bannerView.delegate = self
         bannerView.adUnitID = "ca-app-pub-3163253994374354/5176385829"
         bannerView.rootViewController = self
@@ -39,17 +41,25 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
         
     }
     
+    func enableAdMob() {
+        bannerView.adSize.size.height = 0
+        bannerView.hidden = true
+        print("광고 삭제")
+    }
+    
     func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         
         bannerView.hidden = true
     
-        
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        adBannerViewInit()
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.mainview = self
+        
+        adBannerViewInit(bannerHeight)
         
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
@@ -100,13 +110,10 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        KRProgressHUD.show()
-        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(delay, dispatch_get_main_queue()) {
+    
+        dispatch_async(dispatch_get_main_queue()) {
             self.loactionAuthstatus()
             self.findLoactionItem()
-            KRProgressHUD.dismiss()
             self.tableView.reloadData()
         }
 
