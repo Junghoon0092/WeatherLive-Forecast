@@ -15,7 +15,7 @@ class CurrentWeatherData {
     var _hiTemperature: Double!
     var _loTemperature: Double!
     var _windSpeed: String!
-    var _windDirection: String!
+    var _windDirection: Int!
     var _humidity: String!
     var _clouds: String!
     var _sunrise: Double!
@@ -81,9 +81,9 @@ class CurrentWeatherData {
     
     var windDirection: String {
         if _windDirection == nil {
-            _windDirection = ""
+            _windDirection = 0
         }
-        return _windDirection
+        return windDirection(_windDirection)
     }
     
     var humidity: String {
@@ -230,6 +230,49 @@ class CurrentWeatherData {
         }
     }
     
+    func windDirection(number : Int ) -> String {
+        
+        switch number {
+        case 11...33 :
+            return NSLocalizedString("NNE", comment: "NNE")
+        case 34...56 :
+            return NSLocalizedString("NE", comment: "NE")
+        case 57...78 :
+            return NSLocalizedString("ENE", comment: "ENE")
+        case 79...101 :
+            return NSLocalizedString("E", comment: "E")
+        case 102...123 :
+            return NSLocalizedString("ESE", comment: "ESE")
+        case 124...145 :
+            return NSLocalizedString("SE", comment: "SE")
+        case 146...168 :
+            return NSLocalizedString("SSE", comment: "SSE")
+        case 169...191 :
+            return NSLocalizedString("S", comment: "S")
+        case 192...213 :
+            return NSLocalizedString("SSW", comment: "SSW")
+        case 214...236 :
+            return NSLocalizedString("SW", comment: "SW")
+        case 237...258 :
+            return NSLocalizedString("WSW", comment: "WSW")
+        case 259...281 :
+            return NSLocalizedString("W", comment: "W")
+        case 282...303 :
+            return NSLocalizedString("WNW", comment: "WNW")
+        case 304...326 :
+            return NSLocalizedString("NW", comment: "NW")
+        case 327...348 :
+            return NSLocalizedString("NNW", comment: "NNW")
+        case 349...360 :
+            return NSLocalizedString("N", comment: "N")
+        case 0...11 :
+            return NSLocalizedString("N", comment: "N")
+        default:
+            return "Error"
+        }
+        
+    }
+    
     func downloadSwiftyJSONData(lat : String, long : String) {
         let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
         var unit : String = ""
@@ -252,6 +295,8 @@ class CurrentWeatherData {
         self._clouds = "\(json["clouds"]["all"].int!)"
         self._sunrise = json["sys"]["sunrise"].double!
         self._sunset = json["sys"]["sunset"].double!
+        self._windDirection = json["wind"]["deg"].int!
+        
     }
     
     func downloadSwiftyJSONDataForcasting(lat : String, long : String) {

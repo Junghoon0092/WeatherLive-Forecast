@@ -87,6 +87,7 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
             cell.contentView.frame = cell.bounds
             cell.contentView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             cell.windSpeedLabel.text = currentWeatherData.windSpeed
+            cell.windDirectLabel.text = currentWeatherData.windDirection
             returnCell = cell
         case 2:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HumidityCell", forIndexPath: indexPath) as! HumidityCell

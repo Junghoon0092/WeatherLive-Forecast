@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E405FD4CD6C12EF356E3DC5E9A9BE3B3'
+               BlueprintIdentifier = '4C1CDE4E3F3CC4CCEEE5C514B0EB4290'
                BlueprintName = 'SwiftPages'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SwiftPages.framework'>

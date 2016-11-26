@@ -29,6 +29,7 @@ PODS:
   - SwiftPages (1.1.0)
   - SwiftString (0.5)
   - SwiftyJSON (2.3.2)
+  - SwiftyStoreKit (0.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - SwiftPages
   - SwiftString
   - SwiftyJSON
+  - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -60,7 +62,8 @@ SPEC CHECKSUMS:
   SwiftPages: 1b24565cb91f24f4f912fbd9878a9c74b41a2ca6
   SwiftString: ec9c31c55b2aa147a1154f5f5f8483dc71e3165f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyStoreKit: 6df86a58380d591d06f204eaee92bfaf39704627
 
-PODFILE CHECKSUM: 814501ef37482efc9e0f17b1f66392b3b321f939
+PODFILE CHECKSUM: a3a7259a63e6d7a81fda98754b11b0fd1bffec21
 
 COCOAPODS: 1.0.1

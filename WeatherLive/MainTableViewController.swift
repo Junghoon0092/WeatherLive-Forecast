@@ -10,56 +10,19 @@ import StoreKit
 
 class MainTableViewController: UITableViewController, CLLocationManagerDelegate, GADBannerViewDelegate {
 
-    @IBOutlet weak var bannerView : GADBannerView!
-    
     
     let locationManger = CLLocationManager()
     var currentLocation: CLLocation!
     
     var locationWeatherData : LocationWeatherData?
-    
     var sqliteWeatherData = [SQLiteLocationWeatherData]()
-    
     var currentWeatherData = CurrentWeatherData()
-    
     var locationItems = [LocationItem]()
 
 
-    
-    var bannerHeight : CGFloat = 60
-    
-    
-    func adBannerViewInit(bannverHeight : CGFloat ) {
-
-        view.addSubview(bannerView)
-        bannerView.adSize.size.height = bannverHeight
-        bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-3163253994374354/5176385829"
-        bannerView.rootViewController = self
-        bannerView.loadRequest(GADRequest())
-        bannerView.hidden = false
-        
-    }
-    
-    func enableAdMob() {
-        bannerView.adSize.size.height = 0
-        bannerView.hidden = true
-        print("광고 삭제")
-    }
-    
-    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
-        
-        bannerView.hidden = true
-    
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.mainview = self
-        
-        adBannerViewInit(bannerHeight)
         
         locationManger.delegate = self
         locationManger.desiredAccuracy = kCLLocationAccuracyBest
@@ -110,7 +73,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-    
+
         dispatch_async(dispatch_get_main_queue()) {
             self.loactionAuthstatus()
             self.findLoactionItem()
@@ -225,6 +188,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        tableView.deselectRowAtIndexPath(indexPath, animated:true)
         
         
     }
@@ -306,7 +270,38 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
         
     }
 
+    /*
+ 
+    */
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let appdelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appdelegate.adMobCheck == true {
+            
+            appdelegate.adMobCheck = true
+            return 60
+        } else {
+            appdelegate.adMobCheck = false
+            return 0
+        }
+    }
 
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width , height: 60 ))
+            
+        let bannver = GADBannerView(adSize: GADAdSize(size: CGSize(width: headerView.frame.width, height: headerView.frame.height) , flags: 1))
+        bannver.delegate = self
+        bannver.adUnitID = "ca-app-pub-3163253994374354/5176385829"
+        bannver.rootViewController = self
+        bannver.loadRequest(GADRequest())
+        
+        headerView.addSubview(bannver)
+        
+        return headerView
+    }
+    
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         
         var style = UITableViewCellEditingStyle.Delete
@@ -318,6 +313,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
         }
 
     }
+    
     
     /*
     // Override to support rearranging the table view.

@@ -19,6 +19,7 @@ pod 'PMAlertController'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 pod ‘SwiftString’
+pod 'SwiftyStoreKit'
 
   # Pods for WeatherLive
 

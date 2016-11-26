@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import SwiftyStoreKit
 
 
 @UIApplicationMain
@@ -20,15 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var longitude : String! = ""
     var cityName : String! = ""
     var tempCheck : Bool = true
-    var adMob : Bool = true
+    var adMobCheck : Bool = true
     
     var settingItems = [SettingItem]()
     
-    var mainview = MainTableViewController()
-    
+    var mainView = MainTableViewController()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         
         GADMobileAds.configureWithApplicationID("ca-app-pub-3163253994374354/5176385829")
     
@@ -50,13 +50,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch _ {
             print("Delegate SQLite Access Error")
         }
-
         
+        if NSUserDefaults.standardUserDefaults().boolForKey("adMob") {
+            print(NSUserDefaults.standardUserDefaults().boolForKey("adMob"))
+            self.adMobCheck = false
+        } else {
+            self.adMobCheck = true
+        }
+
+        completeIAPTransactions()
         
         // Override point for customization after application launch.
         return true
     }
 
+    func completeIAPTransactions() {
+        
+        SwiftyStoreKit.completeTransactions() { completedTransactions in
+            
+            for completedTransaction in completedTransactions {
+                
+                if completedTransaction.transactionState == .Purchased || completedTransaction.transactionState == .Restored {
+                    
+                    print("purchased: \(completedTransaction.productId)")
+                }
+            }
+        }
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         let nc = window?.rootViewController as! UINavigationController
         nc.popToRootViewControllerAnimated(true)

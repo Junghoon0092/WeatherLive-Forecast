@@ -25,3 +25,24 @@
 
 "TemperCheckFtahrenheit" = "華氏(F˚)";
 "TemperCheckCelsius" = "攝氏(C˚)";
+
+"Information" = "情報" ;
+"Remove Ad" = "廣告削除";
+"Help Developer" = "開発者を助ける";
+
+"N" = "北";
+"NNE" = "北北東";
+"NE" = "北東";
+"ENE" = "東北東";
+"E" = "東";
+"ESE" = "東南東";
+"SE" = "南東";
+"SSE" = "南南東";
+"S" = "南";
+"SSW" = "南南西";
+"SW" = "南西";
+"WSW" = "西南西";
+"W" = "西";
+"WNW" = "西北西";
+"NW" = "北西";
+"NNW" = "北北西";

@@ -25,3 +25,26 @@
 
 "TemperCheckFtahrenheit" = "Ftahrenheit";
 "TemperCheckCelsius" = "Celsius";
+
+"Information" = "Information" ;
+"Remove Ad" = "Remove Ad";
+"Help Developer" = "Help Developer";
+
+// 북:N , 남 : S , 동 : E / 서 : W
+
+"N" = "N";
+"NNE" = "NNE";
+"NE" = "NE";
+"ENE" = "ENE";
+"E" = "E";
+"ESE" = "ESE";
+"SE" = "SE";
+"SSE" = "SSE";
+"S" = "S";
+"SSW" = "SSW";
+"SW" = "SW";
+"WSW" = "WSW";
+"W" = "W";
+"WNW" = "WNW";
+"NW" = "NW";
+"NNW" = "NNW";
