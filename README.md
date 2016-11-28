@@ -11,8 +11,6 @@
 - LG 전자에서 판매되는 Box Design 
  + Box 내부 완충 / 구조 설계 
  + Box Design
- + 재료비 검토
- + 컨테이너 장입 수량 검토.
 
 - 사용 기술
  + Creo 2.0 ( Pro-e )
@@ -23,7 +21,6 @@
 ### iOS 개발자가 되기 위해서
 - 2015 03월 ~ 06월  SBS 게임아카데미 학원 수강 ( Obj-C )
 - 2016 02월 ~ 05월  스터디 그룹 주최함.(Swift)
-
 - 2016 08월 ~ 10월 포트폴리오 iOS App 개발
 - 2016 11월 : 날씨 App 스토어 등록 함.
 
@@ -37,6 +34,7 @@
  + SwiftPages : Cell 선택 후 Detail / Houly / Daily 을 표현하기 위해서 사용.
  + ESPullToRefresh : MainTableView을 아래 당겨서 테이블 뷰 재 생성함.
  + SwiftString : String을 자르고 붙이고 용도 사용
+ + SwiftyStoreKit : In-App 결재 Kit
  
 # WeatherLive-Forecast
 WeatherLive-Forecast
