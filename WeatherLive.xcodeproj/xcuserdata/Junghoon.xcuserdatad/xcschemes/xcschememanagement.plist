@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WeatherLiveBridge.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>WeatherLiveExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>3B04299E1DEA48F200F799B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B0429B41DEA51D700F799B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3B8CA4A91D7D24CF00BBBDA8</key>
 		<dict>
 			<key>primary</key>

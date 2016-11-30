@@ -3,7 +3,6 @@
 
 import Foundation
 import UIKit
-import Alamofire
 import SwiftyJSON
 import SwiftString
 
@@ -199,6 +198,7 @@ class SQLiteLocationWeatherData {
         let todayWeekLabel = json["list"][0]["dt"].double!
         let tomorrowWeekLabel = json["list"][1]["dt"].double!
         let afterTomorrowWeekLabel = json["list"][2]["dt"].double!
+        
         let dbWeatherData = SQLiteLocationWeatherData.init(cityLabel: citylabel, tempLabel: tempLabel, hiTempLabel: hiTempLabel, loTempLabel: loTempLabel, todayImage: todayImage, tomorrowImage: tomorrowImage, afterTomorrowImage: afterTomorrowImage, todayTempLabel: todayTempLabel, tomorrowTempLabel: tomorrowTempLabel, afterTomorrowTempLabel: afterTomorrowTempLabel, todayWeekLabel: todayWeekLabel, tomorrowWeekLabel: tomorrowWeekLabel, afterTomorrowWeekLabel: afterTomorrowWeekLabel)
         completed(dbWeatherData)
         

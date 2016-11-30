@@ -70,18 +70,6 @@ class SettingViewTVController: UITableViewController, MFMailComposeViewControlle
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        if let indexPaht = tableView.indexPathForSelectedRow {
-            tableView.deselectRowAtIndexPath(indexPaht, animated: true)
-        }
-        
-       
-        
-        
-    }
-    
-    
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         

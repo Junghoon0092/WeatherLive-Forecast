@@ -371,11 +371,11 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-Kq-Lq5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-Kq-Lq5">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Sog-iO-a3e">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="55"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                                                         </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -453,11 +453,11 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9g-cz-NSV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9g-cz-NSV">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="iCm-G0-UQP">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="55"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                                                         </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -533,11 +533,11 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bts-xb-xvG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bts-xb-xvG">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="Y79-TC-aU6">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="55"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                                                         </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1910,7 +1910,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="03N-Ai-uKa"/>
+                                                        <constraint firstAttribute="width" constant="70" id="03N-Ai-uKa">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="75"/>
+                                                        </constraint>
                                                         <constraint firstAttribute="bottom" secondItem="nPN-dZ-Phy" secondAttribute="bottom" id="EWX-p8-6cb">
                                                             <variation key="heightClass=regular-widthClass=compact" constant="2"/>
                                                         </constraint>
@@ -3666,13 +3668,13 @@
                                 <exclude reference="Hkf-xQ-Uc8"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Xxx-xv-qDX"/>
                                 <exclude reference="XLU-E6-hMT"/>
                                 <exclude reference="aGu-Ag-CzO"/>
                                 <exclude reference="kME-xB-8LZ"/>
                                 <exclude reference="4Xg-lJ-duN"/>
                                 <exclude reference="g3F-Ha-0qm"/>
                                 <exclude reference="n9c-tk-DWF"/>
-                                <exclude reference="Xxx-xv-qDX"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3681,13 +3683,13 @@
                                 <include reference="Hkf-xQ-Uc8"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Xxx-xv-qDX"/>
                                 <include reference="XLU-E6-hMT"/>
                                 <include reference="aGu-Ag-CzO"/>
                                 <include reference="kME-xB-8LZ"/>
                                 <include reference="4Xg-lJ-duN"/>
                                 <include reference="g3F-Ha-0qm"/>
                                 <include reference="n9c-tk-DWF"/>
-                                <include reference="Xxx-xv-qDX"/>
                             </mask>
                         </variation>
                     </view>
