@@ -296,44 +296,34 @@ class CurrentWeatherData {
         self._sunset = json["sys"]["sunset"].double!
         self._windDirection = json["wind"]["deg"].int!
         
-    }
-    
-    func downloadSwiftyJSONDataForcasting(lat : String, long : String) {
-        let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
-        var unit : String = ""
-        if sendValue?.tempCheck == true {
-            unit = "metric"
-        } else {
-            unit = "imperial"
-        }
         
-        let findBaseURL = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=\(unit)&appid=\(API_KEY)"
         
-        let url = NSData(contentsOfURL : NSURL(string: findBaseURL)!)
-        let json = JSON(data: url!)
+        let forecast5DayBase = "\(FORECAST_5DAY_BASE)lat=\(lat)&lon=\(long)&units=\(unit)&appid=\(API_KEY)"
         
-        if json != nil {
+        let urlForecast5DayBase = NSData(contentsOfURL : NSURL(string: forecast5DayBase)!)
+        let jsonSE = JSON(data: urlForecast5DayBase!)
         
-        self._for3hourTimeLabel = json["list"][0]["dt"].double!
-        self._for3hourTempLabel = json["list"][0]["main"]["temp"].double!
-        self._for3hourWeatherLabel = json["list"][0]["weather"][0]["main"].string
-        self._for3hourImage = json["list"][0]["weather"][0]["main"].string
-        
-        self._for6hourTimeLabel = json["list"][2]["dt"].double!
-        self._for6hourTempLabel = json["list"][2]["main"]["temp"].double!
-        self._for6hourWeatherLabel = json["list"][2]["weather"][0]["main"].string
-        self._for6hourImage = json["list"][2]["weather"][0]["main"].string
-        
-        self._for12hourTimeLabel = json["list"][4]["dt"].double!
-        self._for12hourTempLabel = json["list"][4]["main"]["temp"].double!
-        self._for12hourWeatherLabel = json["list"][4]["weather"][0]["main"].string
-        self._for12hourImage = json["list"][4]["weather"][0]["main"].string
+        if jsonSE != nil {
+            
+            self._for3hourTimeLabel = jsonSE["list"][0]["dt"].double!
+            self._for3hourTempLabel = jsonSE["list"][0]["main"]["temp"].double!
+            self._for3hourWeatherLabel = jsonSE["list"][0]["weather"][0]["main"].string
+            self._for3hourImage = jsonSE["list"][0]["weather"][0]["main"].string
+            
+            self._for6hourTimeLabel = jsonSE["list"][2]["dt"].double!
+            self._for6hourTempLabel = jsonSE["list"][2]["main"]["temp"].double!
+            self._for6hourWeatherLabel = jsonSE["list"][2]["weather"][0]["main"].string
+            self._for6hourImage = jsonSE["list"][2]["weather"][0]["main"].string
+            
+            self._for12hourTimeLabel = jsonSE["list"][4]["dt"].double!
+            self._for12hourTempLabel = jsonSE["list"][4]["main"]["temp"].double!
+            self._for12hourWeatherLabel = jsonSE["list"][4]["weather"][0]["main"].string
+            self._for12hourImage = jsonSE["list"][4]["weather"][0]["main"].string
         } else {
             
             print("Error")
         }
     }
-    
 }
 
 

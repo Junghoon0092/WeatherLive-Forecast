@@ -15,10 +15,9 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     var currentLocation: CLLocation!
     
     var locationWeatherData : LocationWeatherData?
-    var sqliteWeatherData = [SQLiteLocationWeatherData]()
     var currentWeatherData = CurrentWeatherData()
     var locationItems = [LocationItem]()
-
+    var sqliteWeatherData = [LocationWeatherData]()
 
 
     override func viewDidLoad() {
@@ -35,10 +34,12 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
         self.tableView.es_addPullToRefresh {
             [weak self] in
             self!.getLoactionItem()
-            LocationWeatherData.download({ (locationWeatherData) in
+            
+            LocationWeatherData.download("\(SQLiteDataBase.sharedInstance.latitude)", lon: "\(SQLiteDataBase.sharedInstance.longitude)", completed: { (locationWeatherData) in
                 self!.locationWeatherData = locationWeatherData
                 self?.tableView.reloadData()
             })
+     
             self!.findLoactionItem()
             self?.tableView.es_stopPullToRefresh(completion: true)
         }
@@ -60,7 +61,8 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
             locationItems = try WeatherDBHelper.finaAll()!
             self.sqliteWeatherData.removeAll()
             for locationItem in locationItems {
-                SQLiteLocationWeatherData.SQLiteDownload(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
+                
+                LocationWeatherData.download(locationItem.getLatitude(), lon: locationItem.getLongitude(), completed: { (sqliteLocationWeatherData) in
                     self.sqliteWeatherData.append(sqliteLocationWeatherData)
                 })
             }
@@ -89,7 +91,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
             
             SQLiteDataBase.sharedInstance.latitude = currentLocation.coordinate.latitude
             SQLiteDataBase.sharedInstance.longitude = currentLocation.coordinate.longitude
-            LocationWeatherData.download({ (locationWeatherData) in
+            LocationWeatherData.download("\(SQLiteDataBase.sharedInstance.latitude)", lon: "\(SQLiteDataBase.sharedInstance.longitude)", completed: { (locationWeatherData) in
                 self.locationWeatherData = locationWeatherData
             })
             
@@ -137,10 +139,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
                 cell.tommorwImage.image = UIImage(named: "Rain")
                 cell.aftertommorwImage.image = UIImage(named: "Rain")
             } else {
-                
-                
-                
-                
                 cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon((self.locationWeatherData?.todayImage)!))
                 cell.tommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.tomorrowImage)!)))
                 cell.aftertommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.afterTomorrowImage)!)))
@@ -161,7 +159,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
             
             cell.contryCityName.text = self.sqliteWeatherData[indexPath.row - 1].cityLabel
             cell.contryTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tempLabel
-            
         
             cell.contryHiTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].hiTempLabel
             cell.contryLoTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].loTempLabel
@@ -169,7 +166,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
             cell.contryTodayImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].todayImage))
             cell.contryTommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].tomorrowImage))
             cell.contryAftertommorwImage.image = UIImage(named: currentWeatherData.weatherIcon(self.sqliteWeatherData[indexPath.row - 1].afterTomorrowImage))
-            
             
             cell.contryTodayTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].todayTempLabel
             cell.contryTommorwTempLabel.text = self.sqliteWeatherData[indexPath.row - 1].tomorrowTempLabel
@@ -189,7 +185,6 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated:true)
-        
         
     }
     

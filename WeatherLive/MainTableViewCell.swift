@@ -11,7 +11,7 @@ import UIKit
 class MainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var tempLabel: SACountingLabel!
+    @IBOutlet weak var tempLabel: UILabel!
     
     @IBOutlet weak var hiTempLabel: UILabel!
     @IBOutlet weak var loTempLabel: UILabel!
@@ -28,10 +28,6 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var todayWeekLabel: UILabel!
     @IBOutlet weak var tommorwWeekLabel: UILabel!
     @IBOutlet weak var afterTommorwWeekLabel: UILabel!
-    
-    var currentWeatherData = CurrentWeatherData()
-    var location : LocationWeatherData!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +46,7 @@ class MainTableViewCell: UITableViewCell {
 class ContryViewCell: UITableViewCell {
     
     @IBOutlet weak var contryCityName: UILabel!
-    @IBOutlet weak var contryTempLabel: SACountingLabel!
+    @IBOutlet weak var contryTempLabel: UILabel!
     
     @IBOutlet weak var contryHiTempLabel: UILabel!
     @IBOutlet weak var contryLoTempLabel: UILabel!

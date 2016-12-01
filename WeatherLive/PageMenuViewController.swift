@@ -18,8 +18,6 @@ class PageMenuViewController: UIViewController {
         super.viewDidLoad()
         
         let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
-        
-
         self.navigationItem.title = sendValue?.cityName
         
         
@@ -36,15 +34,6 @@ class PageMenuViewController: UIViewController {
         swiftPageVIew.setAnimatedBarHeight(3)
         swiftPageVIew.setTopBarHeight(40)
         swiftPageVIew.initializeWithVCIDsArrayAndButtonTitlesArray(VCIDs, buttonTitlesArray: buttonTitles)
-//        let alertVC = PMAlertController(title: "안녕하세요", description: "여기는 어디예요?", image: nil, style: PMAlertControllerStyle.Alert )
-//        alertVC.addAction(PMAlertAction(title: "2번째 안녕", style: PMAlertActionStyle.Default , action: {
-//            
-//            self.navigationController?.popToRootViewControllerAnimated(true)
-//        }))
-//        self.presentViewController(alertVC, animated: true, completion: nil)
-//        
-//        
-        
         
     }
     

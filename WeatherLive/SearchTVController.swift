@@ -114,28 +114,18 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
         
         do {
             try database.createTables()
-        }
-        catch _ {}
-        
-        
-        do {
+            
             let data = self.searchCityData[indexPath.row]
             _ = try WeatherDBHelper.insert(LocationItem(id: 0, latitude: data.lat, longitude: data.lon, cityName: data.cityName))
-        }catch {
-            // 알람창 구현
+        }
+        catch _ {
             print("Insert Error")
         }
-    
+
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
-//    func downloadJSONDataAll(latitude : String, longitude : String, completed: DownloadComplete ) -> Dictionary<String, AnyObject> {
-//    
-//        
-//        
-//    
-//    }
     
     /*
     // Override to support conditional editing of the table view.

@@ -23,33 +23,6 @@ class SettingViewTVController: UITableViewController, MFMailComposeViewControlle
     
     
     
-    
-    func inAppPriceLocalized() {
-        
-        SwiftyStoreKit.retrieveProductsInfo(["remove"]) { (result) in
-            
-            let product = result.retrievedProducts.first
-            self.removeAdButton.text = "Remove Ad ( \(product!.localizedPrice()) )"
-        }
-        SwiftyStoreKit.retrieveProductsInfo(["GiftCoffee"]) { (result) in
-            
-            let product = result.retrievedProducts.first
-            self.coffeePrice.text = product!.localizedPrice()
-        }
-        SwiftyStoreKit.retrieveProductsInfo(["GiftCake"]) { (result) in
-            
-            let product = result.retrievedProducts.first
-            self.cakePrice.text = product!.localizedPrice()
-        }
-        SwiftyStoreKit.retrieveProductsInfo(["GiftDinner"]) { (result) in
-            
-            let product = result.retrievedProducts.first
-            self.dinnerPrice.text = product!.localizedPrice()
-        }
-        
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -343,6 +316,33 @@ class SettingViewTVController: UITableViewController, MFMailComposeViewControlle
      // Pass the selected object to the new view controller.
      }
      */
+    
+    
+    // MARK: - In-App
+    func inAppPriceLocalized() {
+        
+        SwiftyStoreKit.retrieveProductsInfo(["remove"]) { (result) in
+            
+            let product = result.retrievedProducts.first
+            self.removeAdButton.text = "Remove Ad ( \(product!.localizedPrice()) )"
+        }
+        SwiftyStoreKit.retrieveProductsInfo(["GiftCoffee"]) { (result) in
+            
+            let product = result.retrievedProducts.first
+            self.coffeePrice.text = product!.localizedPrice()
+        }
+        SwiftyStoreKit.retrieveProductsInfo(["GiftCake"]) { (result) in
+            
+            let product = result.retrievedProducts.first
+            self.cakePrice.text = product!.localizedPrice()
+        }
+        SwiftyStoreKit.retrieveProductsInfo(["GiftDinner"]) { (result) in
+            
+            let product = result.retrievedProducts.first
+            self.dinnerPrice.text = product!.localizedPrice()
+        }
+        
+    }
     
     func alertForPurchaseResult(result: SwiftyStoreKit.PurchaseResult) -> UIAlertController {
         switch result {

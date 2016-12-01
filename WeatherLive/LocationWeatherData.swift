@@ -142,7 +142,7 @@ class LocationWeatherData {
         
     }
     
-    class func download ( completed : ((LocationWeatherData) -> Void) ) {
+    class func download (lat : String, lon : String, completed : ((LocationWeatherData) -> Void) ) {
         
         let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
         var unit : String = ""
@@ -152,7 +152,7 @@ class LocationWeatherData {
             unit = "imperial"
         }
         
-        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(SQLiteDataBase.sharedInstance.latitude!)&lon=\(SQLiteDataBase.sharedInstance.longitude!)&units=\(unit)&appid=\(API_KEY)"
+        let findBaseURL = "\(FORECAST_16DAY_BASE)lat=\(lat)&lon=\(lon)&units=\(unit)&appid=\(API_KEY)"
         let url = NSData(contentsOfURL: NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
         
@@ -177,36 +177,7 @@ class LocationWeatherData {
         
         completed(locationData)
     }
-    
 
-
-    func loactionWeatherDataJSON(completed: DownloadComplete) {
-        let url = NSData(contentsOfURL : NSURL(string: LOCATION_CURRENT_URL)!)
-        let json = JSON(data: url!)
-        self._cityLabel = "\(json["city"]["name"].string!).\(json["city"]["country"].string!)"
-        self._tempLabel = json["list"][0]["temp"]["day"].double!
-        self._hiTempLabel = json["list"][0]["temp"]["max"].double!
-        self._loTempLabel = json["list"][0]["temp"]["min"].double!
-        
-        self._todayImage = json["list"][0]["weather"][0]["main"].string!
-        self._tomorrowImage = json["list"][1]["weather"][0]["main"].string!
-        self._afterTomorrowImage = json["list"][2]["weather"][0]["main"].string!
-        
-        self._todayTempLabel = json["list"][0]["temp"]["day"].double!
-        self._tomorrowTempLabel = json["list"][1]["temp"]["day"].double!
-        self._afterTomorrowTempLabel = json["list"][2]["temp"]["day"].double!
-        
-        self._todayWeekLabel = json["list"][0]["dt"].double!
-        self._tomorrowWeekLabel = json["list"][1]["dt"].double!
-        self._afterTomorrowWeekLabel = json["list"][2]["dt"].double!
-        
-        
-        
-        
-        completed()
-    }
-
-    
 }
 
 

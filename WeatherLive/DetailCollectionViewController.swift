@@ -19,17 +19,10 @@ class DetailCollectionViewController: UICollectionViewController ,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         self.collectionView?.backgroundColor = UIColor.whiteColor()
         
         let sendValue = UIApplication.sharedApplication().delegate as? AppDelegate
-
         currentWeatherData.downloadSwiftyJSONData((sendValue?.latitude)!, long: (sendValue?.longitude)!)
-        currentWeatherData.downloadSwiftyJSONDataForcasting((sendValue?.latitude)!, long: (sendValue?.longitude)!)
-        
-
-        
-        
         
     }
 
