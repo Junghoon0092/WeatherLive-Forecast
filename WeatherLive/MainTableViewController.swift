@@ -139,7 +139,7 @@ class MainTableViewController: UITableViewController, CLLocationManagerDelegate,
                 cell.tommorwImage.image = UIImage(named: "Rain")
                 cell.aftertommorwImage.image = UIImage(named: "Rain")
             } else {
-                cell.todayImage.image = UIImage(named: currentWeatherData.weatherIcon((self.locationWeatherData?.todayImage)!))
+                cell.todayImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.todayImage)!)))
                 cell.tommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.tomorrowImage)!)))
                 cell.aftertommorwImage.image = UIImage(named: (currentWeatherData.weatherIcon((self.locationWeatherData?.afterTomorrowImage)!)))
             }

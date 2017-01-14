@@ -8,181 +8,151 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>ESPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>KRProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>PMAlertController-PMAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>PMAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-WeatherLive.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-WeatherLiveTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Pods-WeatherLiveUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>SQLite.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>SwiftPages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 		<key>SwiftString-SwiftString.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>SwiftString.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>SwiftyStoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>002A79E870219FA26D9FCCF693E84BD3</key>
+		<key>0D59B3E3834A9ED9DB467A44B203C6F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>11B95BF8DD9FE4F0E891648880291FB7</key>
+		<key>0DB194629F1368FB26338A13747F37BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1A27ED5EC0857EB0AD03A4092627E08C</key>
+		<key>239B88CDC8403401454204EB5D4FCA13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
+		<key>2D5A03FF4DB2911A1721DE94FE9150E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40D8A6542A47B8A8F2AE5BD7A55B3215</key>
+		<key>4B95461F44F5C429D36CA30ACC175D7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>474A67AEE8F1B654466FDF444CC16B76</key>
+		<key>6231CEAFD72F85D338D98C6A375FA80C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C1CDE4E3F3CC4CCEEE5C514B0EB4290</key>
+		<key>7EFBC9F968EFDBE88BD0B32484DB2387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E31B4FD268BEE6936B4477E4EDCD609</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>99183593E3C04F0C7720EF0DA4A0159B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88CFC63ACA768BF7D3390061663FEF10</key>
+		<key>A514257B2CFBE1BC832632CEBBE43ADB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F0CAC45729BE9BDBCEDE3A1B46AA483</key>
+		<key>A9ACEF2C498EF8F83B78A83DB2C1F172</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9A2E48541941B3D71C10BA8FFD15D9C6</key>
+		<key>AD160DD708AD272F41C30C0AD4A98723</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB23E0C4DDD7DE0A3E6056FA65D2D721</key>
+		<key>B2BFA6809E1892FB8AA928741BF86E03</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2AB96F7E8DD8856CD05BD74C0ABBF9C</key>
+		<key>BE4CAA8715BAC3A496F06F32CBA2D1D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5AB1C0293AFBBE30818EC1F7565FA51</key>
+		<key>D54FDD5C741942E89778C6F1AD56A429</key>
 		<dict>
 			<key>primary</key>
 			<true/>

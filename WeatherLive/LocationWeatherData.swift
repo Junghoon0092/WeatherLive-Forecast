@@ -156,6 +156,8 @@ class LocationWeatherData {
         let url = NSData(contentsOfURL: NSURL(string: findBaseURL)!)
         let json = JSON(data: url!)
         
+
+        
         let tempLabel = json["list"][0]["temp"]["day"].double!
         let citylabel = "\(json["city"]["name"].string!).\(json["city"]["country"].string!)"
         let hiTempLabel = json["list"][0]["temp"]["max"].double!
