@@ -59,6 +59,8 @@ class SearchTVController: UIViewController, UISearchBarDelegate, UITableViewData
 
     func searchCityDownLoad(citystring: String, completed: DownloadComplete) {
         
+        self.searchCityData.removeAll()
+        
         KRProgressHUD.show()
         let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
         dispatch_after(delay, dispatch_get_main_queue()) {

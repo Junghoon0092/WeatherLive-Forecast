@@ -227,6 +227,8 @@
 		3B8CA4AC1D7D24CF00BBBDA8 /* WeatherLive */ = {
 			isa = PBXGroup;
 			children = (
+				3B8CA4B11D7D24CF00BBBDA8 /* Main.storyboard */,
+				3B8CA4B61D7D24CF00BBBDA8 /* LaunchScreen.storyboard */,
 				3B02C58C1DE0200C00FC96A5 /* GoogleService-Info.plist */,
 				3B8CA4AD1D7D24CF00BBBDA8 /* AppDelegate.swift */,
 				3B4335411DAF6A320049F6C4 /* Frameworks_Library */,
@@ -276,8 +278,6 @@
 				3B4DAD4D1D9CD25B00C30F93 /* DetailView */,
 				3B4DAD4C1D9CD23100C30F93 /* HourlyView */,
 				3B4DAD4B1D9CAF8D00C30F93 /* DailyView */,
-				3B8CA4B11D7D24CF00BBBDA8 /* Main.storyboard */,
-				3B8CA4B61D7D24CF00BBBDA8 /* LaunchScreen.storyboard */,
 				3B8CA4EE1D7D4B2000BBBDA8 /* MainTableViewCell.swift */,
 				3B4DAD561D9D08D000C30F93 /* SearchTableViewCell.swift */,
 			);

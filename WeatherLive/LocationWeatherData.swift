@@ -47,14 +47,14 @@ class LocationWeatherData {
         if _hiTempLabel == nil {
             return ""
         }
-        return "Hi : \("\(_hiTempLabel.doubleToRoundUP(0))".split(".")[0])˚"
+        return "Hi : \("\(_hiTempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     
     var loTempLabel: String {
         if _loTempLabel == nil {
             return ""
         }
-        return "Lo : \("\(_loTempLabel.doubleToRoundUP(0))".split(".")[0])˚"
+        return "Lo : \("\(_loTempLabel.doubleToRoundUP(1))".split(".")[0])˚"
     }
     
     
